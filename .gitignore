@@ -1,0 +1,29 @@
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment variables (contains sensitive API keys)
+.env
+Client/.env
+server/.env
+*.env
+!.env.example
+
+# Datasets
+dataset/
+
+# Python caches
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+server/uploads/
+
+# Model weights/binaries (ignored by default)
+*.h5
+*.weights.h5
+
+# Allowlist: track this specific weights file
+!model/disease_model.weights.h5

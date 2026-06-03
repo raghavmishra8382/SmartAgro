@@ -208,7 +208,7 @@ export default function CropPrediction() {
 
           <div className="flex items-center space-x-4 mb-4">
             <div className="flex items-center">
-              <div className="w-6 h-6 bg-green-500 rounded flex items-center justify-center mr-2">
+              <div className="w-6 h-6 bg-forest-500 rounded flex items-center justify-center mr-2">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-white" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                 </svg>
@@ -217,7 +217,7 @@ export default function CropPrediction() {
             </div>
 
             <div className="flex items-center">
-              <div className="w-6 h-6 bg-green-500 rounded flex items-center justify-center mr-2">
+              <div className="w-6 h-6 bg-forest-500 rounded flex items-center justify-center mr-2">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-white" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V3zm1 4h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V8a1 1 0 011-1zm0 4h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2a1 1 0 011-1z" clipRule="evenodd" />
                 </svg>
@@ -227,12 +227,12 @@ export default function CropPrediction() {
           </div>
 
           {predictions.length > 0 && (
-            <div className="mt-8 p-4 bg-green-700 rounded-lg">
+            <div className="mt-8 p-4 bg-forest-700 rounded-lg">
               <h3 className="text-xl font-semibold mb-3">Recommended Crops:</h3>
               <ul className="space-y-2">
                 {predictions.map((pred, index) => (
                   <li key={index} className="flex items-center">
-                    <div className="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center mr-3">
+                    <div className="w-6 h-6 rounded-full bg-forest-500 flex items-center justify-center mr-3">
                       {index + 1}
                     </div>
                     <span className="text-lg">{pred.crop} ({(pred.confidence).toFixed(2)}%)</span>
@@ -248,7 +248,7 @@ export default function CropPrediction() {
           <div className="mt-8">
             <button
               onClick={resetForm}
-              className="px-4 py-2 bg-green-600 hover:bg-green-700 rounded text-sm font-medium transition duration-200"
+              className="px-4 py-2 bg-forest-600 hover:bg-forest-700 rounded text-sm font-medium transition duration-200"
             >
               Reset All Fields
             </button>
@@ -258,13 +258,13 @@ export default function CropPrediction() {
         {/* Right Section */}
         <div className="w-full md:w-3/5 p-8">
           <div className="border-b border-gray-200 pb-4 mb-6">
-            <h2 className="text-2xl font-bold text-green-800">Soil Parameter Analysis</h2>
+            <h2 className="text-2xl font-bold text-forest-800">Soil Parameter Analysis</h2>
             <p className="text-gray-600 mt-1">Enter your soil test results for accurate predictions</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label className="block text-green-800 font-medium mb-2" htmlFor="nitrogen">
+              <label className="block text-forest-800 font-medium mb-2" htmlFor="nitrogen">
                 Nitrogen (N): <span className="text-red-500">*</span>
               </label>
               <div className="relative">
@@ -274,7 +274,7 @@ export default function CropPrediction() {
                   name="nitrogen"
                   value={soilParams.nitrogen}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-forest-500"
                   placeholder="Range, 0-140"
                 />
                 <span className="absolute right-3 top-2 text-gray-500">kg/ha</span>
@@ -282,7 +282,7 @@ export default function CropPrediction() {
             </div>
 
             <div>
-              <label className="block text-green-800 font-medium mb-2" htmlFor="phosphorus">
+              <label className="block text-forest-800 font-medium mb-2" htmlFor="phosphorus">
                 Phosphorous (P): <span className="text-red-500">*</span>
               </label>
               <div className="relative">
@@ -292,7 +292,7 @@ export default function CropPrediction() {
                   name="phosphorus"
                   value={soilParams.phosphorus}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-forest-500"
                   placeholder="Range, 0-140"
                 />
                 <span className="absolute right-3 top-2 text-gray-500">kg/ha</span>
@@ -300,7 +300,7 @@ export default function CropPrediction() {
             </div>
 
             <div>
-              <label className="block text-green-800 font-medium mb-2" htmlFor="potassium">
+              <label className="block text-forest-800 font-medium mb-2" htmlFor="potassium">
                 Potassium (K): <span className="text-red-500">*</span>
               </label>
               <div className="relative">
@@ -310,7 +310,7 @@ export default function CropPrediction() {
                   name="potassium"
                   value={soilParams.potassium}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-forest-500"
                   placeholder="Range, 0-200"
                 />
                 <span className="absolute right-3 top-2 text-gray-500">kg/ha</span>
@@ -318,7 +318,7 @@ export default function CropPrediction() {
             </div>
 
             <div>
-              <label className="block text-green-800 font-medium mb-2" htmlFor="ph">
+              <label className="block text-forest-800 font-medium mb-2" htmlFor="ph">
                 pH Value: <span className="text-red-500">*</span>
               </label>
               <input
@@ -327,13 +327,13 @@ export default function CropPrediction() {
                 name="ph"
                 value={soilParams.ph}
                 onChange={handleInputChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-forest-500"
                 placeholder="Range, 3.5-9"
               />
             </div>
 
             <div>
-              <label className="block text-green-800 font-medium mb-2" htmlFor="rainfall">
+              <label className="block text-forest-800 font-medium mb-2" htmlFor="rainfall">
                 Rainfall:
               </label>
               <div className="relative">
@@ -343,7 +343,7 @@ export default function CropPrediction() {
                   name="rainfall"
                   value={soilParams.rainfall}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-forest-500"
                   placeholder="Range , 0-500"
                 />
                 <span className="absolute right-3 top-2 text-gray-500">mm</span>
@@ -351,7 +351,7 @@ export default function CropPrediction() {
             </div>
 
             <div>
-              <label className="block text-green-800 font-medium mb-2" htmlFor="temperature">
+              <label className="block text-forest-800 font-medium mb-2" htmlFor="temperature">
                 Temperature:
               </label>
               <div className="relative">
@@ -361,7 +361,7 @@ export default function CropPrediction() {
                   name="temperature"
                   value={soilParams.temperature}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-forest-500"
                   placeholder="Range, 0-60"
                 />
                 <span className="absolute right-3 top-2 text-gray-500">°C</span>
@@ -369,7 +369,7 @@ export default function CropPrediction() {
             </div>
 
             <div className="md:col-span-2">
-              <label className="block text-green-800 font-medium mb-2" htmlFor="humidity">
+              <label className="block text-forest-800 font-medium mb-2" htmlFor="humidity">
                 Humidity:
               </label>
               <div className="relative">
@@ -379,7 +379,7 @@ export default function CropPrediction() {
                   name="humidity"
                   value={soilParams.humidity}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-forest-500"
                   placeholder="Range, 10-100"
                 />
                 <span className="absolute right-3 top-2 text-gray-500">%</span>
@@ -390,7 +390,7 @@ export default function CropPrediction() {
           <button
             onClick={predictCrops}
             disabled={isPredicting}
-            className="w-full mt-6 bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-lg font-medium transition duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 disabled:opacity-70"
+            className="w-full mt-6 bg-forest-600 hover:bg-forest-700 text-white py-3 px-6 rounded-lg font-medium transition duration-200 focus:outline-none focus:ring-2 focus:ring-forest-500 focus:ring-offset-2 disabled:opacity-70"
           >
             {isPredicting ? (
               <div className="flex items-center justify-center">
@@ -404,13 +404,13 @@ export default function CropPrediction() {
           </button>
 
           <div className="mt-8 border-t border-gray-200 pt-6">
-            <h2 className="text-2xl font-bold text-green-800 mb-2">Select a Crop</h2>
+            <h2 className="text-2xl font-bold text-forest-800 mb-2">Select a Crop</h2>
             <p className="text-gray-600 mb-4">Choose a crop to get specific fertilizer recommendations</p>
 
             <select
               value={selectedCrop}
               onChange={handleCropChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-forest-500"
               disabled={predictions.length === 0}
             >
               <option value="">-- Select Crop --</option>
@@ -424,7 +424,7 @@ export default function CropPrediction() {
             <button
               onClick={getFertilizerAdvice}
               disabled={isFetchingFertilizer || !selectedCrop}
-              className="w-full mt-4 bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-lg font-medium transition duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 disabled:opacity-70"
+              className="w-full mt-4 bg-forest-600 hover:bg-forest-700 text-white py-3 px-6 rounded-lg font-medium transition duration-200 focus:outline-none focus:ring-2 focus:ring-forest-500 focus:ring-offset-2 disabled:opacity-70"
             >
               {isFetchingFertilizer ? (
                 <div className="flex items-center justify-center">

@@ -366,7 +366,7 @@ const VoiceAssistant: React.FC = () => {
 
         {/* Header with connection status */}
         <div className="flex items-center justify-center gap-4">
-          <div className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium transition-all ${isInCall ? 'bg-green-100 text-green-700' : isConnecting ? 'bg-blue-100 text-blue-700' : 'bg-gray-100 text-gray-500'
+          <div className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium transition-all ${isInCall ? 'bg-forest-100 text-forest-700' : isConnecting ? 'bg-blue-100 text-blue-700' : 'bg-gray-100 text-gray-500'
             }`}>
             <Signal size={16} className={isInCall ? 'animate-pulse' : ''} />
             {isInCall ? 'Secure Connection Active' : isConnecting ? 'Establishing Link...' : 'Voice System Offline'}
@@ -379,18 +379,18 @@ const VoiceAssistant: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className={`relative overflow-hidden group rounded-[2.5rem] bg-white border shadow-2xl transition-all duration-500 ${isSpeaking ? 'border-green-400 ring-4 ring-green-500/10' : 'border-gray-100'
+            className={`relative overflow-hidden group rounded-[2.5rem] bg-white border shadow-2xl transition-all duration-500 ${isSpeaking ? 'border-green-400 ring-4 ring-forest-500/10' : 'border-gray-100'
               }`}
           >
             {/* Animated Background Gradient */}
-            <div className={`absolute inset-0 opacity-5 transition-opacity duration-1000 ${isSpeaking ? 'bg-gradient-to-br from-green-500 to-emerald-600 opacity-20' : 'bg-transparent'
+            <div className={`absolute inset-0 opacity-5 transition-opacity duration-1000 ${isSpeaking ? 'bg-gradient-to-br from-forest-500 to-forest-600 opacity-20' : 'bg-transparent'
               }`} />
 
             <div className="relative p-10 flex flex-col items-center text-center">
               <div className="relative mb-8">
                 <div className={`absolute inset-0 rounded-full blur-2xl transition-all duration-700 ${isSpeaking ? 'bg-green-400 opacity-40 scale-150' : 'bg-gray-200 opacity-0'
                   }`} />
-                <div className={`relative w-32 h-32 rounded-full flex items-center justify-center border-4 transition-all duration-500 ${isSpeaking ? 'bg-green-500 border-green-200 shadow-[0_0_50px_rgba(34,197,94,0.3)]' : 'bg-gray-100 border-white shadow-xl'
+                <div className={`relative w-32 h-32 rounded-full flex items-center justify-center border-4 transition-all duration-500 ${isSpeaking ? 'bg-forest-500 border-forest-200 shadow-[0_0_50px_rgba(34,197,94,0.3)]' : 'bg-gray-100 border-white shadow-xl'
                   }`}>
                   <Bot size={56} className={`transition-colors duration-500 ${isSpeaking ? 'text-white' : 'text-gray-400'}`} />
                   {isSpeaking && <WaveVisualizer active color="bg-white" />}
@@ -410,7 +410,7 @@ const VoiceAssistant: React.FC = () => {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
-                      className="text-green-700 font-bold text-lg"
+                      className="text-forest-700 font-bold text-lg"
                     >
                       Speaking to you...
                     </motion.div>
@@ -419,7 +419,7 @@ const VoiceAssistant: React.FC = () => {
                       key="processing"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      className="flex items-center gap-3 text-emerald-600 font-bold"
+                      className="flex items-center gap-3 text-forest-600 font-bold"
                     >
                       <Loader2 size={20} className="animate-spin" />
                       Analyzing data...
@@ -487,7 +487,7 @@ const VoiceAssistant: React.FC = () => {
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.8, opacity: 0 }}
                 onClick={startCall}
-                className="group relative flex items-center gap-4 bg-green-600 hover:bg-green-700 text-white px-10 py-6 rounded-3xl font-black text-2xl shadow-2xl transition-all duration-300 transform active:scale-95"
+                className="group relative flex items-center gap-4 bg-forest-600 hover:bg-forest-700 text-white px-10 py-6 rounded-3xl font-black text-2xl shadow-2xl transition-all duration-300 transform active:scale-95"
               >
                 <div className="p-3 bg-white/20 rounded-2xl group-hover:scale-110 transition-transform">
                   <Mic size={32} />

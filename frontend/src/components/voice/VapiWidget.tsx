@@ -114,11 +114,11 @@ function VapiWidget() {
             <div
               className={`w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center shadow-md transition-all relative ${
                 isSpeaking
-                  ? "bg-green-200 scale-110 ring-4 ring-green-300 animate-pulse"
-                  : "bg-green-100"
+                  ? "bg-forest-200 scale-110 ring-4 ring-green-300 animate-pulse"
+                  : "bg-forest-100"
               }`}
             >
-              <Bot className="md:h-10 md:w-10 h-8 w-8 text-green-600" />
+              <Bot className="md:h-10 md:w-10 h-8 w-8 text-forest-600" />
               {isSpeaking && (
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="absolute w-12 h-12 md:w-16 md:h-16 border-2 border-green-400 rounded-full animate-ping opacity-75"></div>
@@ -202,20 +202,20 @@ function VapiWidget() {
                 >
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                      msg.role === "user" ? "bg-gray-100" : "bg-green-100"
+                      msg.role === "user" ? "bg-gray-100" : "bg-forest-100"
                     }`}
                   >
                     {msg.role === "user" ? (
                       <User size={16} className="text-gray-600" />
                     ) : (
-                      <Bot size={16} className="text-green-600" />
+                      <Bot size={16} className="text-forest-600" />
                     )}
                   </div>
                   <div
                     className={`flex-1 rounded-lg p-3 ${
                       msg.role === "user"
                         ? "bg-blue-50 text-blue-900"
-                        : "bg-green-50 text-green-900"
+                        : "bg-forest-50 text-green-900"
                     }`}
                   >
                     <p className="text-sm">{msg.content}</p>
@@ -242,7 +242,7 @@ function VapiWidget() {
             <button
               onClick={toggleCall}
               disabled={connecting}
-              className="p-4 md:p-5 rounded-full bg-green-500 hover:bg-green-600 transition shadow-lg text-white"
+              className="p-4 md:p-5 rounded-full bg-forest-500 hover:bg-forest-600 transition shadow-lg text-white"
               title="Start Call"
             >
               {connecting ? (

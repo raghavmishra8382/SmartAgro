@@ -93,24 +93,24 @@ const SyncBadge: React.FC = () => {
 
   const config: Record<SyncStatus, { icon: React.ReactNode; label: string; dot: string; pill: string }> = {
     synced: {
-      icon: <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500" />,
-      label: "Synced", dot: "bg-emerald-400",
-      pill: "bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-emerald-100",
+      icon: <CheckCircle2 className="h-3.5 w-3.5 text-forest-600" />,
+      label: "Synced", dot: "bg-forest-400",
+      pill: "bg-forest-50 text-forest-700 border-forest-200/60 hover:bg-forest-100/80",
     },
     syncing: {
       icon: <RefreshCw className="h-3.5 w-3.5 text-sky-500 animate-spin" />,
       label: "Syncing…", dot: "bg-sky-400 animate-pulse",
-      pill: "bg-sky-50 text-sky-700 border-sky-200",
+      pill: "bg-sky-50 text-sky-700 border-sky-200/60",
     },
     offline: {
       icon: <WifiOff className="h-3.5 w-3.5 text-red-500" />,
       label: "Offline", dot: "bg-red-400 animate-pulse",
-      pill: "bg-red-50 text-red-700 border-red-200",
+      pill: "bg-red-50 text-red-700 border-red-200/60",
     },
     error: {
       icon: <Zap className="h-3.5 w-3.5 text-orange-500" />,
       label: "Retry",  dot: "bg-orange-400",
-      pill: "bg-orange-50 text-orange-700 border-orange-200 hover:bg-orange-100",
+      pill: "bg-orange-50 text-orange-700 border-orange-200/60 hover:bg-orange-100/80",
     },
   };
 
@@ -123,7 +123,7 @@ const SyncBadge: React.FC = () => {
         onMouseEnter={() => setShowTooltip(true)}
         onMouseLeave={() => setShowTooltip(false)}
         disabled={status === "syncing"}
-        className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-full border text-xs font-semibold transition-all hover:shadow-sm disabled:cursor-wait ${c.pill}`}
+        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs font-bold transition-all duration-200 hover:shadow-soft disabled:cursor-wait ${c.pill}`}
         aria-label={`Sync status: ${c.label} — click to refresh`}
         title="Click to sync all data"
       >
@@ -134,7 +134,7 @@ const SyncBadge: React.FC = () => {
 
       {/* Tooltip */}
       {showTooltip && (
-        <div className="absolute top-full mt-2 right-0 z-50 bg-gray-900 text-white text-xs rounded-xl px-3 py-2.5 whitespace-nowrap shadow-xl min-w-[180px] pointer-events-none">
+        <div className="absolute top-full mt-2 right-0 z-50 bg-gray-900 text-white text-xs rounded-xl px-3 py-2.5 whitespace-nowrap shadow-elevated min-w-[180px] pointer-events-none animate-scaleIn">
           {status === "offline" ? (
             <div className="space-y-1">
               <div className="flex items-center gap-1.5 text-red-300 font-semibold">
@@ -145,11 +145,11 @@ const SyncBadge: React.FC = () => {
           ) : status === "syncing" ? (
             <div className="flex items-center gap-1.5">
               <RefreshCw className="h-3 w-3 text-sky-300 animate-spin" />
-              Fetching weather, market &amp; crops…
+              Fetching weather, market & crops…
             </div>
           ) : (
             <div className="space-y-1">
-              <div className="flex items-center gap-1.5 text-emerald-300 font-semibold">
+              <div className="flex items-center gap-1.5 text-forest-600 font-semibold">
                 <CheckCircle2 className="h-3 w-3" /> All data up to date
               </div>
               <p className="text-gray-400">Last synced {formatRelative(lastSynced)}</p>
@@ -170,64 +170,64 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
   const { user, logout } = useAuth();
 
   return (
-    <header className="bg-white shadow-sm md:rounded-2xl m-2 md:m-4 px-4 md:px-6 py-3 md:py-4">
+    <header className="bg-white/90 backdrop-blur-xl border-b border-gray-100/60 px-4 md:px-6 py-3 sticky top-0 z-30">
       <div className="flex items-center justify-between gap-3">
         {/* Left: hamburger + search */}
         <div className="flex items-center gap-3 flex-1 min-w-0">
           <button
             onClick={onMenuClick}
-            className="md:hidden p-2 text-gray-500 hover:text-green-600 hover:bg-green-50 rounded-lg transition-colors flex-shrink-0"
+            className="md:hidden p-2 text-gray-500 hover:text-forest-600 hover:bg-forest-50 rounded-xl transition-all duration-200 flex-shrink-0"
           >
             <Menu className="h-5 w-5" />
           </button>
           <div className="relative flex-1 max-w-md">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
             <input
               type="text"
               placeholder="Search crops, weather, advice…"
-              className="w-full pl-9 pr-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-400/60 focus:border-transparent text-sm bg-gray-50 placeholder:text-gray-400"
+              className="input-premium pl-10 pr-4 py-2.5 bg-gray-50/80"
             />
           </div>
         </div>
 
         {/* Right: sync badge + bell + user */}
-        <div className="flex items-center gap-2 flex-shrink-0">
+        <div className="flex items-center gap-2.5 flex-shrink-0">
           <SyncBadge />
 
           {/* Bell */}
           <div className="relative">
-            <button className="p-2 text-gray-500 hover:text-green-600 hover:bg-green-50 rounded-lg transition-colors">
+            <button className="p-2 text-gray-400 hover:text-forest-600 hover:bg-forest-50 rounded-xl transition-all duration-200">
               <Bell className="h-5 w-5" />
             </button>
-            <div className="absolute -top-1 -right-1 h-4 w-4 bg-red-500 rounded-full flex items-center justify-center">
+            <div className="absolute -top-0.5 -right-0.5 h-4 w-4 bg-gradient-to-br from-red-500 to-rose-500 rounded-full flex items-center justify-center shadow-sm">
               <span className="text-[9px] text-white font-bold leading-none">3</span>
             </div>
           </div>
 
-          <div className="h-8 w-px bg-gray-200 hidden sm:block" />
+          <div className="h-6 w-px bg-gray-200/80 hidden sm:block" />
 
           {/* User */}
           {user ? (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2.5">
               <div className="text-right hidden md:block">
                 <p className="text-sm font-semibold text-gray-800 leading-tight">{user.fullName}</p>
-                <p className="text-xs text-gray-400">{user.location || "India"}</p>
+                <p className="text-[11px] text-gray-400 font-medium">{user.location || "India"}</p>
               </div>
-              <div className="w-9 h-9 bg-gradient-to-br from-emerald-400 to-green-500 rounded-full flex items-center justify-center shadow-sm">
-                <User style={{ width: "1.125rem", height: "1.125rem" }} className="text-white" />
+              <div className="w-9 h-9 bg-gradient-to-br from-forest-500 to-forest-600 rounded-xl flex items-center justify-center shadow-sm shadow-forest-500/20">
+                <User style={{ width: "1rem", height: "1rem" }} className="text-white" />
               </div>
               <button
                 onClick={() => { logout(); navigate("/login"); }}
-                className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-xl transition-all duration-200"
                 title="Logout"
               >
-                <LogOut style={{ width: "1.125rem", height: "1.125rem" }} />
+                <LogOut style={{ width: "1rem", height: "1rem" }} />
               </button>
             </div>
           ) : (
             <button
               onClick={() => navigate("/login")}
-              className="flex items-center gap-2 px-3 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl transition-colors text-sm font-semibold"
+              className="btn-primary text-sm py-2"
             >
               <LogIn className="h-4 w-4" />
               <span className="hidden sm:inline">Login</span>

@@ -13,7 +13,7 @@ type PriorityType = Task["priority"];
 const PRIORITY_CONFIG = {
   high:   { label: "High",   color: "text-rose-600",   bg: "bg-rose-100 border-rose-200",   dot: "bg-rose-500" },
   medium: { label: "Medium", color: "text-amber-600",  bg: "bg-amber-100 border-amber-200",  dot: "bg-amber-400" },
-  low:    { label: "Low",    color: "text-emerald-600", bg: "bg-emerald-100 border-emerald-200", dot: "bg-emerald-500" },
+  low:    { label: "Low",    color: "text-forest-600", bg: "bg-forest-600 border-forest-600", dot: "bg-forest-600" },
 };
 
 const Tasks: React.FC = () => {
@@ -66,7 +66,7 @@ const Tasks: React.FC = () => {
           {[
             { label: "Total",   value: stats.total,   color: "text-white" },
             { label: "Pending", value: stats.pending, color: "text-yellow-300" },
-            { label: "Done",    value: stats.done,    color: "text-emerald-300" },
+            { label: "Done",    value: stats.done,    color: "text-forest-600" },
             { label: "Urgent",  value: stats.high,    color: "text-rose-300" },
           ].map(s => (
             <div key={s.label} className="bg-white/10 rounded-2xl p-3 text-center backdrop-blur-sm border border-white/15">
@@ -187,7 +187,7 @@ const Tasks: React.FC = () => {
                   className="mt-0.5 flex-shrink-0 transition-transform hover:scale-110"
                 >
                   {task.done
-                    ? <CheckCircle2 className="h-5 w-5 text-emerald-500" />
+                    ? <CheckCircle2 className="h-5 w-5 text-forest-600" />
                     : <Circle className="h-5 w-5 text-gray-300 group-hover:text-violet-400 transition-colors" />}
                 </button>
 
@@ -207,7 +207,7 @@ const Tasks: React.FC = () => {
                       {pc.label}
                     </span>
                     {task.done && (
-                      <span className="text-[11px] text-emerald-600 font-bold bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                      <span className="text-[11px] text-forest-600 font-bold bg-forest-600 px-2 py-0.5 rounded-full border border-forest-600">
                         ✓ Done
                       </span>
                     )}

@@ -50,10 +50,10 @@ export default function ProgramsSection() {
   const [activeProgram, setActiveProgram] = useState(programs[0]);
 
   return (
-    <section id="programs" className="py-24 bg-agri-50/50 relative">
+    <section id="programs" className="py-24 bg-forest-600/50 relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <span className="text-agri-600 font-semibold uppercase tracking-wider text-sm">Community Impact</span>
+          <span className="text-forest-600 font-semibold uppercase tracking-wider text-sm">Community Impact</span>
           <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mt-2">
             Agricultural Programs
           </h2>
@@ -69,18 +69,18 @@ export default function ProgramsSection() {
               <motion.div
                 key={program.id}
                 className={`p-6 rounded-xl cursor-pointer transition-all duration-300 border ${activeProgram.id === program.id
-                  ? "bg-white border-agri-500 shadow-lg ring-1 ring-agri-500/20"
+                  ? "bg-white border-forest-600 shadow-lg ring-1 ring-forest-600/20"
                   : "bg-white border-transparent hover:border-gray-200 hover:shadow-md"
                   }`}
                 onClick={() => setActiveProgram(program)}
                 whileHover={{ x: 5 }}
               >
                 <div className="flex justify-between items-start mb-2">
-                  <h3 className={`font-bold text-lg ${activeProgram.id === program.id ? "text-agri-700" : "text-gray-800"
+                  <h3 className={`font-bold text-lg ${activeProgram.id === program.id ? "text-forest-600" : "text-gray-800"
                     }`}>
                     {program.title}
                   </h3>
-                  {activeProgram.id === program.id && <div className="h-2 w-2 rounded-full bg-agri-500 mt-2"></div>}
+                  {activeProgram.id === program.id && <div className="h-2 w-2 rounded-full bg-forest-600 mt-2"></div>}
                 </div>
                 <p className="text-gray-500 text-sm line-clamp-2 leading-relaxed">
                   {program.description}
@@ -114,25 +114,25 @@ export default function ProgramsSection() {
               <p className="text-gray-700 text-lg mb-8 leading-relaxed">{activeProgram.description}</p>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                <div className="bg-agri-50/50 p-4 rounded-xl border border-agri-100">
+                <div className="bg-forest-600/50 p-4 rounded-xl border border-forest-600">
                   <div className="flex items-center gap-3 mb-2">
-                    <Calendar className="text-agri-600 h-5 w-5" />
+                    <Calendar className="text-forest-600 h-5 w-5" />
                     <p className="text-sm font-semibold text-gray-900">Frequency</p>
                   </div>
                   <p className="text-gray-600 pl-8">{activeProgram.date}</p>
                 </div>
 
-                <div className="bg-agri-50/50 p-4 rounded-xl border border-agri-100">
+                <div className="bg-forest-600/50 p-4 rounded-xl border border-forest-600">
                   <div className="flex items-center gap-3 mb-2">
-                    <MapPin className="text-agri-600 h-5 w-5" />
+                    <MapPin className="text-forest-600 h-5 w-5" />
                     <p className="text-sm font-semibold text-gray-900">Location</p>
                   </div>
                   <p className="text-gray-600 pl-8">{activeProgram.location}</p>
                 </div>
 
-                <div className="bg-agri-50/50 p-4 rounded-xl border border-agri-100">
+                <div className="bg-forest-600/50 p-4 rounded-xl border border-forest-600">
                   <div className="flex items-center gap-3 mb-2">
-                    <Users className="text-agri-600 h-5 w-5" />
+                    <Users className="text-forest-600 h-5 w-5" />
                     <p className="text-sm font-semibold text-gray-900">Impact</p>
                   </div>
                   <p className="text-gray-600 pl-8">{activeProgram.participants}</p>
@@ -140,10 +140,10 @@ export default function ProgramsSection() {
               </div>
 
               <div className="flex justify-between items-center pt-6 border-t border-gray-100">
-                <Button variant="outline" className="border-agri-200 text-agri-700 hover:bg-agri-50 hover:border-agri-300">
+                <Button variant="outline" className="border-forest-600 text-forest-600 hover:bg-forest-600 hover:border-forest-600">
                   View Full Schedule
                 </Button>
-                <Button className="bg-agri-600 hover:bg-agri-700 text-white shadow-lg shadow-agri-500/30">
+                <Button className="bg-forest-600 hover:bg-forest-600 text-white shadow-lg shadow-forest-600/30">
                   Register Now
                 </Button>
               </div>

@@ -20,7 +20,7 @@ const Support: React.FC = () => {
       description: 'Chat with our support team in real-time',
       availability: 'Available 24/7',
       responseTime: 'Instant',
-      color: 'bg-green-500'
+      color: 'bg-forest-500'
     },
     {
       icon: Phone,
@@ -88,7 +88,7 @@ const Support: React.FC = () => {
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-gray-500">Response:</span>
-                  <span className="font-medium text-green-600">{option.responseTime}</span>
+                  <span className="font-medium text-forest-600">{option.responseTime}</span>
                 </div>
               </div>
             </div>
@@ -101,7 +101,7 @@ const Support: React.FC = () => {
         <div className="lg:col-span-2">
           <div className="bg-white rounded-2xl shadow-lg p-6">
             <div className="flex items-center space-x-3 mb-6">
-              <FileText className="h-6 w-6 text-green-500" />
+              <FileText className="h-6 w-6 text-forest-500" />
               <h2 className="text-xl font-semibold text-gray-800">Submit Support Ticket</h2>
             </div>
 
@@ -114,7 +114,7 @@ const Support: React.FC = () => {
                     required
                     value={ticketForm.name}
                     onChange={(e) => setTicketForm({...ticketForm, name: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-forest-500"
                     placeholder="Enter your full name"
                   />
                 </div>
@@ -126,7 +126,7 @@ const Support: React.FC = () => {
                     required
                     value={ticketForm.email}
                     onChange={(e) => setTicketForm({...ticketForm, email: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-forest-500"
                     placeholder="Enter your email"
                   />
                 </div>
@@ -137,7 +137,7 @@ const Support: React.FC = () => {
                     type="tel"
                     value={ticketForm.phone}
                     onChange={(e) => setTicketForm({...ticketForm, phone: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-forest-500"
                     placeholder="Enter your phone number"
                   />
                 </div>
@@ -148,7 +148,7 @@ const Support: React.FC = () => {
                     required
                     value={ticketForm.category}
                     onChange={(e) => setTicketForm({...ticketForm, category: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-forest-500"
                   >
                     {categories.map((category) => (
                       <option key={category.id} value={category.id}>
@@ -163,7 +163,7 @@ const Support: React.FC = () => {
                   <select
                     value={ticketForm.priority}
                     onChange={(e) => setTicketForm({...ticketForm, priority: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-forest-500"
                   >
                     <option value="low">Low</option>
                     <option value="medium">Medium</option>
@@ -179,7 +179,7 @@ const Support: React.FC = () => {
                     required
                     value={ticketForm.subject}
                     onChange={(e) => setTicketForm({...ticketForm, subject: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-forest-500"
                     placeholder="Brief description of your issue"
                   />
                 </div>
@@ -192,14 +192,14 @@ const Support: React.FC = () => {
                   rows={6}
                   value={ticketForm.description}
                   onChange={(e) => setTicketForm({...ticketForm, description: e.target.value})}
-                  className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 resize-none"
+                  className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-forest-500 resize-none"
                   placeholder="Please provide detailed information about your issue or question..."
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-green-500 text-white py-3 px-6 rounded-lg hover:bg-green-600 transition-colors font-medium flex items-center justify-center space-x-2"
+                className="w-full bg-forest-500 text-white py-3 px-6 rounded-lg hover:bg-forest-600 transition-colors font-medium flex items-center justify-center space-x-2"
               >
                 <Send className="h-5 w-5" />
                 <span>Submit Ticket</span>
@@ -215,14 +215,14 @@ const Support: React.FC = () => {
             <h2 className="text-xl font-semibold text-gray-800 mb-6">Direct Contact</h2>
             
             <div className="space-y-4">
-              <div className="flex items-center space-x-4 p-4 bg-green-50 rounded-xl">
-                <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
+              <div className="flex items-center space-x-4 p-4 bg-forest-50 rounded-xl">
+                <div className="w-10 h-10 bg-forest-500 rounded-full flex items-center justify-center">
                   <Phone className="h-5 w-5 text-white" />
                 </div>
                 <div>
                   <h3 className="font-medium text-gray-800">Phone Support</h3>
                   <p className="text-sm text-gray-600">+91 1800-123-4567</p>
-                  <p className="text-xs text-green-600">Toll-free • Mon-Sat 9 AM - 6 PM</p>
+                  <p className="text-xs text-forest-600">Toll-free • Mon-Sat 9 AM - 6 PM</p>
                 </div>
               </div>
 
@@ -267,7 +267,7 @@ const Support: React.FC = () => {
           </div>
 
           {/* AI Assistant */}
-          <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-2xl p-6 text-white">
+          <div className="bg-gradient-to-br from-forest-500 to-forest-600 rounded-2xl p-6 text-white">
             <div className="flex items-center space-x-3 mb-4">
               <div className="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
                 <Bot className="h-5 w-5 text-white" />
@@ -277,7 +277,7 @@ const Support: React.FC = () => {
             <p className="text-green-100 mb-4">
               Get instant answers to common farming questions with our AI-powered assistant.
             </p>
-            <button className="w-full bg-white text-green-600 py-3 px-4 rounded-lg hover:bg-gray-100 transition-colors font-medium">
+            <button className="w-full bg-white text-forest-600 py-3 px-4 rounded-lg hover:bg-gray-100 transition-colors font-medium">
               Start AI Chat
             </button>
           </div>

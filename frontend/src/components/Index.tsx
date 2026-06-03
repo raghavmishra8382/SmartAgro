@@ -60,19 +60,19 @@ export default function Index() {
                 <ContactSection />
 
                 {/* CTA Banner */}
-                <section className="py-16 px-4 bg-gradient-to-r from-agri-700 to-agri-800 text-white">
+                <section className="py-16 px-4 bg-gradient-to-r from-forest-700 to-forest-800 text-white">
                     <div className="container mx-auto max-w-5xl flex flex-col lg:flex-row items-center justify-between gap-8">
                         <div className="text-center lg:text-left">
-                            <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Farming?</h2>
-                            <p className="text-lg text-gray-200 mb-0 lg:mb-0">
-                                Join thousands of farmers who've already improved their yields and profitability with AgriSmart.
+                            <h2 className="text-3xl font-bold mb-4 tracking-tight">Ready to Transform Your Farming?</h2>
+                            <p className="text-lg text-forest-100/80 mb-0 lg:mb-0">
+                                Join thousands of farmers who've already improved their yields and profitability with SmartAgro.
                             </p>
                         </div>
                         <div className="flex flex-col sm:flex-row gap-4">
-                            <UIButton asChild size="lg" className="bg-white text-agri-700 hover:bg-gray-100 shadow-lg">
+                            <UIButton asChild size="lg" className="bg-white text-forest-700 hover:bg-gray-100 shadow-lg font-bold">
                                 <Link to="/register">Sign Up Now</Link>
                             </UIButton>
-                            <UIButton asChild variant="outline" size="lg" className="border-white text-white hover:bg-white/20">
+                            <UIButton asChild variant="outline" size="lg" className="border-white/30 text-white hover:bg-white/10">
                                 <Link to="/contact">Contact Sales</Link>
                             </UIButton>
                         </div>

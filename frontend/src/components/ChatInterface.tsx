@@ -1124,7 +1124,7 @@ User query: ${input}`;
         <div className="flex items-center gap-3">
           {/* Bot avatar */}
           <div className="relative">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-md shadow-green-200">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-forest-500 to-forest-600 flex items-center justify-center shadow-md shadow-green-200">
               <Leaf size={20} className="text-white" />
             </div>
             <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-400 border-2 border-white rounded-full" />
@@ -1132,7 +1132,7 @@ User query: ${input}`;
           <div>
             <div className="flex items-center gap-2">
               <h2 className="text-sm font-bold text-gray-900">KrishiBot</h2>
-              <span className="text-[10px] font-semibold bg-green-100 text-green-700 px-2 py-0.5 rounded-full">AI</span>
+              <span className="text-[10px] font-semibold bg-forest-100 text-forest-700 px-2 py-0.5 rounded-full">AI</span>
             </div>
             <p className="text-[11px] text-gray-400 leading-tight">
               {isSpeaking
@@ -1149,7 +1149,7 @@ User query: ${input}`;
         <div className="flex items-center gap-2">
           {/* Plant context chip */}
           {activePlantId && (
-            <span className="hidden sm:inline-flex items-center gap-1.5 text-xs bg-green-50 text-green-700 border border-green-200 px-3 py-1.5 rounded-full font-medium">
+            <span className="hidden sm:inline-flex items-center gap-1.5 text-xs bg-forest-50 text-forest-700 border border-forest-200 px-3 py-1.5 rounded-full font-medium">
               <Sprout size={12} />
               Plant monitoring active
             </span>
@@ -1172,7 +1172,7 @@ User query: ${input}`;
           <button
             onClick={() => setShowSettings(!showSettings)}
             className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all ${
-              showSettings ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-500 hover:bg-gray-200"
+              showSettings ? "bg-forest-100 text-forest-700" : "bg-gray-100 text-gray-500 hover:bg-gray-200"
             }`}
           >
             <Settings size={15} />
@@ -1205,7 +1205,7 @@ User query: ${input}`;
               onClick={toggleVoiceOutput}
               className={`inline-flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-semibold transition-all ${
                 voiceEnabled
-                  ? "bg-green-500 text-white hover:bg-green-600 shadow-sm"
+                  ? "bg-forest-500 text-white hover:bg-forest-600 shadow-sm"
                   : "bg-gray-100 text-gray-600 hover:bg-gray-200"
               }`}
             >
@@ -1222,7 +1222,7 @@ User query: ${input}`;
                   const enabled = e.target.checked;
                   setUseElevenLabs(enabled);
                 }}
-                className="rounded border-gray-300 text-green-500 focus:ring-green-400"
+                className="rounded border-gray-300 text-forest-500 focus:ring-green-400"
               />
               <span className="text-xs text-gray-600">ElevenLabs premium voice</span>
             </label>
@@ -1239,7 +1239,7 @@ User query: ${input}`;
           {/* Empty state / welcome */}
           {messages.length <= 1 && (
             <div className="text-center py-8 px-4">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-xl shadow-green-200/60">
+              <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-forest-500 to-forest-600 flex items-center justify-center shadow-xl shadow-green-200/60">
                 <Leaf size={30} className="text-white" />
               </div>
               <h3 className="text-lg font-bold text-gray-800 mb-1">Ask KrishiBot anything</h3>
@@ -1253,10 +1253,10 @@ User query: ${input}`;
                   <button
                     key={s.id}
                     onClick={() => handleSuggestionClick(s.text)}
-                    className="group flex items-start gap-2.5 px-3.5 py-3 bg-white rounded-xl border border-gray-100 hover:border-green-300 hover:shadow-md hover:shadow-green-100/50 transition-all duration-200 text-left"
+                    className="group flex items-start gap-2.5 px-3.5 py-3 bg-white rounded-xl border border-gray-100 hover:border-forest-300 hover:shadow-md hover:shadow-green-100/50 transition-all duration-200 text-left"
                   >
-                    <span className="w-6 h-6 rounded-lg bg-green-50 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-green-100 transition-colors">
-                      <Sprout size={13} className="text-green-600" />
+                    <span className="w-6 h-6 rounded-lg bg-forest-50 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-forest-100 transition-colors">
+                      <Sprout size={13} className="text-forest-600" />
                     </span>
                     <span className="text-xs text-gray-600 group-hover:text-gray-800 font-medium leading-snug transition-colors">
                       {s.text}
@@ -1281,7 +1281,7 @@ User query: ${input}`;
                 {/* AI avatar (left) */}
                 {isAI && (
                   <div className={`flex-shrink-0 mb-1 ${showAvatar ? "opacity-100" : "opacity-0"}`}>
-                    <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-md shadow-green-200/40">
+                    <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-forest-500 to-forest-600 flex items-center justify-center shadow-md shadow-green-200/40">
                       <Bot size={15} className="text-white" />
                     </div>
                   </div>
@@ -1300,7 +1300,7 @@ User query: ${input}`;
                     className={`relative px-4 py-3 text-sm leading-relaxed shadow-sm ${
                       isAI
                         ? "bg-white border border-gray-100 text-gray-800 rounded-2xl rounded-tl-sm shadow-gray-200/60"
-                        : "bg-gradient-to-br from-green-500 to-emerald-600 text-white rounded-2xl rounded-tr-sm shadow-green-200/50"
+                        : "bg-gradient-to-br from-forest-500 to-forest-600 text-white rounded-2xl rounded-tr-sm shadow-green-200/50"
                     }`}
                   >
                     {/* Image preview in message */}
@@ -1316,18 +1316,18 @@ User query: ${input}`;
 
                     {/* Message text */}
                     {isAI ? (
-                      <div className="prose prose-sm max-w-none prose-p:mb-2 prose-p:last:mb-0 prose-strong:text-green-800 prose-em:text-green-700 prose-ul:pl-4 prose-ol:pl-4 prose-li:mb-0.5">
+                      <div className="prose prose-sm max-w-none prose-p:mb-2 prose-p:last:mb-0 prose-strong:text-forest-800 prose-em:text-forest-700 prose-ul:pl-4 prose-ol:pl-4 prose-li:mb-0.5">
                         <ReactMarkdown
                           components={{
                             p: ({ children }) => <p className="mb-2 last:mb-0">{children}</p>,
-                            strong: ({ children }) => <strong className="font-bold text-green-800">{children}</strong>,
-                            em: ({ children }) => <em className="italic text-green-700">{children}</em>,
+                            strong: ({ children }) => <strong className="font-bold text-forest-800">{children}</strong>,
+                            em: ({ children }) => <em className="italic text-forest-700">{children}</em>,
                             ul: ({ children }) => <ul className="list-disc pl-4 mb-2 space-y-0.5">{children}</ul>,
                             ol: ({ children }) => <ol className="list-decimal pl-4 mb-2 space-y-0.5">{children}</ol>,
                             li: ({ children }) => <li className="text-gray-700">{children}</li>,
                             h3: ({ children }) => <h3 className="font-bold text-gray-800 mt-3 mb-1.5 text-sm">{children}</h3>,
                             h4: ({ children }) => <h4 className="font-semibold text-gray-700 mt-2 mb-1 text-xs uppercase tracking-wide">{children}</h4>,
-                            code: ({ children }) => <code className="bg-green-50 text-green-700 px-1.5 py-0.5 rounded text-xs font-mono">{children}</code>,
+                            code: ({ children }) => <code className="bg-forest-50 text-forest-700 px-1.5 py-0.5 rounded text-xs font-mono">{children}</code>,
                           }}
                         >
                           {message.text}
@@ -1339,8 +1339,8 @@ User query: ${input}`;
 
                     {/* Disease detection structured card */}
                     {isAI && message.diseaseDetection && (
-                      <div className="mt-3 -mx-1 rounded-xl overflow-hidden border border-green-200/60">
-                        <div className="bg-gradient-to-r from-green-500 to-emerald-600 px-3 py-2 flex items-center gap-2">
+                      <div className="mt-3 -mx-1 rounded-xl overflow-hidden border border-forest-200/60">
+                        <div className="bg-gradient-to-r from-forest-500 to-forest-600 px-3 py-2 flex items-center gap-2">
                           <Scan size={13} className="text-white opacity-90" />
                           <span className="text-xs font-bold text-white">Plant Health Report</span>
                           {message.diseaseDetection.confidence && (
@@ -1374,7 +1374,7 @@ User query: ${input}`;
                         onClick={() => speakText(message.text)}
                         disabled={!voiceEnabled}
                         className={`text-[10px] flex items-center gap-1 font-medium transition-colors ${
-                          voiceEnabled ? "text-gray-400 hover:text-green-600" : "text-gray-300 cursor-not-allowed"
+                          voiceEnabled ? "text-gray-400 hover:text-forest-600" : "text-gray-300 cursor-not-allowed"
                         }`}
                         title={voiceEnabled ? "Listen" : "Voice muted"}
                       >
@@ -1401,7 +1401,7 @@ User query: ${input}`;
           {isTyping && (
             <div className="flex items-end gap-2.5 justify-start">
               <div className="flex-shrink-0">
-                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-md shadow-green-200/40">
+                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-forest-500 to-forest-600 flex items-center justify-center shadow-md shadow-green-200/40">
                   <Bot size={15} className="text-white" />
                 </div>
               </div>
@@ -1450,7 +1450,7 @@ User query: ${input}`;
                   ? "bg-red-500 text-white"
                   : isSpeaking
                     ? "bg-purple-500 text-white"
-                    : "bg-green-500 text-white"
+                    : "bg-forest-500 text-white"
               }`}>
                 <div className="w-1.5 h-1.5 rounded-full bg-white animate-ping" />
                 {isListening
@@ -1498,8 +1498,8 @@ User query: ${input}`;
               title={language === "hi" ? "छवि अपलोड करें" : language === "bn" ? "ছবি আপলোড করুন" : "Upload plant image"}
               className={`w-9 h-9 rounded-xl flex items-center justify-center transition-all flex-shrink-0 ${
                 selectedImage
-                  ? "bg-green-100 text-green-600"
-                  : "text-gray-400 hover:text-green-600 hover:bg-green-50"
+                  ? "bg-forest-100 text-forest-600"
+                  : "text-gray-400 hover:text-forest-600 hover:bg-forest-50"
               }`}
             >
               <ImageIcon size={18} />
@@ -1529,7 +1529,7 @@ User query: ${input}`;
               className={`w-9 h-9 rounded-xl flex items-center justify-center transition-all flex-shrink-0 ${
                 isListening
                   ? "bg-red-500 text-white animate-pulse"
-                  : "text-gray-400 hover:text-green-600 hover:bg-green-50"
+                  : "text-gray-400 hover:text-forest-600 hover:bg-forest-50"
               }`}
             >
               {isListening ? <MicOff size={17} /> : <Mic size={17} />}
@@ -1541,7 +1541,7 @@ User query: ${input}`;
               disabled={!inputValue.trim() && !selectedImage}
               className={`w-9 h-9 rounded-xl flex items-center justify-center transition-all flex-shrink-0 ${
                 inputValue.trim() || selectedImage
-                  ? "bg-gradient-to-br from-green-500 to-emerald-600 text-white shadow-md shadow-green-200 hover:shadow-green-300 hover:-translate-y-px active:translate-y-0"
+                  ? "bg-gradient-to-br from-forest-500 to-forest-600 text-white shadow-md shadow-green-200 hover:shadow-green-300 hover:-translate-y-px active:translate-y-0"
                   : "bg-gray-100 text-gray-300 cursor-not-allowed"
               }`}
             >

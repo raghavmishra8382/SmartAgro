@@ -6,7 +6,7 @@ import {
   Wind,
   MapPin,
   ThermometerSun,
-  Gauge,
+  ArrowRight,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -123,36 +123,42 @@ const WeatherWidget: React.FC = () => {
 
   if (!API_KEY) {
     return (
-      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 text-center text-gray-500">
-        <div className="text-sm">Weather API key missing</div>
-        <div className="text-xs mt-1">Add VITE_WEATHER_API_KEY to Client/.env</div>
+      <div className="card-premium p-6 text-center">
+        <div className="text-sm text-gray-500 font-medium">Weather API key missing</div>
+        <div className="text-xs text-gray-400 mt-1">Add VITE_WEATHER_API_KEY to Client/.env</div>
       </div>
     );
   }
 
   if (!data)
     return (
-      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 text-center text-gray-500">
-        Loading weather...
+      <div className="card-premium p-6">
+        <div className="space-y-3">
+          <div className="h-4 w-24 bg-gray-100 rounded animate-pulse" />
+          <div className="h-8 w-20 bg-gray-100 rounded animate-pulse" />
+          <div className="grid grid-cols-3 gap-3">
+            {[1,2,3].map(i => <div key={i} className="h-16 bg-gray-50 rounded-xl animate-pulse" />)}
+          </div>
+        </div>
       </div>
     );
 
   return (
     <div
-      className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 md:p-6 cursor-pointer hover:shadow-md transition-all space-y-4"
+      className="card-premium p-5 md:p-6 cursor-pointer group space-y-4"
       onClick={() => navigate("/weather")}
     >
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-[11px] uppercase tracking-[0.15em] text-emerald-600 font-semibold">
-            Local conditions
+          <p className="section-label mb-1">
+            Local Conditions
           </p>
-          <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-            <MapPin className="h-4 w-4 text-emerald-600" />
+          <h2 className="text-base font-bold text-gray-900 flex items-center gap-2">
+            <MapPin className="h-4 w-4 text-forest-600" />
             <span className="truncate">{location}</span>
           </h2>
         </div>
-        <div className="rounded-xl bg-emerald-50 p-2 border border-emerald-100">
+        <div className="rounded-xl bg-gradient-to-br from-sky-50 to-blue-50 p-2 border border-sky-100/60 group-hover:shadow-soft transition-all duration-200">
           <img
             src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
             alt="Weather"
@@ -162,40 +168,39 @@ const WeatherWidget: React.FC = () => {
       </div>
 
       <div className="flex items-baseline gap-3">
-        <div className="text-4xl font-bold text-slate-900">
+        <div className="text-4xl font-bold text-gray-900 tracking-tight">
           {Math.round(data.main.temp)}°C
         </div>
-        <div className="flex items-center gap-2 text-sm text-slate-600">
-          <ThermometerSun className="h-4 w-4 text-amber-500" />
-          Feels like {Math.round(data.main.feels_like || data.main.temp)}°C
+        <div className="flex items-center gap-1.5 text-sm text-gray-500">
+          <ThermometerSun className="h-4 w-4 text-cream-600" />
+          <span>Feels {Math.round(data.main.feels_like || data.main.temp)}°</span>
         </div>
       </div>
-      <p className="text-sm text-slate-600 capitalize">
+      <p className="text-sm text-gray-600 capitalize font-medium">
         {data.weather[0].description}
       </p>
 
-      <div className="grid grid-cols-3 gap-3 text-xs md:text-sm text-slate-700">
+      <div className="grid grid-cols-3 gap-2.5">
         <InfoChip
           icon={Droplets}
           label="Humidity"
           value={`${data.main.humidity}%`}
           tone="sky"
         />
-        <InfoChip icon={Wind} label="Wind" value={`${data.wind.speed} km/h`} tone="emerald" />
+        <InfoChip icon={Wind} label="Wind" value={`${data.wind.speed} km/h`} tone="forest" />
         <InfoChip
           icon={Cloud}
           label="Visibility"
           value={`${(data.visibility / 1000).toFixed(1)} km`}
-          tone="amber"
+          tone="cream"
         />
       </div>
 
-      <div className="flex items-center justify-between text-xs text-slate-500">
-        <div className="flex items-center gap-1">
-          <Gauge className="h-4 w-4" />
-          Tap for full forecast
-        </div>
-        <span className="text-emerald-700 font-semibold">Open weather</span>
+      <div className="flex items-center justify-between text-xs text-gray-400 pt-1 group-hover:text-gray-500 transition-colors">
+        <span className="font-medium">Tap for full forecast</span>
+        <span className="flex items-center gap-1 text-forest-600 font-bold group-hover:gap-2 transition-all duration-200">
+          View details <ArrowRight className="h-3 w-3" />
+        </span>
       </div>
     </div>
   );
@@ -212,22 +217,22 @@ const InfoChip = ({
   icon: any;
   label: string;
   value: string;
-  tone?: "emerald" | "amber" | "sky" | "slate";
+  tone?: "forest" | "cream" | "sky" | "slate";
 }) => {
   const tones = {
-    emerald: { bg: "bg-emerald-50", text: "text-emerald-700" },
-    amber: { bg: "bg-amber-50", text: "text-amber-700" },
-    sky: { bg: "bg-sky-50", text: "text-sky-700" },
-    slate: { bg: "bg-slate-50", text: "text-slate-700" },
+    forest: { bg: "bg-forest-50/80", text: "text-forest-600", border: "border-forest-100/40" },
+    cream: { bg: "bg-cream-50/80", text: "text-cream-700", border: "border-cream-200/40" },
+    sky: { bg: "bg-sky-50/80", text: "text-sky-600", border: "border-sky-100/40" },
+    slate: { bg: "bg-gray-50/80", text: "text-gray-600", border: "border-gray-100/40" },
   };
   const t = (tones as any)[tone] || tones.slate;
   return (
-    <div className="rounded-xl border border-gray-100 bg-white shadow-sm p-3 flex flex-col gap-1">
-      <div className={`inline-flex items-center gap-1 text-[11px] font-semibold ${t.text}`}>
-        <Icon className="h-4 w-4" />
+    <div className={`rounded-xl border ${t.border} bg-white p-2.5 flex flex-col gap-1 shadow-inner-soft`}>
+      <div className={`inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wide ${t.text}`}>
+        <Icon className="h-3.5 w-3.5" />
         {label}
       </div>
-      <span className="text-sm font-semibold text-slate-900">{value}</span>
+      <span className="text-sm font-bold text-gray-800">{value}</span>
     </div>
   );
 };

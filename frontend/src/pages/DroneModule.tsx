@@ -224,7 +224,7 @@ const DroneAgriculturalDashboard = () => {
     switch (severity) {
       case 'High': return 'bg-red-100 text-red-800';
       case 'Medium': return 'bg-yellow-100 text-yellow-800';
-      case 'Low': return 'bg-green-100 text-green-800';
+      case 'Low': return 'bg-forest-100 text-forest-800';
       default: return 'bg-gray-100 text-gray-800';
     }
   };
@@ -235,21 +235,21 @@ const DroneAgriculturalDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 p-6">
+    <div className="min-h-screen bg-gradient-to-br from-forest-600 via-teal-50 to-cyan-50 p-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 mb-6 border border-white/20">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+              <h1 className="text-4xl font-bold bg-gradient-to-r from-forest-600 to-teal-600 bg-clip-text text-transparent">
                 Drone Agriculture Hub
               </h1>
               <p className="text-gray-600 mt-2">AI-Powered Precision Agriculture Solutions</p>
             </div>
             <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2 bg-green-100 px-3 py-1 rounded-lg">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="text-green-700 font-medium">Live Monitoring</span>
+              <div className="flex items-center gap-2 bg-forest-100 px-3 py-1 rounded-lg">
+                <div className="w-2 h-2 bg-forest-500 rounded-full animate-pulse"></div>
+                <span className="text-forest-700 font-medium">Live Monitoring</span>
               </div>
               <button className="p-2 bg-white rounded-lg shadow-md hover:shadow-lg transition-all">
                 <Settings className="w-5 h-5 text-gray-600" />
@@ -272,7 +272,7 @@ const DroneAgriculturalDashboard = () => {
                 onClick={() => setActiveTab(id)}
                 className={`flex-1 flex items-center justify-center gap-2 py-4 px-6 transition-all ${
                   activeTab === id 
-                    ? 'border-b-2 border-emerald-500 bg-emerald-50 text-emerald-700' 
+                    ? 'border-b-2 border-forest-600 bg-forest-600 text-forest-600' 
                     : 'text-gray-600 hover:bg-gray-50'
                 }`}
               >
@@ -291,7 +291,7 @@ const DroneAgriculturalDashboard = () => {
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-xl font-bold text-gray-800">Drone-Captured Field Health Map</h3>
                 <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                  <div className="w-3 h-3 bg-forest-500 rounded-full"></div>
                   <span className="text-sm text-gray-600">Healthy</span>
                   <div className="w-3 h-3 bg-yellow-500 rounded-full ml-3"></div>
                   <span className="text-sm text-gray-600">Caution</span>
@@ -370,7 +370,7 @@ const DroneAgriculturalDashboard = () => {
                 <div className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg p-3 shadow-lg">
                   <div className="text-xs font-bold text-gray-800 mb-2">Health Index</div>
                   <div className="flex items-center gap-2 text-xs">
-                    <div className="w-3 h-3 bg-green-500 rounded"></div>
+                    <div className="w-3 h-3 bg-forest-500 rounded"></div>
                     <span className="text-gray-600">0.8-1.0 Excellent</span>
                   </div>
                   <div className="flex items-center gap-2 text-xs">
@@ -385,7 +385,7 @@ const DroneAgriculturalDashboard = () => {
                 
                 <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-sm rounded-lg p-2">
                   <div className="text-xs text-gray-600">Last Scan: {new Date().toLocaleTimeString()}</div>
-                  <div className="text-xs text-green-600 font-medium">Resolution: 2.5cm/pixel</div>
+                  <div className="text-xs text-forest-600 font-medium">Resolution: 2.5cm/pixel</div>
                 </div>
               </div>
             </div>
@@ -395,9 +395,9 @@ const DroneAgriculturalDashboard = () => {
               <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 border border-white/20">
                 <h3 className="text-xl font-bold text-gray-800 mb-4">Plant Count & Health Analytics</h3>
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-4">
-                    <div className="text-2xl font-bold text-green-700">{cropStats.totalPlants.toLocaleString()}</div>
-                    <div className="text-sm text-green-600">Total Plants Detected</div>
+                  <div className="bg-gradient-to-br from-forest-50 to-forest-600 rounded-xl p-4">
+                    <div className="text-2xl font-bold text-forest-700">{cropStats.totalPlants.toLocaleString()}</div>
+                    <div className="text-sm text-forest-600">Total Plants Detected</div>
                   </div>
                   <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-4">
                     <div className="text-2xl font-bold text-blue-700">{cropStats.healthyPlants.toLocaleString()}</div>
@@ -419,10 +419,10 @@ const DroneAgriculturalDashboard = () => {
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
                     <span className="text-gray-600">Canopy Coverage</span>
-                    <span className="font-bold text-emerald-600">{cropStats.canopyCoverage}%</span>
+                    <span className="font-bold text-forest-600">{cropStats.canopyCoverage}%</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-3">
-                    <div className="bg-gradient-to-r from-emerald-500 to-teal-500 h-3 rounded-full transition-all duration-1000" 
+                    <div className="bg-gradient-to-r from-forest-600 to-teal-500 h-3 rounded-full transition-all duration-1000" 
                          style={{ width: `${cropStats.canopyCoverage}%` }}></div>
                   </div>
                   <div className="text-sm text-gray-500">Last updated: {cropStats.lastUpdate}</div>
@@ -440,8 +440,8 @@ const DroneAgriculturalDashboard = () => {
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="text-xl font-bold text-gray-800">AI-Detected Diseases from Heatmap Analysis</h3>
                   <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                    <span className="text-sm text-green-600">Auto-Analysis Active</span>
+                    <div className="w-3 h-3 bg-forest-500 rounded-full animate-pulse"></div>
+                    <span className="text-sm text-forest-600">Auto-Analysis Active</span>
                   </div>
                 </div>
 
@@ -561,15 +561,15 @@ const DroneAgriculturalDashboard = () => {
                 <h3 className="text-xl font-bold text-gray-800 mb-4">Analysis Method</h3>
                 <div className="space-y-3">
                   <div className="flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-green-500" />
+                    <CheckCircle className="w-5 h-5 text-forest-500" />
                     <span className="text-gray-600">Multispectral Imaging</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-green-500" />
+                    <CheckCircle className="w-5 h-5 text-forest-500" />
                     <span className="text-gray-600">NDVI Analysis</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-green-500" />
+                    <CheckCircle className="w-5 h-5 text-forest-500" />
                     <span className="text-gray-600">Pattern Recognition AI</span>
                   </div>
                 </div>
@@ -600,7 +600,7 @@ const DroneAgriculturalDashboard = () => {
                         <div className={`px-3 py-1 rounded-full text-sm font-medium ${
                           input.urgency === 'High' ? 'bg-red-100 text-red-800' :
                           input.urgency === 'Medium' ? 'bg-yellow-100 text-yellow-800' :
-                          'bg-green-100 text-green-800'
+                          'bg-forest-100 text-forest-800'
                         }`}>
                           {input.urgency} Priority
                         </div>
@@ -728,16 +728,16 @@ const DroneAgriculturalDashboard = () => {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600">Spray Conditions</span>
-                    <span className="text-green-600 font-medium">Optimal</span>
+                    <span className="text-forest-600 font-medium">Optimal</span>
                   </div>
                 </div>
                 
-                <div className="mt-4 p-3 bg-green-50 rounded-lg">
-                  <div className="flex items-center gap-2 text-green-800">
+                <div className="mt-4 p-3 bg-forest-50 rounded-lg">
+                  <div className="flex items-center gap-2 text-forest-800">
                     <CheckCircle className="w-5 h-5" />
                     <span className="font-medium">Weather Suitable for Application</span>
                   </div>
-                  <p className="text-sm text-green-700 mt-1">
+                  <p className="text-sm text-forest-700 mt-1">
                     Current conditions are ideal for precision spraying operations.
                   </p>
                 </div>
@@ -762,7 +762,7 @@ const DroneAgriculturalDashboard = () => {
                     </div>
                   </div>
                   <div className={`px-3 py-1 rounded-full text-sm font-medium ${
-                    drone.status === 'active' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'
+                    drone.status === 'active' ? 'bg-forest-100 text-forest-800' : 'bg-yellow-100 text-yellow-800'
                   }`}>
                     {drone.status}
                   </div>
@@ -777,7 +777,7 @@ const DroneAgriculturalDashboard = () => {
                     <div className="flex items-center gap-2">
                       <div className="w-20 bg-gray-200 rounded-full h-2">
                         <div 
-                          className={`h-2 rounded-full ${drone.battery > 50 ? 'bg-green-500' : drone.battery > 20 ? 'bg-yellow-500' : 'bg-red-500'}`}
+                          className={`h-2 rounded-full ${drone.battery > 50 ? 'bg-forest-500' : drone.battery > 20 ? 'bg-yellow-500' : 'bg-red-500'}`}
                           style={{ width: `${drone.battery}%` }}
                         ></div>
                       </div>
@@ -813,7 +813,7 @@ const DroneAgriculturalDashboard = () => {
                   </div>
 
                   <div className="flex gap-2 pt-4">
-                    <button className="flex-1 bg-gradient-to-r from-emerald-500 to-teal-500 text-white py-2 px-3 rounded-lg text-sm font-medium hover:from-emerald-600 hover:to-teal-600 transition-all">
+                    <button className="flex-1 bg-gradient-to-r from-forest-600 to-teal-500 text-white py-2 px-3 rounded-lg text-sm font-medium hover:from-forest-600 hover:to-teal-600 transition-all">
                       Deploy Mission
                     </button>
                     <button className="flex-1 bg-gray-100 text-gray-700 py-2 px-3 rounded-lg text-sm font-medium hover:bg-gray-200 transition-all">

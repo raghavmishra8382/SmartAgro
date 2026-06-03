@@ -28,7 +28,7 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
                 {/* Avatar */}
                 <div className={`flex-shrink-0 w-10 h-10 rounded-2xl flex items-center justify-center shadow-sm 
           ${isAssistant
-                        ? 'bg-gradient-to-br from-green-400 to-green-600 text-white'
+                        ? 'bg-gradient-to-br from-green-400 to-forest-600 text-white'
                         : 'bg-gradient-to-br from-slate-100 to-slate-200 text-slate-600'}`}
                 >
                     {isAssistant ? <Bot size={20} /> : <User size={20} />}
@@ -39,7 +39,7 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
                     <div className={`relative px-4 py-3 rounded-2xl shadow-sm text-sm leading-relaxed
             ${isAssistant
                             ? 'bg-white text-slate-800 rounded-tl-sm border border-slate-100'
-                            : 'bg-green-600 text-white rounded-tr-sm shadow-green-200'}`}
+                            : 'bg-forest-600 text-white rounded-tr-sm shadow-green-200'}`}
                     >
                         {message.image && (
                             <div className="mb-3 overflow-hidden rounded-lg">

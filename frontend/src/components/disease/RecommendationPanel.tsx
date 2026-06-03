@@ -57,7 +57,7 @@ export const RecommendationPanel: React.FC<RecommendationPanelProps> = ({ treatm
             >
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4">
                     <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 bg-green-500 rounded-2xl flex items-center justify-center shadow-lg shadow-green-200">
+                        <div className="w-12 h-12 bg-forest-500 rounded-2xl flex items-center justify-center shadow-lg shadow-green-200">
                             <Syringe size={24} className="text-white" />
                         </div>
                         <div>
@@ -65,7 +65,7 @@ export const RecommendationPanel: React.FC<RecommendationPanelProps> = ({ treatm
                             <p className="text-slate-400 text-sm font-medium mt-1">AI-recommended agricultural remedies</p>
                         </div>
                     </div>
-                    <span className="hidden sm:inline-flex items-center gap-1.5 px-4 py-1.5 bg-green-50 text-green-600 rounded-full text-xs font-bold uppercase tracking-wider">
+                    <span className="hidden sm:inline-flex items-center gap-1.5 px-4 py-1.5 bg-forest-50 text-forest-600 rounded-full text-xs font-bold uppercase tracking-wider">
                         Verified Solution
                     </span>
                 </div>
@@ -80,7 +80,7 @@ export const RecommendationPanel: React.FC<RecommendationPanelProps> = ({ treatm
                             className="p-5 bg-slate-50 hover:bg-white rounded-2xl border border-transparent hover:border-slate-100 hover:shadow-lg transition-all group"
                         >
                             <div className="flex items-center gap-3">
-                                <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center text-slate-400 group-hover:text-green-500 transition-colors shadow-sm">
+                                <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center text-slate-400 group-hover:text-forest-500 transition-colors shadow-sm">
                                     <ShieldCheck size={18} />
                                 </div>
                                 <p className="text-[15px] font-bold text-slate-700 leading-tight">

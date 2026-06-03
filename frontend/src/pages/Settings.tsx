@@ -87,7 +87,7 @@ const Settings: React.FC = () => {
   if (authLoading) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
-        <Loader2 className="h-8 w-8 animate-spin text-green-600" />
+        <Loader2 className="h-8 w-8 animate-spin text-forest-600" />
       </div>
     );
   }
@@ -98,7 +98,7 @@ const Settings: React.FC = () => {
         <p className="text-gray-600 mb-4">Please login to access settings.</p>
         <button
           onClick={() => navigate("/login")}
-          className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition"
+          className="bg-forest-600 text-white px-6 py-2 rounded-lg hover:bg-forest-700 transition"
         >
           Go to Login
         </button>
@@ -122,7 +122,7 @@ const Settings: React.FC = () => {
         <div className="lg:col-span-2 space-y-4 md:space-y-6">
           <div className="bg-white rounded-xl md:rounded-2xl shadow-lg p-4 md:p-6">
             <div className="flex items-center space-x-3 mb-4 md:mb-6">
-              <User className="h-5 w-5 md:h-6 md:w-6 text-green-500" />
+              <User className="h-5 w-5 md:h-6 md:w-6 text-forest-500" />
               <h2 className="text-lg md:text-xl font-semibold text-gray-800">
                 Profile Information
               </h2>
@@ -140,7 +140,7 @@ const Settings: React.FC = () => {
                     onChange={(e) =>
                       setProfile({ ...profile, name: e.target.value })
                     }
-                    className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-sm md:text-base"
+                    className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-forest-500 text-sm md:text-base"
                   />
                   <Edit className="absolute right-3 top-2.5 md:top-3 h-3 w-3 md:h-4 md:w-4 text-gray-400" />
                 </div>
@@ -157,7 +157,7 @@ const Settings: React.FC = () => {
                     onChange={(e) =>
                       setProfile({ ...profile, email: e.target.value })
                     }
-                    className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-sm md:text-base"
+                    className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-forest-500 text-sm md:text-base"
                   />
                   <Mail className="absolute right-3 top-2.5 md:top-3 h-3 w-3 md:h-4 md:w-4 text-gray-400" />
                 </div>
@@ -174,7 +174,7 @@ const Settings: React.FC = () => {
                     onChange={(e) =>
                       setProfile({ ...profile, phone: e.target.value })
                     }
-                    className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-sm md:text-base"
+                    className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-forest-500 text-sm md:text-base"
                   />
                   <Smartphone className="absolute right-3 top-2.5 md:top-3 h-3 w-3 md:h-4 md:w-4 text-gray-400" />
                 </div>
@@ -191,7 +191,7 @@ const Settings: React.FC = () => {
                     onChange={(e) =>
                       setProfile({ ...profile, location: e.target.value })
                     }
-                    className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-sm md:text-base"
+                    className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-forest-500 text-sm md:text-base"
                   />
                   <MapPin className="absolute right-3 top-2.5 md:top-3 h-3 w-3 md:h-4 md:w-4 text-gray-400" />
                 </div>
@@ -207,7 +207,7 @@ const Settings: React.FC = () => {
                   onChange={(e) =>
                     setProfile({ ...profile, farmSize: e.target.value })
                   }
-                  className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-sm md:text-base"
+                  className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-forest-500 text-sm md:text-base"
                 />
               </div>
 
@@ -220,7 +220,7 @@ const Settings: React.FC = () => {
                   onChange={(e) =>
                     setProfile({ ...profile, language: e.target.value })
                   }
-                  className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-sm md:text-base"
+                  className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-forest-500 text-sm md:text-base"
                 >
                   <option value="English">English</option>
                   <option value="Hindi">Hindi</option>
@@ -236,7 +236,7 @@ const Settings: React.FC = () => {
             <button
               onClick={handleSave}
               disabled={saving}
-              className="mt-4 md:mt-6 bg-green-500 text-white py-2 md:py-3 px-4 md:px-6 rounded-lg hover:bg-green-600 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 text-sm md:text-base w-full sm:w-auto"
+              className="mt-4 md:mt-6 bg-forest-500 text-white py-2 md:py-3 px-4 md:px-6 rounded-lg hover:bg-forest-600 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 text-sm md:text-base w-full sm:w-auto"
             >
               {saving ? (
                 <>
@@ -283,7 +283,7 @@ const Settings: React.FC = () => {
                     }
                     className="sr-only peer"
                   />
-                  <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-500"></div>
+                  <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-forest-500"></div>
                 </label>
               </div>
 
@@ -308,7 +308,7 @@ const Settings: React.FC = () => {
                     }
                     className="sr-only peer"
                   />
-                  <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-500"></div>
+                  <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-forest-500"></div>
                 </label>
               </div>
 
@@ -333,7 +333,7 @@ const Settings: React.FC = () => {
                     }
                     className="sr-only peer"
                   />
-                  <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-500"></div>
+                  <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-forest-500"></div>
                 </label>
               </div>
 
@@ -358,7 +358,7 @@ const Settings: React.FC = () => {
                     }
                     className="sr-only peer"
                   />
-                  <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-500"></div>
+                  <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-forest-500"></div>
                 </label>
               </div>
             </div>
@@ -418,7 +418,7 @@ const Settings: React.FC = () => {
                 <label className="block text-xs md:text-sm font-medium text-gray-700 mb-2">
                   Theme
                 </label>
-                <select className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-sm md:text-base">
+                <select className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-forest-500 text-sm md:text-base">
                   <option value="light">Light</option>
                   <option value="dark">Dark</option>
                   <option value="auto">Auto</option>
@@ -429,7 +429,7 @@ const Settings: React.FC = () => {
                 <label className="block text-xs md:text-sm font-medium text-gray-700 mb-2">
                   Units
                 </label>
-                <select className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-sm md:text-base">
+                <select className="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-forest-500 text-sm md:text-base">
                   <option value="metric">Metric (°C, km/h)</option>
                   <option value="imperial">Imperial (°F, mph)</option>
                 </select>

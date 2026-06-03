@@ -134,7 +134,7 @@ const IvrDialer: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <div className="bg-gradient-to-r from-green-600 via-emerald-500 to-cyan-500 rounded-2xl shadow-lg p-6 text-white">
+      <div className="bg-gradient-to-r from-forest-600 via-forest-600 to-cyan-500 rounded-2xl shadow-lg p-6 text-white">
         <h1 className="text-2xl md:text-3xl font-bold">IVR Call Center</h1>
         <p className="text-sm md:text-base text-green-50 mt-1">
           Connect to SmartAgro IVR directly from your browser.
@@ -179,7 +179,7 @@ const IvrDialer: React.FC = () => {
               <button
                 onClick={startCall}
                 disabled={status === "loading" || status === "connecting"}
-                className="flex items-center justify-center gap-2 rounded-xl bg-green-600 text-white py-2.5 font-semibold shadow-md hover:bg-green-700 disabled:opacity-60 disabled:cursor-not-allowed"
+                className="flex items-center justify-center gap-2 rounded-xl bg-forest-600 text-white py-2.5 font-semibold shadow-md hover:bg-forest-700 disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 <PhoneCall className="h-5 w-5" />
                 Start IVR Call
@@ -241,7 +241,7 @@ const IvrDialer: React.FC = () => {
           </div>
         </div>
 
-        <div className="mt-6 rounded-xl border border-emerald-100 bg-emerald-50 p-4 text-sm text-emerald-700">
+        <div className="mt-6 rounded-xl border border-forest-600 bg-forest-600 p-4 text-sm text-forest-600">
           Tip: Allow microphone access when prompted. The IVR supports English,
           Hindi, and Bengali.
         </div>

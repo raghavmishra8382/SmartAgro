@@ -42,7 +42,7 @@ const FarmForm = () => {
   return (
     <div className="max-w-3xl mx-auto mt-10 bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
       <h2 className="text-2xl font-semibold text-gray-800 mb-6 flex items-center gap-2">
-        <BarChart3 className="text-green-600 w-6 h-6" />
+        <BarChart3 className="text-forest-600 w-6 h-6" />
         Farm Performance Details
       </h2>
 
@@ -59,7 +59,7 @@ const FarmForm = () => {
               name="totalYield"
               value={formData.totalYield}
               onChange={handleChange}
-              className="w-full border border-gray-200 rounded-lg pl-10 pr-4 py-2.5 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all"
+              className="w-full border border-gray-200 rounded-lg pl-10 pr-4 py-2.5 focus:ring-2 focus:ring-forest-500 focus:border-forest-500 outline-none transition-all"
               placeholder="Enter total yield in kg"
             />
           </div>
@@ -77,7 +77,7 @@ const FarmForm = () => {
               name="revenue"
               value={formData.revenue}
               onChange={handleChange}
-              className="w-full border border-gray-200 rounded-lg pl-10 pr-4 py-2.5 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all"
+              className="w-full border border-gray-200 rounded-lg pl-10 pr-4 py-2.5 focus:ring-2 focus:ring-forest-500 focus:border-forest-500 outline-none transition-all"
               placeholder="Enter revenue in INR"
             />
           </div>
@@ -95,7 +95,7 @@ const FarmForm = () => {
               name="farmSize"
               value={formData.farmSize}
               onChange={handleChange}
-              className="w-full border border-gray-200 rounded-lg pl-10 pr-4 py-2.5 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all"
+              className="w-full border border-gray-200 rounded-lg pl-10 pr-4 py-2.5 focus:ring-2 focus:ring-forest-500 focus:border-forest-500 outline-none transition-all"
               placeholder="Enter farm size in acres"
               step="0.1"
             />
@@ -114,7 +114,7 @@ const FarmForm = () => {
               name="daysToHarvest"
               value={formData.daysToHarvest}
               onChange={handleChange}
-              className="w-full border border-gray-200 rounded-lg pl-10 pr-4 py-2.5 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all"
+              className="w-full border border-gray-200 rounded-lg pl-10 pr-4 py-2.5 focus:ring-2 focus:ring-forest-500 focus:border-forest-500 outline-none transition-all"
               placeholder="Enter number of days"
             />
           </div>
@@ -123,7 +123,7 @@ const FarmForm = () => {
         {/* Submit Button */}
         <button
           type="submit"
-          className="w-full mt-6 bg-green-600 hover:bg-green-700 text-white font-semibold py-2.5 rounded-lg flex items-center justify-center gap-2 transition-all duration-200"
+          className="w-full mt-6 bg-forest-600 hover:bg-forest-700 text-white font-semibold py-2.5 rounded-lg flex items-center justify-center gap-2 transition-all duration-200"
         >
           <Save className="w-5 h-5" />
           Save Details

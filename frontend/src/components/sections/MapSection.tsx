@@ -116,10 +116,10 @@ export default function MapSection() {
   });
 
   return (
-    <section className="py-24 bg-agri-50/50">
+    <section className="py-24 bg-forest-600/50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <span className="text-agri-600 font-semibold uppercase tracking-wider text-sm">Nationwide Impact</span>
+          <span className="text-forest-600 font-semibold uppercase tracking-wider text-sm">Nationwide Impact</span>
           <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mt-2">
             SmartAgro Across India
           </h2>
@@ -131,7 +131,7 @@ export default function MapSection() {
         <div className="flex flex-col lg:flex-row gap-8 items-center justify-center">
           {/* Map visualization */}
           <div className="w-full lg:w-1/2 relative bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
-            <div className="relative w-full aspect-[4/5] border border-agri-100 rounded-xl overflow-hidden bg-white/50">
+            <div className="relative w-full aspect-[4/5] border border-forest-600 rounded-xl overflow-hidden bg-white/50">
               {/* Background Map Image */}
               <div className="absolute inset-0 z-0">
                 <img
@@ -155,7 +155,7 @@ export default function MapSection() {
                   >
                     <div
                       className={`w-4 h-4 rounded-full transition-all duration-300 ${state.active
-                        ? "bg-agri-500 shadow-lg shadow-agri-400/50 group-hover:bg-agri-600 ring-2 ring-white"
+                        ? "bg-forest-600 shadow-lg shadow-forest-600/50 group-hover:bg-forest-600 ring-2 ring-white"
                         : "bg-gray-200"
                         }`}
                     />
@@ -166,7 +166,7 @@ export default function MapSection() {
                         animate={{ scaleY: 1 }}
                         transition={{ duration: 0.3, delay: Math.random() * 0.5 }}
                       >
-                        <div className="w-full h-full bg-agri-200" />
+                        <div className="w-full h-full bg-forest-600" />
                       </motion.div>
                     )}
                     <div className="absolute top-6 left-1/2 transform -translate-x-1/2 text-[10px] font-bold text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap bg-white px-2 py-0.5 rounded shadow-sm border border-gray-100 pointer-events-none z-10">
@@ -179,7 +179,7 @@ export default function MapSection() {
 
             <div className="mt-6 flex items-center justify-center gap-6 text-sm text-gray-600">
               <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-agri-500 shadow-sm shadow-agri-500/50"></div>
+                <div className="w-3 h-3 rounded-full bg-forest-600 shadow-sm shadow-forest-600/50"></div>
                 <span className="font-medium">Active States</span>
               </div>
               <div className="flex items-center gap-2">
@@ -199,9 +199,9 @@ export default function MapSection() {
               {activeState && stateCounts.farmers[activeState as keyof typeof stateCounts.farmers] ? (
                 <div className="space-y-8 animate-fade-in">
                   <div className="grid grid-cols-2 gap-6">
-                    <div className="bg-agri-50/80 p-6 rounded-xl border border-agri-100 text-center hover:bg-agri-100 transition-colors">
-                      <h4 className="text-sm text-agri-700 font-semibold uppercase tracking-wider mb-2">Farmers Connected</h4>
-                      <p className="text-4xl font-bold text-agri-600">
+                    <div className="bg-forest-600/80 p-6 rounded-xl border border-forest-600 text-center hover:bg-forest-600 transition-colors">
+                      <h4 className="text-sm text-forest-600 font-semibold uppercase tracking-wider mb-2">Farmers Connected</h4>
+                      <p className="text-4xl font-bold text-forest-600">
                         {stateCounts.farmers[activeState as keyof typeof stateCounts.farmers].toLocaleString()}
                       </p>
                     </div>
@@ -226,7 +226,7 @@ export default function MapSection() {
                       {generateRandomCrops(activeState).map((crop, index) => (
                         <span
                           key={index}
-                          className="px-4 py-2 bg-white rounded-full text-agri-700 font-medium text-sm border border-agri-100 shadow-sm hover:shadow-md transition-shadow cursor-default"
+                          className="px-4 py-2 bg-white rounded-full text-forest-600 font-medium text-sm border border-forest-600 shadow-sm hover:shadow-md transition-shadow cursor-default"
                         >
                           {crop}
                         </span>

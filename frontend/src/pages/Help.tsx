@@ -66,7 +66,7 @@ const Help: React.FC = () => {
           <input
             type="text"
             placeholder="Search for help articles, tutorials, or FAQs..."
-            className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent text-lg"
+            className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-forest-500 focus:border-transparent text-lg"
           />
         </div>
       </div>
@@ -80,14 +80,14 @@ const Help: React.FC = () => {
               const Icon = category.icon;
               return (
                 <div key={index} className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow cursor-pointer">
-                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
-                    <Icon className="h-6 w-6 text-green-600" />
+                  <div className="w-12 h-12 bg-forest-100 rounded-full flex items-center justify-center mb-4">
+                    <Icon className="h-6 w-6 text-forest-600" />
                   </div>
                   <h3 className="text-lg font-semibold text-gray-800 mb-2">{category.title}</h3>
                   <p className="text-gray-600 mb-4">{category.description}</p>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-green-600 font-medium">{category.articles} articles</span>
-                    <button className="text-green-600 hover:text-green-700 font-medium">View All →</button>
+                    <span className="text-sm text-forest-600 font-medium">{category.articles} articles</span>
+                    <button className="text-forest-600 hover:text-forest-700 font-medium">View All →</button>
                   </div>
                 </div>
               );
@@ -112,8 +112,8 @@ const Help: React.FC = () => {
             <h2 className="text-xl font-semibold text-gray-800 mb-6">Contact Support</h2>
             
             <div className="space-y-4">
-              <div className="flex items-center space-x-4 p-4 bg-green-50 rounded-xl hover:bg-green-100 transition-colors cursor-pointer">
-                <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
+              <div className="flex items-center space-x-4 p-4 bg-forest-50 rounded-xl hover:bg-forest-100 transition-colors cursor-pointer">
+                <div className="w-10 h-10 bg-forest-500 rounded-full flex items-center justify-center">
                   <MessageCircle className="h-5 w-5 text-white" />
                 </div>
                 <div>

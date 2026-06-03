@@ -38,13 +38,13 @@ export const ChatInput: React.FC<ChatInputProps> = ({
 
     return (
         <div className="relative w-full max-w-4xl mx-auto px-4 pb-6 pt-2 bg-gradient-to-t from-slate-50 to-transparent">
-            <div className="relative group bg-white rounded-2xl shadow-lg border border-slate-200 transition-all focus-within:shadow-xl focus-within:border-green-500/50">
+            <div className="relative group bg-white rounded-2xl shadow-lg border border-slate-200 transition-all focus-within:shadow-xl focus-within:border-forest-500/50">
                 <div className="flex items-center gap-2 p-2">
                     {/* Action Buttons */}
                     <div className="flex items-center gap-1 pl-1">
                         <button
                             onClick={() => fileInputRef.current?.click()}
-                            className="p-2 text-slate-400 hover:text-green-600 hover:bg-green-50 rounded-xl transition-all"
+                            className="p-2 text-slate-400 hover:text-forest-600 hover:bg-forest-50 rounded-xl transition-all"
                             title="Upload Image"
                         >
                             <Image size={20} />
@@ -74,7 +74,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
                             onClick={isListening ? onStopListening : onStartListening}
                             className={`p-2 rounded-xl transition-all ${isListening
                                 ? 'bg-red-50 text-red-500 animate-pulse'
-                                : 'text-slate-400 hover:text-green-600 hover:bg-green-50'
+                                : 'text-slate-400 hover:text-forest-600 hover:bg-forest-50'
                                 }`}
                         >
                             {isListening ? <MicOff size={20} /> : <Mic size={20} />}
@@ -84,7 +84,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
                             onClick={handleSend}
                             disabled={!text.trim()}
                             className={`p-2 rounded-xl transition-all ${text.trim()
-                                ? 'bg-green-600 text-white shadow-md shadow-green-200 hover:bg-green-700'
+                                ? 'bg-forest-600 text-white shadow-md shadow-green-200 hover:bg-forest-700'
                                 : 'text-slate-300 cursor-not-allowed'
                                 }`}
                         >

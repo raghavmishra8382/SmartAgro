@@ -34,7 +34,7 @@ export const FertilizerRecommendationCard: React.FC<FertilizerRecommendationCard
         {
             title: "Crop Name",
             value: advice.cropName,
-            icon: <Sprout className="w-5 h-5 text-green-600" />,
+            icon: <Sprout className="w-5 h-5 text-forest-600" />,
             type: "normal"
         },
         {
@@ -72,7 +72,7 @@ export const FertilizerRecommendationCard: React.FC<FertilizerRecommendationCard
         {
             title: "Expected Benefits",
             value: advice.expectedBenefits,
-            icon: <TrendingUp className="w-5 h-5 text-emerald-600" />,
+            icon: <TrendingUp className="w-5 h-5 text-forest-600" />,
             type: "list"
         },
         {
@@ -92,7 +92,7 @@ export const FertilizerRecommendationCard: React.FC<FertilizerRecommendationCard
             {/* Refined Header */}
             <div className="bg-gray-50 border-b border-gray-200 px-8 py-6">
                 <h2 className="text-2xl font-semibold text-gray-800 flex items-center gap-3">
-                    <div className="w-2 h-8 bg-green-600 rounded-full" />
+                    <div className="w-2 h-8 bg-forest-600 rounded-full" />
                     Fertilizer Recommendation Report
                 </h2>
                 <p className="text-gray-500 text-sm mt-1 ml-5">Comprehensive AI-powered analysis for soil optimization</p>

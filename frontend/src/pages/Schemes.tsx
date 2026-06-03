@@ -73,7 +73,7 @@ const Schemes: React.FC = () => {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'active': return 'bg-green-100 text-green-700';
+      case 'active': return 'bg-forest-100 text-forest-700';
       case 'eligible': return 'bg-blue-100 text-blue-700';
       case 'applied': return 'bg-yellow-100 text-yellow-700';
       case 'expired': return 'bg-red-100 text-red-700';
@@ -117,7 +117,7 @@ const Schemes: React.FC = () => {
             <div className="space-y-3 mb-6">
               <div className="flex justify-between items-center">
                 <span className="text-sm text-gray-500">Benefit Amount</span>
-                <span className="font-semibold text-green-600">{scheme.amount}</span>
+                <span className="font-semibold text-forest-600">{scheme.amount}</span>
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-sm text-gray-500">Category</span>
@@ -140,7 +140,7 @@ const Schemes: React.FC = () => {
                 rel="noopener noreferrer"
                 className={`flex-1 text-center py-2 px-4 rounded-lg text-sm font-medium transition-colors ${
                   scheme.status === 'eligible'
-                    ? 'bg-green-500 text-white hover:bg-green-600'
+                    ? 'bg-forest-500 text-white hover:bg-forest-600'
                     : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                 }`}
               >

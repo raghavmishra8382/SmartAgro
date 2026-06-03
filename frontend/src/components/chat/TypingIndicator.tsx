@@ -7,7 +7,7 @@ export const TypingIndicator: React.FC = () => {
             <motion.div
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ repeat: Infinity, duration: 0.6, delay: 0 }}
-                className="w-1.5 h-1.5 bg-green-500 rounded-full"
+                className="w-1.5 h-1.5 bg-forest-500 rounded-full"
             />
             <motion.div
                 animate={{ scale: [1, 1.2, 1] }}

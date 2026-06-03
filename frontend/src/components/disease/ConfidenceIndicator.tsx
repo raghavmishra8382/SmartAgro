@@ -7,13 +7,13 @@ interface ConfidenceIndicatorProps {
 
 export const ConfidenceIndicator: React.FC<ConfidenceIndicatorProps> = ({ confidence }) => {
     const getStatusColor = (score: number) => {
-        if (score >= 90) return 'text-green-500 bg-green-500/10';
+        if (score >= 90) return 'text-forest-500 bg-forest-500/10';
         if (score >= 70) return 'text-amber-500 bg-amber-500/10';
         return 'text-rose-500 bg-rose-500/10';
     };
 
     const getBarColor = (score: number) => {
-        if (score >= 90) return 'bg-green-500';
+        if (score >= 90) return 'bg-forest-500';
         if (score >= 70) return 'bg-amber-500';
         return 'bg-rose-500';
     };

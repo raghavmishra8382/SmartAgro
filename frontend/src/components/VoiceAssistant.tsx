@@ -303,7 +303,7 @@ const VoiceAssistant: React.FC<VoiceAssistantProps> = ({ onNavigate, onAction })
       <div className="fixed bottom-6 right-6 z-50">
         <button
           onClick={toggleAssistant}
-          className="bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-all hover:scale-110 flex items-center justify-center"
+          className="bg-forest-500 text-white p-4 rounded-full shadow-lg hover:bg-forest-600 transition-all hover:scale-110 flex items-center justify-center"
           title="Activate Arav Voice Assistant"
         >
           <Mic className="h-6 w-6" />
@@ -314,9 +314,9 @@ const VoiceAssistant: React.FC<VoiceAssistantProps> = ({ onNavigate, onAction })
 
   return (
     <div className="fixed bottom-6 right-6 z-50 w-96 max-w-[calc(100vw-3rem)]">
-      <div className="bg-white rounded-2xl shadow-2xl border-2 border-green-500 overflow-hidden">
+      <div className="bg-white rounded-2xl shadow-2xl border-2 border-forest-500 overflow-hidden">
         {/* Header */}
-        <div className="bg-gradient-to-r from-green-500 to-green-600 text-white p-4 flex items-center justify-between">
+        <div className="bg-gradient-to-r from-forest-500 to-forest-600 text-white p-4 flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
               <Mic className="h-5 w-5" />
@@ -354,7 +354,7 @@ const VoiceAssistant: React.FC<VoiceAssistantProps> = ({ onNavigate, onAction })
         <div className="p-4 max-h-64 overflow-y-auto">
           {isProcessing && (
             <div className="flex items-center justify-center py-4">
-              <Loader2 className="h-6 w-6 animate-spin text-green-500" />
+              <Loader2 className="h-6 w-6 animate-spin text-forest-500" />
             </div>
           )}
 
@@ -368,7 +368,7 @@ const VoiceAssistant: React.FC<VoiceAssistantProps> = ({ onNavigate, onAction })
           {response && (
             <div className="mb-3">
               <p className="text-xs text-gray-500 mb-1">Arav:</p>
-              <p className="text-sm text-gray-800 bg-green-50 p-2 rounded">{response}</p>
+              <p className="text-sm text-gray-800 bg-forest-50 p-2 rounded">{response}</p>
             </div>
           )}
 
@@ -393,7 +393,7 @@ const VoiceAssistant: React.FC<VoiceAssistantProps> = ({ onNavigate, onAction })
             disabled={isProcessing}
             className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all ${isListening
                 ? 'bg-red-500 text-white hover:bg-red-600'
-                : 'bg-green-500 text-white hover:bg-green-600'
+                : 'bg-forest-500 text-white hover:bg-forest-600'
               } disabled:opacity-50 disabled:cursor-not-allowed`}
           >
             {isListening ? (
@@ -412,7 +412,7 @@ const VoiceAssistant: React.FC<VoiceAssistantProps> = ({ onNavigate, onAction })
           {response && (
             <button
               onClick={() => speak(response)}
-              className="p-2 text-gray-600 hover:text-green-600 hover:bg-green-50 rounded-lg transition-colors"
+              className="p-2 text-gray-600 hover:text-forest-600 hover:bg-forest-50 rounded-lg transition-colors"
               title="Repeat response"
             >
               <Volume2 className="h-4 w-4" />

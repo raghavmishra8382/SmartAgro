@@ -112,8 +112,8 @@ const Community: React.FC = () => {
 
         <div className="bg-white rounded-2xl shadow-lg p-6">
           <div className="flex items-center justify-between mb-4">
-            <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-              <MessageSquare className="h-6 w-6 text-green-500" />
+            <div className="w-12 h-12 bg-forest-100 rounded-full flex items-center justify-center">
+              <MessageSquare className="h-6 w-6 text-forest-500" />
             </div>
           </div>
           <h3 className="text-sm font-medium text-gray-500 mb-1">Discussions</h3>
@@ -146,7 +146,7 @@ const Community: React.FC = () => {
         <div className="lg:col-span-2">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold text-gray-800">Recent Discussions</h2>
-            <button className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors">
+            <button className="bg-forest-500 text-white px-4 py-2 rounded-lg hover:bg-forest-600 transition-colors">
               Start Discussion
             </button>
           </div>
@@ -157,12 +157,12 @@ const Community: React.FC = () => {
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex-1">
                     <div className="flex items-center space-x-2 mb-2">
-                      <span className="bg-green-100 text-green-700 text-xs font-medium px-2 py-1 rounded-full">
+                      <span className="bg-forest-100 text-forest-700 text-xs font-medium px-2 py-1 rounded-full">
                         {discussion.category}
                       </span>
                       <span className="text-sm text-gray-500">{discussion.time}</span>
                     </div>
-                    <h3 className="text-lg font-semibold text-gray-800 mb-2 hover:text-green-600 cursor-pointer">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-2 hover:text-forest-600 cursor-pointer">
                       {discussion.title}
                     </h3>
                     <p className="text-gray-600 text-sm mb-3">{discussion.excerpt}</p>
@@ -188,7 +188,7 @@ const Community: React.FC = () => {
                   </div>
 
                   <div className="flex items-center space-x-4">
-                    <button className="flex items-center space-x-1 text-gray-500 hover:text-green-600 transition-colors">
+                    <button className="flex items-center space-x-1 text-gray-500 hover:text-forest-600 transition-colors">
                       <ThumbsUp className="h-4 w-4" />
                       <span className="text-sm">{discussion.likes}</span>
                     </button>
@@ -213,7 +213,7 @@ const Community: React.FC = () => {
             <h2 className="text-xl font-semibold text-gray-800 mb-6">Upcoming Events</h2>
             <div className="space-y-4">
               {events.map((event, index) => (
-                <div key={index} className="border-l-4 border-green-500 pl-4 py-2">
+                <div key={index} className="border-l-4 border-forest-500 pl-4 py-2">
                   <h3 className="font-medium text-gray-800 mb-1">{event.title}</h3>
                   <div className="flex items-center text-sm text-gray-500 mb-1">
                     <Calendar className="h-3 w-3 mr-1" />
@@ -229,7 +229,7 @@ const Community: React.FC = () => {
                 </div>
               ))}
             </div>
-            <button className="w-full mt-4 bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-colors">
+            <button className="w-full mt-4 bg-forest-500 text-white py-2 px-4 rounded-lg hover:bg-forest-600 transition-colors">
               View All Events
             </button>
           </div>
@@ -240,7 +240,7 @@ const Community: React.FC = () => {
             <div className="space-y-4">
               {topContributors.map((contributor, index) => (
                 <div key={index} className="flex items-center space-x-3">
-                  <div className="w-10 h-10 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center">
+                  <div className="w-10 h-10 bg-gradient-to-br from-green-400 to-forest-600 rounded-full flex items-center justify-center">
                     <span className="text-white font-medium">
                       {contributor.name.charAt(0)}
                     </span>
@@ -250,7 +250,7 @@ const Community: React.FC = () => {
                     <p className="text-sm text-gray-500">{contributor.title}</p>
                   </div>
                   <div className="text-right">
-                    <div className="bg-green-100 text-green-700 text-xs font-medium px-2 py-1 rounded-full mb-1">
+                    <div className="bg-forest-100 text-forest-700 text-xs font-medium px-2 py-1 rounded-full mb-1">
                       {contributor.badge}
                     </div>
                     <p className="text-xs text-gray-500">{contributor.contributions} posts</p>
@@ -261,12 +261,12 @@ const Community: React.FC = () => {
           </div>
 
           {/* Join Community */}
-          <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-2xl p-6 text-white">
+          <div className="bg-gradient-to-br from-forest-500 to-forest-600 rounded-2xl p-6 text-white">
             <h2 className="text-xl font-semibold mb-3">Join Our Community</h2>
             <p className="text-green-100 mb-4">
               Connect with thousands of farmers, share experiences, and learn from experts.
             </p>
-            <button className="w-full bg-white text-green-600 py-2 px-4 rounded-lg hover:bg-gray-100 transition-colors font-medium">
+            <button className="w-full bg-white text-forest-600 py-2 px-4 rounded-lg hover:bg-gray-100 transition-colors font-medium">
               Create Account
             </button>
           </div>

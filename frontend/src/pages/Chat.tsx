@@ -74,14 +74,14 @@ const SessionItem: React.FC<SessionItemProps> = ({
         onClick={() => onSelect(session)}
         className={`w-full text-left px-3 py-3 rounded-xl transition-all duration-150 flex items-start gap-3 pr-10 ${
           isActive
-            ? "bg-green-50 border border-green-100 shadow-sm"
+            ? "bg-forest-50 border border-green-100 shadow-sm"
             : "bg-white hover:bg-gray-50 border border-transparent shadow-sm"
         }`}
       >
         <div
           className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5 ${
             isActive
-              ? "bg-gradient-to-br from-green-500 to-emerald-600 text-white shadow-sm"
+              ? "bg-gradient-to-br from-forest-500 to-forest-600 text-white shadow-sm"
               : "bg-gray-100 text-gray-500 group-hover:bg-gray-50 group-hover:text-gray-700"
           }`}
         >
@@ -116,7 +116,7 @@ const SessionItem: React.FC<SessionItemProps> = ({
         }}
         className={`absolute right-2 top-3 w-7 h-7 rounded-lg flex items-center justify-center transition-all ${
           isMenuOpen
-            ? "opacity-100 bg-green-50 text-green-700 border border-green-100"
+            ? "opacity-100 bg-forest-50 text-forest-700 border border-green-100"
             : "opacity-0 group-hover:opacity-100 text-slate-400 hover:bg-gray-100 hover:text-slate-700"
         }`}
         title="Options"
@@ -300,7 +300,7 @@ const Chat: React.FC = () => {
         {/* Header */}
         <div className="px-4 pt-5 pb-4 border-b border-gray-100 bg-white/80 backdrop-blur-sm">
           <div className="flex items-center gap-2.5 mb-5">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-md shadow-green-200">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-forest-500 to-forest-600 flex items-center justify-center shadow-md shadow-green-200">
               <Leaf size={18} className="text-white" />
             </div>
             <div>
@@ -311,7 +311,7 @@ const Chat: React.FC = () => {
 
           <button
             onClick={handleNewChat}
-            className="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 text-white text-sm font-semibold transition-all duration-150 flex items-center justify-center gap-2 shadow-md shadow-green-200 hover:shadow-lg hover:-translate-y-px active:translate-y-0"
+            className="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-forest-500 to-forest-600 text-white text-sm font-semibold transition-all duration-150 flex items-center justify-center gap-2 shadow-md shadow-green-200 hover:shadow-lg hover:-translate-y-px active:translate-y-0"
           >
             <Plus size={16} />
             New conversation
@@ -324,7 +324,7 @@ const Chat: React.FC = () => {
             Recent chats
           </p>
           {sessions.length > 0 && (
-            <span className="text-[10px] font-bold bg-green-50 text-green-700 rounded-full px-2 py-0.5 border border-green-100">
+            <span className="text-[10px] font-bold bg-forest-50 text-forest-700 rounded-full px-2 py-0.5 border border-green-100">
               {sessions.length}
             </span>
           )}
@@ -336,8 +336,8 @@ const Chat: React.FC = () => {
           <SessionSkeleton />
         ) : sessions.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-12 px-4 text-center">
-            <div className="w-12 h-12 rounded-2xl bg-green-50 flex items-center justify-center mb-3 border border-green-100">
-              <MessageSquare size={20} className="text-green-500" />
+            <div className="w-12 h-12 rounded-2xl bg-forest-50 flex items-center justify-center mb-3 border border-green-100">
+              <MessageSquare size={20} className="text-forest-500" />
             </div>
             <p className="text-sm font-semibold text-slate-700">No conversations yet</p>
             <p className="text-xs text-slate-500 mt-1">Start a new chat to get farming advice</p>

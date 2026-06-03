@@ -51,7 +51,7 @@ const CardDescription = ({ children, className = "" }: { children: React.ReactNo
 const Badge = ({ children, variant = "default", className = "" }: { children: React.ReactNode; variant?: "default" | "outline"; className?: string }) => {
   const baseStyles = "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2";
   const variants = {
-    default: "bg-green-100 text-green-800 hover:bg-green-200",
+    default: "bg-forest-100 text-forest-800 hover:bg-forest-200",
     outline: "text-foreground border border-gray-200 hover:bg-gray-50",
   };
   return (
@@ -76,8 +76,8 @@ const Button = ({
 }) => {
   const baseStyles = "inline-flex items-center justify-center rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2";
   const variants = {
-    default: "bg-green-600 text-white hover:bg-green-700 shadow-sm",
-    outline: "border border-green-600 bg-transparent hover:bg-green-50 text-green-700",
+    default: "bg-forest-600 text-white hover:bg-forest-700 shadow-sm",
+    outline: "border border-green-600 bg-transparent hover:bg-forest-50 text-forest-700",
   };
   return (
     <button
@@ -177,7 +177,7 @@ const AgricultureAdvisory = ({ weatherData }: { weatherData: AdvisoryWeatherData
     } else {
       recommendations.push({
         type: "success",
-        icon: <CheckCircle className="w-4 h-4 text-green-500" />,
+        icon: <CheckCircle className="w-4 h-4 text-forest-500" />,
         title: "Optimal Temperature",
         message:
           "Good conditions for most crop activities including planting and harvesting.",
@@ -261,7 +261,7 @@ const AgricultureAdvisory = ({ weatherData }: { weatherData: AdvisoryWeatherData
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center space-x-2">
-            <Wheat className="w-5 h-5 text-green-600" />
+            <Wheat className="w-5 h-5 text-forest-600" />
             <span>Agricultural Advisory</span>
           </CardTitle>
         </CardHeader>
@@ -272,14 +272,14 @@ const AgricultureAdvisory = ({ weatherData }: { weatherData: AdvisoryWeatherData
               className={`${rec.type === "warning"
                 ? "border-yellow-200 bg-yellow-50/50"
                 : rec.type === "success"
-                  ? "border-green-200 bg-green-50/50"
+                  ? "border-forest-200 bg-forest-50/50"
                   : "border-blue-200 bg-blue-50/50"
                 }`}
             >
               <div className="flex items-start space-x-3">
                 <div className="mt-1">{rec.icon}</div>
                 <div className="flex-1">
-                  <h4 className={`font-semibold mb-1 text-sm ${rec.type === 'warning' ? 'text-yellow-800' : rec.type === 'success' ? 'text-green-800' : 'text-blue-800'}`}>
+                  <h4 className={`font-semibold mb-1 text-sm ${rec.type === 'warning' ? 'text-yellow-800' : rec.type === 'success' ? 'text-forest-800' : 'text-blue-800'}`}>
                     {rec.title}
                   </h4>
                   <AlertDescription className="text-gray-600">{rec.message}</AlertDescription>
@@ -302,10 +302,10 @@ const AgricultureAdvisory = ({ weatherData }: { weatherData: AdvisoryWeatherData
           <CardTitle>Seasonal Crop Recommendations</CardTitle>
         </CardHeader>
         <CardContent>
-          <h4 className="font-semibold text-lg mb-3 text-green-800">{seasonalAdvice.season}</h4>
+          <h4 className="font-semibold text-lg mb-3 text-forest-800">{seasonalAdvice.season}</h4>
           <div className="flex flex-wrap gap-2 mb-6">
             {seasonalAdvice.crops.map((crop, index) => (
-              <Badge key={index} className="bg-green-100 text-green-800 border-green-200">
+              <Badge key={index} className="bg-forest-100 text-forest-800 border-forest-200">
                 {crop}
               </Badge>
             ))}
@@ -316,7 +316,7 @@ const AgricultureAdvisory = ({ weatherData }: { weatherData: AdvisoryWeatherData
                 key={index}
                 className="p-3 bg-gray-50 border border-gray-100 rounded-lg text-sm font-medium text-gray-700 flex items-center"
               >
-                <div className="w-1.5 h-1.5 rounded-full bg-green-500 mr-2"></div>
+                <div className="w-1.5 h-1.5 rounded-full bg-forest-500 mr-2"></div>
                 {activity}
               </div>
             ))}
@@ -425,7 +425,7 @@ const WeatherDashboard = () => {
     <section id="weather" className="py-12 bg-gray-50/50 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-10 bg-gradient-to-br from-green-600 to-green-700 rounded-3xl p-8 shadow-xl text-white relative overflow-hidden">
+        <div className="text-center mb-10 bg-gradient-to-br from-forest-600 to-green-700 rounded-3xl p-8 shadow-xl text-white relative overflow-hidden">
           <div className="absolute top-0 right-0 p-8 opacity-10">
             <Cloud className="w-48 h-48" />
           </div>
@@ -447,10 +447,10 @@ const WeatherDashboard = () => {
         {currentWeather && (
           <div className="mb-8">
             <Card className="bg-white border-none shadow-xl overflow-hidden">
-              <div className="bg-gradient-to-r from-green-600 to-green-500 p-1"></div>
+              <div className="bg-gradient-to-r from-forest-600 to-forest-500 p-1"></div>
               <CardHeader className="text-center sm:text-left sm:flex sm:items-center sm:justify-between sm:space-y-0 pb-2 border-b border-gray-100 bg-gray-50/30">
                 <div>
-                  <div className="flex items-center justify-center sm:justify-start space-x-2 text-green-700 mb-1">
+                  <div className="flex items-center justify-center sm:justify-start space-x-2 text-forest-700 mb-1">
                     <MapPin className="h-5 w-5" />
                     <h3 className="text-2xl font-bold">{currentWeather.name}</h3>
                   </div>
@@ -477,22 +477,22 @@ const WeatherDashboard = () => {
                   </div>
 
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full md:w-auto">
-                    <div className="bg-gray-50 p-4 rounded-xl text-center border border-gray-100 hover:border-green-200 transition-colors">
+                    <div className="bg-gray-50 p-4 rounded-xl text-center border border-gray-100 hover:border-forest-200 transition-colors">
                       <Thermometer className="h-5 w-5 mx-auto mb-2 text-red-500" />
                       <p className="text-gray-500 text-xs uppercase tracking-wider font-semibold mb-1">Feels Like</p>
                       <p className="text-lg font-bold text-gray-900">{Math.round(currentWeather.main.feels_like)}°</p>
                     </div>
-                    <div className="bg-gray-50 p-4 rounded-xl text-center border border-gray-100 hover:border-green-200 transition-colors">
+                    <div className="bg-gray-50 p-4 rounded-xl text-center border border-gray-100 hover:border-forest-200 transition-colors">
                       <Droplets className="h-5 w-5 mx-auto mb-2 text-blue-500" />
                       <p className="text-gray-500 text-xs uppercase tracking-wider font-semibold mb-1">Humidity</p>
                       <p className="text-lg font-bold text-gray-900">{currentWeather.main.humidity}%</p>
                     </div>
-                    <div className="bg-gray-50 p-4 rounded-xl text-center border border-gray-100 hover:border-green-200 transition-colors">
+                    <div className="bg-gray-50 p-4 rounded-xl text-center border border-gray-100 hover:border-forest-200 transition-colors">
                       <Wind className="h-5 w-5 mx-auto mb-2 text-gray-500" />
                       <p className="text-gray-500 text-xs uppercase tracking-wider font-semibold mb-1">Wind</p>
                       <p className="text-lg font-bold text-gray-900">{currentWeather.wind.speed} m/s</p>
                     </div>
-                    <div className="bg-gray-50 p-4 rounded-xl text-center border border-gray-100 hover:border-green-200 transition-colors">
+                    <div className="bg-gray-50 p-4 rounded-xl text-center border border-gray-100 hover:border-forest-200 transition-colors">
                       <Eye className="h-5 w-5 mx-auto mb-2 text-teal-500" />
                       <p className="text-gray-500 text-xs uppercase tracking-wider font-semibold mb-1">Visibility</p>
                       <p className="text-lg font-bold text-gray-900">{(currentWeather.visibility / 1000).toFixed(1)} km</p>
@@ -539,7 +539,7 @@ const WeatherDashboard = () => {
                     return (
                       <div
                         key={day.dt}
-                        className="bg-white rounded-xl p-4 text-center border border-gray-100 hover:border-green-200 hover:shadow-md transition-all group"
+                        className="bg-white rounded-xl p-4 text-center border border-gray-100 hover:border-forest-200 hover:shadow-md transition-all group"
                       >
                         <p className="font-semibold text-gray-700 text-sm mb-3">
                           {date.toLocaleDateString("en-US", { weekday: "short" })}
@@ -645,7 +645,7 @@ const WeatherDashboard = () => {
             onClick={getUserLocation}
             disabled={loading}
             variant="outline"
-            className="border-green-200 text-green-700 hover:bg-green-50 hover:border-green-300 px-8 py-6 h-auto text-base rounded-full shadow-sm"
+            className="border-forest-200 text-forest-700 hover:bg-forest-50 hover:border-forest-300 px-8 py-6 h-auto text-base rounded-full shadow-sm"
           >
             {loading ? (
               <RefreshCw className="mr-2 h-5 w-5 animate-spin" />

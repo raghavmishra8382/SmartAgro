@@ -101,29 +101,29 @@ const IoTConnect: React.FC = () => {
                     </div>
 
                     {/* Features Preview */}
-                    <div className="p-6 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl border border-green-200">
+                    <div className="p-6 bg-gradient-to-br from-forest-50 to-forest-600 rounded-xl border border-forest-200">
                         <h3 className="text-lg font-semibold text-green-900 mb-3">
                             Upcoming Features
                         </h3>
-                        <ul className="space-y-2 text-sm text-green-800">
+                        <ul className="space-y-2 text-sm text-forest-800">
                             <li className="flex items-center space-x-2">
-                                <CheckCircle className="h-4 w-4 text-green-600" />
+                                <CheckCircle className="h-4 w-4 text-forest-600" />
                                 <span>Remote on/off control from anywhere</span>
                             </li>
                             <li className="flex items-center space-x-2">
-                                <CheckCircle className="h-4 w-4 text-green-600" />
+                                <CheckCircle className="h-4 w-4 text-forest-600" />
                                 <span>Automated watering schedules based on weather</span>
                             </li>
                             <li className="flex items-center space-x-2">
-                                <CheckCircle className="h-4 w-4 text-green-600" />
+                                <CheckCircle className="h-4 w-4 text-forest-600" />
                                 <span>Real-time water usage monitoring</span>
                             </li>
                             <li className="flex items-center space-x-2">
-                                <CheckCircle className="h-4 w-4 text-green-600" />
+                                <CheckCircle className="h-4 w-4 text-forest-600" />
                                 <span>Multi-zone irrigation management</span>
                             </li>
                             <li className="flex items-center space-x-2">
-                                <CheckCircle className="h-4 w-4 text-green-600" />
+                                <CheckCircle className="h-4 w-4 text-forest-600" />
                                 <span>Smart notifications and alerts</span>
                             </li>
                         </ul>

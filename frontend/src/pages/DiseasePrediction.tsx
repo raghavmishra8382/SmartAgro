@@ -155,7 +155,7 @@ Ensure the response is ONLY the JSON object.`;
             <div className="relative bg-slate-900 overflow-hidden border-b border-white/5">
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20" />
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full">
-                    <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-green-500/20 blur-[120px] rounded-full" />
+                    <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-forest-500/20 blur-[120px] rounded-full" />
                     <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-500/10 blur-[120px] rounded-full" />
                 </div>
 
@@ -171,7 +171,7 @@ Ensure the response is ONLY the JSON object.`;
                         </div>
 
                         <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-8 leading-[0.9]">
-                            Smart <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-500">Plant Care</span>
+                            Smart <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-forest-600">Plant Care</span>
                         </h1>
 
                         <p className="max-w-2xl text-xl text-slate-400 font-medium leading-relaxed mx-auto">
@@ -206,7 +206,7 @@ Ensure the response is ONLY the JSON object.`;
                                         disabled={isAnalyzing}
                                         className="relative group bg-slate-900 text-white px-12 py-5 rounded-2xl font-black text-xl shadow-2xl overflow-hidden active:scale-95 transition-all"
                                     >
-                                        <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                        <div className="absolute inset-0 bg-gradient-to-r from-forest-500 to-forest-600 opacity-0 group-hover:opacity-100 transition-opacity" />
                                         <div className="relative flex items-center gap-3">
                                             {isAnalyzing ? (
                                                 <RefreshCw className="animate-spin" size={24} />
@@ -259,7 +259,7 @@ Ensure the response is ONLY the JSON object.`;
                                 {/* Advisory Section */}
                                 <div className="space-y-6">
                                     <div className="flex items-center gap-4 px-4">
-                                        <div className="w-1.5 h-8 bg-green-500 rounded-full" />
+                                        <div className="w-1.5 h-8 bg-forest-500 rounded-full" />
                                         <h2 className="text-3xl font-black text-slate-900 tracking-tight">Agricultural Advisory</h2>
                                     </div>
                                     <RecommendationPanel

@@ -42,7 +42,7 @@ const AppLayout = () => {
 
 function AppContent() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 font-['Inter',sans-serif]">
+    <div className="min-h-screen bg-[hsl(40,33%,98%)] font-sans">
       <Routes>
         {/* Public Routes */}
         <Route path="/" element={<Index />} />

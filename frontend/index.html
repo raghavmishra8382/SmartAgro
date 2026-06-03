@@ -6,46 +6,60 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SmartAGrow</title>
   <meta name="description" content="SmartAgro farm intelligence and services platform." />
-  <meta name="theme-color" content="#16a34a" />
+  <meta name="theme-color" content="#2c7252" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="/logo-favicon.png" />
   <link rel="apple-touch-icon" href="/logo-apple-touch.png" />
 
-  <!-- Custom CSS to remove box shape -->
   <style>
+    /*
+      Google Translate widget: keep functional but invisible.
+      We use the cookie + select approach for programmatic switching.
+    */
     #google_translate_element {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      display: inline-block;
-      z-index: 9999;
+      position: fixed !important;
+      bottom: -200px !important;
+      left: -200px !important;
+      width: 1px !important;
+      height: 1px !important;
+      overflow: hidden !important;
+      z-index: -1 !important;
     }
 
-    /* Remove Google default box style */
-    .goog-te-gadget {
-      font-family: inherit !important;
-      font-size: inherit !important;
-      color: inherit !important;
+    /* Hide the Google Translate top banner bar */
+    .goog-te-banner-frame {
+      display: none !important;
     }
 
-    .goog-te-gadget-simple {
-      background: none !important;
-      border: none !important;
-      padding: 0 !important;
-      margin: 0 !important;
-      box-shadow: none !important;
+    /* Prevent Google from pushing body down */
+    body {
+      top: 0 !important;
+      position: static !important;
     }
 
-    .goog-te-gadget-simple span {
-      display: none;
-      /* hides the "Powered by Google" text */
+    /* Hide Google Translate tooltips */
+    #goog-gt-tt,
+    .goog-te-balloon-frame {
+      display: none !important;
+    }
+
+    /* Hide any Google injected UI chrome */
+    .VIpgJd-ZVi9od-ORHb-OEVmcd,
+    .VIpgJd-ZVi9od-aZ2wEe-wOHMyf,
+    .VIpgJd-ZVi9od-aZ2wEe-OiiCO {
+      display: none !important;
+    }
+
+    /* Fix body margin that Google Translate adds */
+    .translated-ltr, .translated-rtl {
+      margin-top: 0 !important;
     }
   </style>
 </head>
 
 <body>
-  <!--  Google Translate Dropdown -->
+  <!-- Google Translate container (hidden but alive for the API) -->
   <div id="google_translate_element"></div>
 
   <!-- React Root -->
@@ -55,19 +69,97 @@
   <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
   <script type="module" src="/src/main.tsx"></script>
 
-  <!--  Google Translate Script -->
+  <!-- Google Translate Setup -->
   <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement(
         {
           pageLanguage: "en",
-          includedLanguages:
-            "en,hi,bn,ta,te,ml,mr,gu,pa,or,kn", // English + Indian languages
+          includedLanguages: "en,hi,bn,ta,te,ml,mr,gu,pa,or,kn",
           layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+          autoDisplay: false,
         },
         "google_translate_element"
       );
     }
+
+    /**
+     * Programmatic language switch via Google Translate.
+     * Uses two approaches in parallel for reliability:
+     *   1. Cookie-based (fastest, triggers on page reload)
+     *   2. Select-based (works without reload)
+     */
+    window.triggerGoogleTranslate = function (langCode) {
+      // Approach 1: Set the googtrans cookie and reload if select fails
+      function setCookie(lang) {
+        var value = lang === 'en' ? '' : '/en/' + lang;
+        document.cookie = 'googtrans=' + value + '; path=/; domain=' + window.location.hostname;
+        document.cookie = 'googtrans=' + value + '; path=/';
+      }
+
+      // Approach 2: Find and trigger the hidden <select>
+      function trySelect() {
+        var frames = document.querySelectorAll('iframe');
+        var mainDoc = document;
+
+        // Try in main document first
+        var sel = mainDoc.querySelector('.goog-te-combo');
+        if (sel) {
+          sel.value = langCode;
+          sel.dispatchEvent(new Event('change', { bubbles: true }));
+          return true;
+        }
+
+        // Try inside iframes (Google sometimes uses iframes)
+        for (var i = 0; i < frames.length; i++) {
+          try {
+            var iframeDoc = frames[i].contentDocument || frames[i].contentWindow.document;
+            sel = iframeDoc.querySelector('.goog-te-combo');
+            if (sel) {
+              sel.value = langCode;
+              sel.dispatchEvent(new Event('change', { bubbles: true }));
+              return true;
+            }
+          } catch (e) {
+            // Cross-origin, skip
+          }
+        }
+        return false;
+      }
+
+      // If switching back to English, clear cookie and reset
+      if (langCode === 'en') {
+        setCookie('en');
+        // Try to use the select to switch back
+        if (!trySelect()) {
+          // If select not available, reload to clear translation
+          window.location.reload();
+        }
+        return;
+      }
+
+      // Set cookie first
+      setCookie(langCode);
+
+      // Try select-based switch with retries
+      var attempts = 0;
+      var maxAttempts = 30;
+
+      function attempt() {
+        if (trySelect()) {
+          return; // Success
+        }
+        attempts++;
+        if (attempts < maxAttempts) {
+          setTimeout(attempt, 300);
+        } else {
+          // Last resort: reload to apply cookie
+          window.location.reload();
+        }
+      }
+
+      attempt();
+    };
   </script>
   <script type="text/javascript"
     src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>

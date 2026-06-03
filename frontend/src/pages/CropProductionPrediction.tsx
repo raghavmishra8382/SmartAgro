@@ -163,15 +163,15 @@ export default function CropProductionPrediction() {
   );
   
   return (
-    <div className="min-h-screen bg-gradient-to-b from-green-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-forest-50 to-white">
       <div className="max-w-6xl mx-auto p-6">
         <div className="flex items-center space-x-3 mb-2">
-          <div className="text-green-600">
+          <div className="text-forest-600">
             <PlantIcon />
           </div>
           <h1 className="text-3xl font-bold text-gray-800">Crop Production Prediction</h1>
         </div>
-        <p className="text-green-700 mb-8">Have questions or need assistance? We're here to help.</p>
+        <p className="text-forest-700 mb-8">Have questions or need assistance? We're here to help.</p>
         
         <div className="bg-white rounded-xl shadow-lg border border-green-100 p-8 mb-8">
           <div className="grid md:grid-cols-2 gap-x-8 gap-y-6">
@@ -185,7 +185,7 @@ export default function CropProductionPrediction() {
                     setState(e.target.value);
                     setDistrict('');
                   }}
-                  className="w-full p-3 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-white appearance-none"
+                  className="w-full p-3 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-forest-500 bg-white appearance-none"
                 >
                   <option value="">Select a state</option>
                   {states.map((s) => (
@@ -205,7 +205,7 @@ export default function CropProductionPrediction() {
                   id="district"
                   value={district}
                   onChange={(e) => setDistrict(e.target.value)}
-                  className="w-full p-3 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-white appearance-none"
+                  className="w-full p-3 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-forest-500 bg-white appearance-none"
                   disabled={!state || !districts[state]}
                 >
                   <option value="">Select a District</option>
@@ -226,7 +226,7 @@ export default function CropProductionPrediction() {
                   id="crop"
                   value={crop}
                   onChange={(e) => setCrop(e.target.value)}
-                  className="w-full p-3 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-white appearance-none"
+                  className="w-full p-3 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-forest-500 bg-white appearance-none"
                 >
                   <option value="">Select a Crop</option>
                   {crops.map((c) => (
@@ -246,7 +246,7 @@ export default function CropProductionPrediction() {
                   id="season"
                   value={season}
                   onChange={(e) => setSeason(e.target.value)}
-                  className="w-full p-3 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-white appearance-none"
+                  className="w-full p-3 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-forest-500 bg-white appearance-none"
                 >
                   <option value="">Select a Season</option>
                   {seasons.map((s) => (
@@ -267,7 +267,7 @@ export default function CropProductionPrediction() {
                 value={area}
                 onChange={(e) => setArea(e.target.value)}
                 placeholder="Enter cultivated area"
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-white"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-forest-500 bg-white"
               />
             </div>
             
@@ -278,7 +278,7 @@ export default function CropProductionPrediction() {
                   id="year"
                   value={year}
                   onChange={(e) => setYear(e.target.value)}
-                  className="w-full p-3 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 bg-white appearance-none"
+                  className="w-full p-3 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-forest-500 bg-white appearance-none"
                 >
                   {years.map((y) => (
                     <option key={y} value={y}>{y}</option>
@@ -294,7 +294,7 @@ export default function CropProductionPrediction() {
           <button
             onClick={handlePredict}
             disabled={isLoading}
-            className={`w-full mt-8 p-4 rounded-lg text-white font-medium transition-all bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 shadow-md hover:shadow-lg ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+            className={`w-full mt-8 p-4 rounded-lg text-white font-medium transition-all bg-gradient-to-r from-forest-500 to-forest-600 hover:from-forest-600 hover:to-green-700 shadow-md hover:shadow-lg ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
           >
             <span className="mr-2">
               <BarChartIcon />
@@ -313,28 +313,28 @@ export default function CropProductionPrediction() {
               <h2 className="text-2xl font-bold text-gray-800 mb-6">Production Prediction</h2>
               
               <div className="grid lg:grid-cols-3 gap-4 mb-8">
-                <div className="bg-green-50 rounded-lg p-4 border border-green-100">
+                <div className="bg-forest-50 rounded-lg p-4 border border-green-100">
                   <div className="flex justify-between items-center mb-2">
                     <h3 className="text-lg font-medium text-gray-700">Total Production</h3>
-                    <div className="text-green-600">
+                    <div className="text-forest-600">
                       <BarChartIcon />
                     </div>
                   </div>
-                  <p className="text-3xl font-bold text-green-700">
+                  <p className="text-3xl font-bold text-forest-700">
                     {typeof predictionData.predicted_production === 'number' ? predictionData.predicted_production.toFixed(1) : 'N/A'} tonnes
                   </p>
                   <p className="text-sm text-gray-600 mt-1">Total expected production</p>
                 </div>
                 
                 {typeof predictionData.predicted_yield === 'number' && (
-                  <div className="bg-green-50 rounded-lg p-4 border border-green-100">
+                  <div className="bg-forest-50 rounded-lg p-4 border border-green-100">
                     <div className="flex justify-between items-center mb-2">
                       <h3 className="text-lg font-medium text-gray-700">Estimated Yield</h3>
-                      <div className="text-green-600">
+                      <div className="text-forest-600">
                         <PlantIcon />
                       </div>
                     </div>
-                    <p className="text-3xl font-bold text-green-700">
+                    <p className="text-3xl font-bold text-forest-700">
                       {predictionData.predicted_yield.toFixed(1)} q/ha
                     </p>
                     <p className="text-sm text-gray-600 mt-1">Quintals per hectare</p>
@@ -342,14 +342,14 @@ export default function CropProductionPrediction() {
                 )}
                 
                 {typeof predictionData.confidence === 'number' && (
-                  <div className="bg-green-50 rounded-lg p-4 border border-green-100">
+                  <div className="bg-forest-50 rounded-lg p-4 border border-green-100">
                     <div className="flex justify-between items-center mb-2">
                       <h3 className="text-lg font-medium text-gray-700">Confidence</h3>
-                      <div className="text-green-600">
+                      <div className="text-forest-600">
                         <CheckIcon />
                       </div>
                     </div>
-                    <p className="text-3xl font-bold text-green-700">
+                    <p className="text-3xl font-bold text-forest-700">
                       {(predictionData.confidence * 100).toFixed(0)}%
                     </p>
                     <p className="text-sm text-gray-600 mt-1">Prediction accuracy</p>
@@ -426,16 +426,16 @@ export default function CropProductionPrediction() {
                                 {predictionData.environmental_factors.temperature_range}
                               </p>
                             </div>
-                            <div className="bg-green-50 px-3 py-1 rounded-full">
-                              <span className="text-green-800 font-medium">Optimal</span>
+                            <div className="bg-forest-50 px-3 py-1 rounded-full">
+                              <span className="text-forest-800 font-medium">Optimal</span>
                             </div>
                           </div>
                         )}
                         
                         {predictionData.environmental_factors.soil_type && (
                           <div className="flex items-center p-3 border border-gray-200 rounded-lg">
-                            <div className="bg-green-100 p-2 rounded-full mr-3">
-                              <span className="text-green-600">
+                            <div className="bg-forest-100 p-2 rounded-full mr-3">
+                              <span className="text-forest-600">
                                 <MapIcon />
                               </span>
                             </div>
@@ -445,8 +445,8 @@ export default function CropProductionPrediction() {
                                 {predictionData.environmental_factors.soil_type}
                               </p>
                             </div>
-                            <div className="bg-green-50 px-3 py-1 rounded-full">
-                              <span className="text-green-800 font-medium">Suitable</span>
+                            <div className="bg-forest-50 px-3 py-1 rounded-full">
+                              <span className="text-forest-800 font-medium">Suitable</span>
                             </div>
                           </div>
                         )}
@@ -464,8 +464,8 @@ export default function CropProductionPrediction() {
                                 {predictionData.environmental_factors.growing_period}
                               </p>
                             </div>
-                            <div className="bg-green-50 px-3 py-1 rounded-full">
-                              <span className="text-green-800 font-medium">Normal</span>
+                            <div className="bg-forest-50 px-3 py-1 rounded-full">
+                              <span className="text-forest-800 font-medium">Normal</span>
                             </div>
                           </div>
                         )}

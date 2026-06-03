@@ -15,7 +15,7 @@ const FloatingAIButton: React.FC = () => {
             onClick={() => { navigate("/chat"); setExpanded(false); }}
             className="flex items-center gap-2 bg-white text-slate-800 text-sm font-semibold px-4 py-2.5 rounded-2xl shadow-lg border border-slate-100 hover:shadow-xl hover:-translate-y-0.5 transition-all"
           >
-            <MessageCircle className="h-4 w-4 text-emerald-600" />
+            <MessageCircle className="h-4 w-4 text-forest-600" />
             Chat with AI
           </button>
           <button
@@ -33,8 +33,8 @@ const FloatingAIButton: React.FC = () => {
         {/* Pulsing ring — only when not expanded */}
         {!expanded && (
           <>
-            <span className="absolute inset-0 rounded-full bg-emerald-500 animate-ping opacity-25" />
-            <span className="absolute inset-0 scale-125 rounded-full bg-emerald-400/20" />
+            <span className="absolute inset-0 rounded-full bg-forest-600 animate-ping opacity-25" />
+            <span className="absolute inset-0 scale-125 rounded-full bg-forest-600/20" />
           </>
         )}
         <button
@@ -43,7 +43,7 @@ const FloatingAIButton: React.FC = () => {
           className={`relative h-14 w-14 rounded-full shadow-xl flex items-center justify-center transition-all duration-200 ${
             expanded
               ? "bg-slate-800 hover:bg-slate-700 rotate-45 scale-95"
-              : "bg-gradient-to-br from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 hover:scale-110"
+              : "bg-gradient-to-br from-forest-600 to-forest-600 hover:from-forest-600 hover:to-green-700 hover:scale-110"
           }`}
         >
           {expanded ? (

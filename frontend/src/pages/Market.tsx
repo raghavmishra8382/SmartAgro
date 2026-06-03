@@ -183,7 +183,7 @@ const Market: React.FC = () => {
   if (pricesLoading) {
     return (
       <div className="flex items-center justify-center h-screen bg-gray-50">
-        <Loader2 className="h-12 w-12 animate-spin text-green-600" />
+        <Loader2 className="h-12 w-12 animate-spin text-forest-600" />
         <p className="ml-4 text-lg text-gray-700">Loading Market Data...</p>
       </div>
     );
@@ -301,7 +301,7 @@ const Market: React.FC = () => {
                       <td className="py-3 md:py-4 px-2 md:px-4">
                         <div
                           className={`flex items-center space-x-1 ${item.trend === "up"
-                            ? "text-green-600"
+                            ? "text-forest-600"
                             : "text-red-600"
                             }`}
                         >
@@ -327,7 +327,7 @@ const Market: React.FC = () => {
             <div className="mt-6 text-center">
               <button
                 onClick={() => setVisibleCropsCount((prev) => prev + 10)}
-                className="bg-green-100 text-green-700 py-2 px-4 rounded-lg hover:bg-green-200 transition-colors font-medium"
+                className="bg-forest-100 text-forest-700 py-2 px-4 rounded-lg hover:bg-forest-200 transition-colors font-medium"
               >
                 Load More Crops
               </button>
@@ -343,7 +343,7 @@ const Market: React.FC = () => {
           <div className="flex-grow overflow-y-auto pr-2">
             {newsLoading ? (
               <div className="flex justify-center items-center h-full">
-                <Loader2 className="h-8 w-8 animate-spin text-green-600" />
+                <Loader2 className="h-8 w-8 animate-spin text-forest-600" />
               </div>
             ) : news.length === 0 ? (
               <p className="text-gray-500 text-sm text-center">
@@ -354,7 +354,7 @@ const Market: React.FC = () => {
                 {news.map((item, index) => (
                   <div
                     key={index}
-                    className="border-l-4 border-green-500 pl-4 py-1"
+                    className="border-l-4 border-forest-500 pl-4 py-1"
                   >
                     <h3 className="font-medium text-gray-800 mb-1">
                       {item.title}
@@ -363,7 +363,7 @@ const Market: React.FC = () => {
                       <span className="text-sm text-gray-500">{item.time}</span>
                       <span
                         className={`text-xs px-2 py-1 rounded-full ${item.impact === "positive"
-                          ? "bg-green-100 text-green-700"
+                          ? "bg-forest-100 text-forest-700"
                           : item.impact === "negative"
                             ? "bg-red-100 text-red-700"
                             : "bg-gray-100 text-gray-700"
@@ -381,7 +381,7 @@ const Market: React.FC = () => {
             <button
               onClick={handleLoadMoreNews}
               disabled={moreNewsLoading}
-              className="w-full bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-colors font-medium flex items-center justify-center disabled:bg-gray-400"
+              className="w-full bg-forest-500 text-white py-2 px-4 rounded-lg hover:bg-forest-600 transition-colors font-medium flex items-center justify-center disabled:bg-gray-400"
             >
               {moreNewsLoading ? (
                 <Loader2 className="h-5 w-5 animate-spin" />
@@ -414,7 +414,7 @@ const StatCard: React.FC<StatCardProps> = ({
   trend,
 }) => {
   const trendClasses = {
-    up: "text-green-600 bg-green-100",
+    up: "text-forest-600 bg-forest-100",
     down: "text-red-600 bg-red-100",
     neutral: "text-blue-600 bg-blue-100",
   };
@@ -423,8 +423,8 @@ const StatCard: React.FC<StatCardProps> = ({
   let iconBg: string;
 
   if (trend === "up") {
-    iconColor = "text-green-500";
-    iconBg = "bg-green-100";
+    iconColor = "text-forest-500";
+    iconBg = "bg-forest-100";
   } else if (trend === "down") {
     iconColor = "text-red-500";
     iconBg = "bg-red-100";

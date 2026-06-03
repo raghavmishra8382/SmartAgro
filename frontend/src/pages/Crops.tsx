@@ -90,7 +90,7 @@ const Crops: React.FC = () => {
 
   const getHealthColor = (health: string) => {
     switch (health) {
-      case 'Excellent': return 'text-green-600 bg-green-50';
+      case 'Excellent': return 'text-forest-600 bg-forest-50';
       case 'Good': return 'text-blue-600 bg-blue-50';
       case 'Fair': return 'text-yellow-600 bg-yellow-50';
       default: return 'text-gray-600 bg-gray-50';
@@ -106,7 +106,7 @@ const Crops: React.FC = () => {
         </div>
         <button
           onClick={() => setShowForm(true)}
-          className="bg-green-600 text-white px-4 py-2 rounded-lg shadow hover:bg-green-700 transition text-sm md:text-base whitespace-nowrap"
+          className="bg-forest-600 text-white px-4 py-2 rounded-lg shadow hover:bg-forest-700 transition text-sm md:text-base whitespace-nowrap"
         >
           + Add Crop
         </button>
@@ -152,7 +152,7 @@ const Crops: React.FC = () => {
                 </div>
               </div>
               
-              <button className="w-full mt-4 bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-colors text-sm md:text-base">
+              <button className="w-full mt-4 bg-forest-500 text-white py-2 px-4 rounded-lg hover:bg-forest-600 transition-colors text-sm md:text-base">
                 View Details
               </button>
             </div>
@@ -257,7 +257,7 @@ const Crops: React.FC = () => {
 
               <button
                 type="submit"
-                className="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition text-sm md:text-base"
+                className="w-full bg-forest-600 text-white py-2 rounded-lg hover:bg-forest-700 transition text-sm md:text-base"
               >
                 Add Crop
               </button>

@@ -70,14 +70,14 @@ const SmartBanner: React.FC<SmartBannerProps> = ({ userName }) => {
     <>
       <style>{bannerCSS}</style>
 
-      <div className="relative overflow-hidden rounded-[1.75rem] shadow-2xl shadow-emerald-950/30 ring-1 ring-white/10">
+      <div className="relative overflow-hidden rounded-[1.75rem] shadow-2xl shadow-forest-600/30 ring-1 ring-white/10">
 
         {/* ▸ Deep base gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-700 to-green-800" />
+        <div className="absolute inset-0 bg-gradient-to-br from-forest-700 via-forest-800 to-agri-900" />
 
         {/* ▸ Aurora mesh — slowly swaying colour blobs */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="aurora-glow absolute -left-20 top-0 h-[28rem] w-[28rem] rounded-full bg-emerald-500/20 blur-[80px]" />
+          <div className="aurora-glow absolute -left-20 top-0 h-[28rem] w-[28rem] rounded-full bg-forest-600/20 blur-[80px]" />
           <div className="aurora-glow absolute -right-20 -bottom-10 h-[26rem] w-[26rem] rounded-full bg-teal-400/15 blur-[90px] [animation-delay:3s]" />
           <div className="aurora-glow absolute left-1/3 -top-10 h-64 w-64 rounded-full bg-lime-400/10 blur-[60px] [animation-delay:5s]" />
           <div className="aurora-glow absolute right-1/4 bottom-0 h-48 w-48 rounded-full bg-yellow-300/8 blur-[50px] [animation-delay:2s]" />
@@ -93,7 +93,7 @@ const SmartBanner: React.FC<SmartBannerProps> = ({ userName }) => {
 
         {/* ▸ Floating orbs — animated */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="float-slow absolute top-6 right-12 h-2 w-2 rounded-full bg-emerald-300/50" />
+          <div className="float-slow absolute top-6 right-12 h-2 w-2 rounded-full bg-forest-600/50" />
           <div className="float-med  absolute top-14 right-40 h-1.5 w-1.5 rounded-full bg-white/30 [animation-delay:1.5s]" />
           <div className="float-slow absolute bottom-10 left-20 h-1 w-1 rounded-full bg-yellow-300/40 [animation-delay:3s]" />
           <div className="float-med  absolute bottom-16 right-24 h-1 w-1 rounded-full bg-sky-300/30 [animation-delay:0.8s]" />
@@ -108,25 +108,25 @@ const SmartBanner: React.FC<SmartBannerProps> = ({ userName }) => {
               {/* AI badge */}
               <div className="inline-flex items-center gap-2 bg-white/[0.07] backdrop-blur-xl border border-white/[0.12] rounded-full px-3.5 py-1.5 mb-3 shadow-lg shadow-black/10">
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-forest-600 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-forest-600" />
                 </span>
                 <Sparkles className="h-3 w-3 text-yellow-300" />
-                <span className="text-[10px] font-bold text-emerald-200/90 uppercase tracking-[0.12em]">AI Farm Assistant</span>
+                <span className="text-[10px] font-bold text-forest-600/90 uppercase tracking-[0.12em]">AI Farm Assistant</span>
               </div>
 
               <h1 className="text-2xl md:text-[1.75rem] font-black text-white leading-tight tracking-tight">
                 {greeting}, {userName.split(" ")[0]}!{" "}
                 <span className="text-2xl inline-block ml-0.5">{emoji}</span>
               </h1>
-              <p className="text-emerald-300/70 text-xs font-medium mt-1.5 tracking-wide">{today}</p>
+              <p className="text-forest-600/70 text-xs font-medium mt-1.5 tracking-wide">{today}</p>
             </div>
 
             {/* Right — Location + weather summary pills */}
             {weather && (
               <div className="flex flex-wrap gap-2 sm:flex-col sm:items-end">
                 <GlassPill>
-                  <MapPin className="h-3.5 w-3.5 text-emerald-300" />
+                  <MapPin className="h-3.5 w-3.5 text-forest-600" />
                   <span className="text-white text-xs font-semibold truncate max-w-[120px]">{weather.location}</span>
                 </GlassPill>
                 <GlassPill>
@@ -200,7 +200,7 @@ const SmartBanner: React.FC<SmartBannerProps> = ({ userName }) => {
             <GlassInfoCard
               accent="emerald"
               label="Today's Focus"
-              icon={<CheckCircle2 className="h-5 w-5 text-emerald-300" />}
+              icon={<CheckCircle2 className="h-5 w-5 text-forest-600" />}
             >
               {topTask ? (
                 <>
@@ -213,10 +213,10 @@ const SmartBanner: React.FC<SmartBannerProps> = ({ userName }) => {
                   )}
                   <div className="mt-2.5 inline-flex items-center gap-1.5 bg-white/[0.06] border border-white/[0.08] rounded-lg px-2 py-1">
                     <Flame className={`h-3 w-3 ${topTask.priority === "high" ? "text-rose-400" :
-                      topTask.priority === "medium" ? "text-amber-400" : "text-emerald-400"
+                      topTask.priority === "medium" ? "text-amber-400" : "text-forest-600"
                       }`} />
                     <span className={`text-[9px] font-black uppercase tracking-widest ${topTask.priority === "high" ? "text-rose-300" :
-                      topTask.priority === "medium" ? "text-amber-300" : "text-emerald-300"
+                      topTask.priority === "medium" ? "text-amber-300" : "text-forest-600"
                       }`}>
                       {topTask.priority}
                     </span>
@@ -241,7 +241,7 @@ const SmartBanner: React.FC<SmartBannerProps> = ({ userName }) => {
                 <>
                   <div className="flex items-center gap-1.5 flex-wrap">
                     <span className="text-[13px] font-bold text-white">{topCrop.name}</span>
-                    <span className={`inline-flex items-center gap-0.5 text-[13px] font-black ${topCrop.change >= 0 ? "text-emerald-300" : "text-rose-300"
+                    <span className={`inline-flex items-center gap-0.5 text-[13px] font-black ${topCrop.change >= 0 ? "text-forest-600" : "text-rose-300"
                       }`}>
                       {topCrop.change >= 0
                         ? <TrendingUp className="h-3.5 w-3.5" />
@@ -266,7 +266,7 @@ const SmartBanner: React.FC<SmartBannerProps> = ({ userName }) => {
         </div>
 
         {/* ▸ Bottom edge refraction line */}
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-400/20 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-forest-600/20 to-transparent" />
       </div>
     </>
   );
@@ -291,7 +291,7 @@ const GlassPill: React.FC<{ children: React.ReactNode }> = ({ children }) => (
 const ACCENTS = {
   sky: { gradient: "from-sky-500/[0.12] via-sky-600/[0.05] to-transparent", border: "border-sky-400/[0.15]", label: "text-sky-300/90", glow: "bg-sky-400/25", hoverBorder: "hover:border-sky-400/30" },
   rose: { gradient: "from-rose-500/[0.12] via-rose-600/[0.05] to-transparent", border: "border-rose-400/[0.15]", label: "text-rose-300/90", glow: "bg-rose-400/25", hoverBorder: "hover:border-rose-400/30" },
-  emerald: { gradient: "from-emerald-500/[0.12] via-emerald-600/[0.05] to-transparent", border: "border-emerald-400/[0.15]", label: "text-emerald-300/90", glow: "bg-emerald-400/25", hoverBorder: "hover:border-emerald-400/30" },
+  emerald: { gradient: "from-forest-600/[0.12] via-forest-600/[0.05] to-transparent", border: "border-forest-600/[0.15]", label: "text-forest-600/90", glow: "bg-forest-600/25", hoverBorder: "hover:border-forest-600/30" },
   amber: { gradient: "from-amber-500/[0.12] via-amber-600/[0.05] to-transparent", border: "border-amber-400/[0.15]", label: "text-amber-300/90", glow: "bg-amber-400/25", hoverBorder: "hover:border-amber-400/30" },
   violet: { gradient: "from-violet-500/[0.12] via-violet-600/[0.05] to-transparent", border: "border-violet-400/[0.15]", label: "text-violet-300/90", glow: "bg-violet-400/25", hoverBorder: "hover:border-violet-400/30" },
 };

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { apiUrl } from "@/lib/env";
-import { ScanLine, Mic, Droplets, Settings, Activity, AlertCircle, Plus } from "lucide-react";
+import { ScanLine, Mic, Droplets, Settings, AlertCircle, ArrowRight, Wifi, WifiOff } from "lucide-react";
 
 // New home section components
 import SmartBanner from "../components/home/SmartBanner";
@@ -88,7 +88,7 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <div className="space-y-6 pb-24">
+    <div className="space-y-6 pb-24 max-w-7xl mx-auto">
       {/* ── 1. Smart Hero Banner ─────────────────────────────────────── */}
       <SmartBanner userName={userName} />
 
@@ -106,20 +106,20 @@ const Home: React.FC = () => {
         {/* Scan Crop Disease */}
         <button
           onClick={() => navigate("/disease-prediction")}
-          className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-emerald-600 to-green-500 p-6 text-left shadow-lg hover:shadow-emerald-200 hover:shadow-xl transition-all duration-200"
+          className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-forest-600 to-forest-700 p-6 text-left shadow-soft hover:shadow-glow-green transition-all duration-300"
         >
-          <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 opacity-10">
+          <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 opacity-[0.08]">
             <ScanLine className="h-28 w-28 text-white" />
           </div>
           <div className="relative z-10">
-            <div className="mb-3 inline-flex items-center justify-center w-11 h-11 rounded-2xl bg-white/20 backdrop-blur-sm">
-              <ScanLine className="h-6 w-6 text-white" />
+            <div className="mb-3 inline-flex items-center justify-center w-11 h-11 rounded-xl bg-white/15 backdrop-blur-sm">
+              <ScanLine className="h-5 w-5 text-white" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-1">Scan Crop Disease</h3>
-            <p className="text-emerald-100 text-sm">Use camera to detect any disease</p>
-            <div className="mt-4 inline-flex items-center gap-2 bg-white text-emerald-700 text-sm font-bold px-4 py-2 rounded-xl shadow-sm group-hover:shadow-md group-hover:-translate-y-0.5 transition-all">
+            <h3 className="text-lg font-bold text-white mb-1 tracking-tight">Scan Crop Disease</h3>
+            <p className="text-forest-200/80 text-sm">Use camera to detect any disease</p>
+            <div className="mt-4 inline-flex items-center gap-2 bg-white text-forest-700 text-sm font-bold px-4 py-2 rounded-xl shadow-sm group-hover:shadow-md group-hover:-translate-y-0.5 transition-all duration-200">
               Scan Now
-              <span className="text-base">›</span>
+              <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
             </div>
           </div>
         </button>
@@ -127,34 +127,38 @@ const Home: React.FC = () => {
         {/* Talk to SmartAgro AI */}
         <button
           onClick={() => navigate("/chat")}
-          className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-violet-600 to-indigo-500 p-6 text-left shadow-lg hover:shadow-violet-200 hover:shadow-xl transition-all duration-200"
+          className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-violet-600 to-indigo-600 p-6 text-left shadow-soft hover:shadow-elevated transition-all duration-300"
         >
-          <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 opacity-10">
+          <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 opacity-[0.08]">
             <Mic className="h-28 w-28 text-white" />
           </div>
           <div className="relative z-10">
-            <div className="mb-3 inline-flex items-center justify-center w-11 h-11 rounded-2xl bg-white/20 backdrop-blur-sm">
-              <Mic className="h-6 w-6 text-white" />
+            <div className="mb-3 inline-flex items-center justify-center w-11 h-11 rounded-xl bg-white/15 backdrop-blur-sm">
+              <Mic className="h-5 w-5 text-white" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-1">Talk to SmartAgro</h3>
-            <p className="text-violet-100 text-sm">Ask farming questions by voice or text</p>
-            <div className="mt-4 inline-flex items-center gap-2 bg-white text-violet-700 text-sm font-bold px-4 py-2 rounded-xl shadow-sm group-hover:shadow-md group-hover:-translate-y-0.5 transition-all">
+            <h3 className="text-lg font-bold text-white mb-1 tracking-tight">Talk to SmartAgro</h3>
+            <p className="text-violet-200/80 text-sm">Ask farming questions by voice or text</p>
+            <div className="mt-4 inline-flex items-center gap-2 bg-white text-violet-700 text-sm font-bold px-4 py-2 rounded-xl shadow-sm group-hover:shadow-md group-hover:-translate-y-0.5 transition-all duration-200">
               Ask Now
-              <span className="text-base">›</span>
+              <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
             </div>
           </div>
         </button>
       </div>
 
       {/* ── 6. Quick IoT Status Strip ────────────────────────────────── */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-white rounded-2xl border border-gray-100 shadow-sm px-5 py-4">
+      <div className="card-premium flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 px-5 py-4">
         <div className="flex items-center gap-3">
-          <div className={`p-2 rounded-xl ${isDeviceConnected ? "bg-green-100" : "bg-slate-100"}`}>
-            <Droplets className={`h-5 w-5 ${isDeviceConnected ? "text-green-600" : "text-slate-400"}`} />
+          <div className={`p-2.5 rounded-xl ${isDeviceConnected ? "bg-forest-50" : "bg-gray-50"}`}>
+            {isDeviceConnected ? (
+              <Wifi className="h-5 w-5 text-forest-600" />
+            ) : (
+              <WifiOff className="h-5 w-5 text-gray-400" />
+            )}
           </div>
           <div>
-            <p className="text-sm font-bold text-slate-800">IoT Sprinkler System</p>
-            <p className={`text-xs font-semibold ${isDeviceConnected ? "text-green-600" : "text-slate-400"}`}>
+            <p className="text-sm font-bold text-gray-800">IoT Sprinkler System</p>
+            <p className={`text-xs font-semibold ${isDeviceConnected ? "text-forest-600" : "text-gray-400"}`}>
               {isDeviceConnected ? "● Connected" : "○ Not Connected"}
             </p>
           </div>
@@ -163,7 +167,7 @@ const Home: React.FC = () => {
           {!isDeviceConnected && (
             <button
               onClick={handleConnectDevice}
-              className="px-4 py-2 bg-slate-800 text-white text-sm font-semibold rounded-xl hover:bg-slate-700 transition-colors"
+              className="btn-primary text-xs py-2 px-4"
             >
               Connect Device
             </button>
@@ -171,10 +175,10 @@ const Home: React.FC = () => {
           <button
             onClick={handleStartWatering}
             disabled={!isDeviceConnected}
-            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-colors ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 ${
               isDeviceConnected
-                ? "bg-emerald-600 text-white hover:bg-emerald-700"
-                : "bg-slate-100 text-slate-400 cursor-not-allowed"
+                ? "bg-forest-600 text-white hover:bg-forest-700 shadow-sm"
+                : "bg-gray-100 text-gray-400 cursor-not-allowed"
             }`}
           >
             <Droplets className="h-4 w-4" />
@@ -182,7 +186,7 @@ const Home: React.FC = () => {
           </button>
           <button
             onClick={handleConnectDevice}
-            className="p-2 rounded-xl text-slate-500 hover:bg-slate-100 transition-colors"
+            className="p-2 rounded-xl text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-all duration-200"
             title="IoT Settings"
           >
             <Settings className="h-4 w-4" />
@@ -192,18 +196,20 @@ const Home: React.FC = () => {
 
       {/* IoT Alert Toast */}
       {showAlert && !isDeviceConnected && (
-        <div className="fixed bottom-24 left-1/2 -translate-x-1/2 z-40 w-[90%] max-w-sm">
-          <div className="bg-white rounded-2xl shadow-2xl border border-orange-100 p-4 flex items-start gap-3">
-            <AlertCircle className="h-5 w-5 text-orange-500 mt-0.5 flex-shrink-0" />
+        <div className="fixed bottom-24 left-1/2 -translate-x-1/2 z-40 w-[90%] max-w-sm animate-slideInRight">
+          <div className="bg-white rounded-2xl shadow-elevated border border-orange-100/60 p-4 flex items-start gap-3">
+            <div className="p-1.5 bg-orange-50 rounded-lg flex-shrink-0">
+              <AlertCircle className="h-4 w-4 text-orange-500" />
+            </div>
             <div className="flex-1">
-              <p className="text-sm font-semibold text-slate-800">No IoT Device Connected</p>
-              <p className="text-xs text-slate-500 mt-0.5">
+              <p className="text-sm font-bold text-gray-800">No IoT Device Connected</p>
+              <p className="text-xs text-gray-500 mt-0.5">
                 Connect your device to enable watering control.
               </p>
             </div>
             <button
               onClick={() => setShowAlert(false)}
-              className="text-slate-400 hover:text-slate-600 text-lg leading-none"
+              className="text-gray-400 hover:text-gray-600 text-lg leading-none p-1"
             >
               ×
             </button>

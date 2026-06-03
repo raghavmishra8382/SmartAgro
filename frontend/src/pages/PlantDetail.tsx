@@ -145,7 +145,7 @@ const PlantDetail: React.FC = () => {
                     </ul>
                   )}
                 {a.nextCheckDate && (
-                  <p className="text-xs text-green-700">
+                  <p className="text-xs text-forest-700">
                     Next check: {new Date(a.nextCheckDate).toLocaleDateString()}
                   </p>
                 )}

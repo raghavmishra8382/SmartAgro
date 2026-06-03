@@ -23,7 +23,7 @@ export default function LocationDialog() {
         <div className="flex flex-col sm:flex-row justify-center gap-3 md:gap-4">
           <button
             onClick={handleAllow}
-            className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm md:text-base w-full sm:w-auto"
+            className="bg-forest-600 hover:bg-forest-700 text-white px-4 py-2 rounded-md text-sm md:text-base w-full sm:w-auto"
           >
             Allow
           </button>

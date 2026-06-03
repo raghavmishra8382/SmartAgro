@@ -20,7 +20,7 @@ export const DiseaseResultCard: React.FC<DiseaseResultCardProps> = ({ result, on
             className="w-full max-w-lg bg-white rounded-3xl shadow-xl shadow-green-100/50 border border-green-100 overflow-hidden my-4"
         >
             {/* Header with Confidence */}
-            <div className="bg-gradient-to-r from-green-500 to-emerald-600 px-6 py-4 flex items-center justify-between text-white">
+            <div className="bg-gradient-to-r from-forest-500 to-forest-600 px-6 py-4 flex items-center justify-between text-white">
                 <div className="flex items-center gap-2">
                     <Microscope size={20} className="opacity-90" />
                     <h3 className="font-bold tracking-tight">AI Analysis Result</h3>
@@ -37,7 +37,7 @@ export const DiseaseResultCard: React.FC<DiseaseResultCardProps> = ({ result, on
                     <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1 leading-none">Detected Condition</div>
                     <div className="text-2xl font-black text-slate-800 flex items-center gap-2 leading-tight">
                         {result.disease}
-                        <Leaf size={24} className="text-green-500" />
+                        <Leaf size={24} className="text-forest-500" />
                     </div>
                 </div>
 
@@ -61,9 +61,9 @@ export const DiseaseResultCard: React.FC<DiseaseResultCardProps> = ({ result, on
                                 initial={{ x: -10, opacity: 0 }}
                                 animate={{ x: 0, opacity: 1 }}
                                 transition={{ delay: index * 0.1 }}
-                                className="flex items-start gap-3 p-3 bg-white border border-slate-100 rounded-xl hover:border-green-200 transition-colors shadow-sm"
+                                className="flex items-start gap-3 p-3 bg-white border border-slate-100 rounded-xl hover:border-forest-200 transition-colors shadow-sm"
                             >
-                                <div className="w-6 h-6 rounded-full bg-green-100 text-green-700 flex items-center justify-center text-[10px] font-bold flex-shrink-0 mt-0.5 shadow-sm">
+                                <div className="w-6 h-6 rounded-full bg-forest-100 text-forest-700 flex items-center justify-center text-[10px] font-bold flex-shrink-0 mt-0.5 shadow-sm">
                                     {index + 1}
                                 </div>
                                 <span className="text-sm text-slate-700 font-medium leading-tight">{step}</span>

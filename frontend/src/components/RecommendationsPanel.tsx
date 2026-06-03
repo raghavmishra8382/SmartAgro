@@ -48,9 +48,9 @@ type Tone = "emerald" | "rose" | "amber" | "sky" | "slate";
 
 const toneMap: Record<Tone, { bg: string; text: string; ring: string }> = {
   emerald: {
-    bg: "bg-emerald-50",
-    text: "text-emerald-700",
-    ring: "ring-emerald-100",
+    bg: "bg-forest-600",
+    text: "text-forest-600",
+    ring: "ring-forest-600",
   },
   rose: { bg: "bg-rose-50", text: "text-rose-700", ring: "ring-rose-100" },
   amber: {
@@ -129,7 +129,7 @@ const RecommendationsPanel: React.FC = () => {
       case "medium":
         return "border-amber-200/70 bg-amber-50/70";
       case "low":
-        return "border-emerald-200/70 bg-emerald-50/60";
+        return "border-forest-600/70 bg-forest-600/60";
       default:
         return "border-slate-200 bg-white";
     }
@@ -142,7 +142,7 @@ const RecommendationsPanel: React.FC = () => {
       case "medium":
         return "text-amber-500";
       case "low":
-        return "text-emerald-500";
+        return "text-forest-600";
       default:
         return "text-slate-500";
     }
@@ -303,7 +303,7 @@ const RecommendationsPanel: React.FC = () => {
     <div className="space-y-5">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <p className="text-[10px] sm:text-[11px] uppercase tracking-[0.12em] text-emerald-600 font-semibold">
+          <p className="text-[10px] sm:text-[11px] uppercase tracking-[0.12em] text-forest-600 font-semibold">
             Continuous Plant Health
           </p>
           <h2 className="text-xl md:text-2xl font-bold text-slate-900">
@@ -314,8 +314,8 @@ const RecommendationsPanel: React.FC = () => {
           <button
             onClick={() => setSortMode("priority")}
             className={`px-3 py-1.5 text-xs rounded-full border ${sortMode === "priority"
-              ? "bg-emerald-600 text-white border-emerald-600"
-              : "bg-white text-slate-700 border-slate-200 hover:border-emerald-200"
+              ? "bg-forest-600 text-white border-forest-600"
+              : "bg-white text-slate-700 border-slate-200 hover:border-forest-600"
               }`}
           >
             Severity first
@@ -323,8 +323,8 @@ const RecommendationsPanel: React.FC = () => {
           <button
             onClick={() => setSortMode("nextCheck")}
             className={`px-3 py-1.5 text-xs rounded-full border ${sortMode === "nextCheck"
-              ? "bg-emerald-50 text-emerald-700 border-emerald-200"
-              : "bg-white text-slate-700 border-slate-200 hover:border-emerald-200"
+              ? "bg-forest-600 text-forest-600 border-forest-600"
+              : "bg-white text-slate-700 border-slate-200 hover:border-forest-600"
               }`}
           >
             Next check first
@@ -354,7 +354,7 @@ const RecommendationsPanel: React.FC = () => {
               placeholder="Search plants..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="text-sm bg-white border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-400/60 w-full sm:w-auto"
+              className="text-sm bg-white border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-forest-600/60 w-full sm:w-auto"
             />
             <div className="flex flex-wrap gap-1">
               {["all", "high", "medium", "low"].map((risk) => (
@@ -362,8 +362,8 @@ const RecommendationsPanel: React.FC = () => {
                   key={risk}
                   onClick={() => setRiskFilter(risk as any)}
                   className={`flex-1 sm:flex-none px-3 py-1.5 text-xs rounded-full border transition ${riskFilter === risk
-                    ? "bg-emerald-600 text-white border-emerald-600"
-                    : "bg-white text-slate-700 border-slate-200 hover:border-emerald-200"
+                    ? "bg-forest-600 text-white border-forest-600"
+                    : "bg-white text-slate-700 border-slate-200 hover:border-forest-600"
                     }`}
                 >
                   {risk === "all" ? "All" : risk[0].toUpperCase() + risk.slice(1)}
@@ -372,7 +372,7 @@ const RecommendationsPanel: React.FC = () => {
             </div>
             <button
               onClick={() => setShowAll(true)}
-              className="inline-flex items-center justify-center gap-2 px-3 py-2 text-sm font-semibold text-emerald-700 bg-emerald-50 border border-emerald-100 rounded-lg hover:bg-emerald-100 transition whitespace-nowrap"
+              className="inline-flex items-center justify-center gap-2 px-3 py-2 text-sm font-semibold text-forest-600 bg-forest-600 border border-forest-600 rounded-lg hover:bg-forest-600 transition whitespace-nowrap"
             >
               View all
               <ArrowUpRight className="h-4 w-4" />
@@ -429,7 +429,7 @@ const RecommendationsPanel: React.FC = () => {
               <div className="space-y-1.5 text-sm text-slate-700">
                 {(plant.latestAssessment?.careActions || []).slice(0, 2).map((action, idx) => (
                   <div key={idx} className="flex items-start gap-2">
-                    <span className="text-emerald-500 mt-0.5">•</span>
+                    <span className="text-forest-600 mt-0.5">•</span>
                     <span className="leading-relaxed">{action}</span>
                   </div>
                 ))}
@@ -459,14 +459,14 @@ const RecommendationsPanel: React.FC = () => {
             <div className="flex gap-2">
               <button
                 onClick={() => carouselRef.current?.scrollBy({ left: -320, behavior: "smooth" })}
-                className="w-9 h-9 rounded-full border border-gray-200 text-slate-500 hover:text-emerald-600 hover:border-emerald-200 bg-white shadow-sm"
+                className="w-9 h-9 rounded-full border border-gray-200 text-slate-500 hover:text-forest-600 hover:border-forest-600 bg-white shadow-sm"
                 aria-label="Scroll left"
               >
                 ‹
               </button>
               <button
                 onClick={() => carouselRef.current?.scrollBy({ left: 320, behavior: "smooth" })}
-                className="w-9 h-9 rounded-full border border-gray-200 text-slate-500 hover:text-emerald-600 hover:border-emerald-200 bg-white shadow-sm"
+                className="w-9 h-9 rounded-full border border-gray-200 text-slate-500 hover:text-forest-600 hover:border-forest-600 bg-white shadow-sm"
                 aria-label="Scroll right"
               >
                 ›
@@ -530,14 +530,14 @@ const RecommendationsPanel: React.FC = () => {
       {showAll && (
         <div className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm flex items-center justify-center px-4">
           <div className="w-full max-w-6xl max-h-[85vh] bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden flex flex-col">
-            <div className="flex items-center justify-between px-4 sm:px-6 py-4 border-b border-gray-100 bg-gradient-to-r from-white via-emerald-50/60 to-white">
+            <div className="flex items-center justify-between px-4 sm:px-6 py-4 border-b border-gray-100 bg-gradient-to-r from-white via-forest-600/60 to-white">
               <div className="min-w-0">
-                <p className="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-emerald-600 font-semibold truncate">All Plants</p>
+                <p className="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-forest-600 font-semibold truncate">All Plants</p>
                 <h3 className="text-lg sm:text-xl font-bold text-slate-900 truncate">Monitored plants</h3>
               </div>
               <button
                 onClick={() => setShowAll(false)}
-                className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-gray-200 text-slate-500 hover:text-emerald-600 hover:border-emerald-200 bg-white shadow-sm flex items-center justify-center flex-shrink-0"
+                className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-gray-200 text-slate-500 hover:text-forest-600 hover:border-forest-600 bg-white shadow-sm flex items-center justify-center flex-shrink-0"
               >
                 ×
               </button>
@@ -550,7 +550,7 @@ const RecommendationsPanel: React.FC = () => {
                   placeholder="Search by name or crop..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full text-sm bg-white border border-slate-200 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-emerald-400/60"
+                  className="w-full text-sm bg-white border border-slate-200 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-forest-600/60"
                 />
               </div>
               <div className="flex gap-2 flex-wrap">
@@ -559,8 +559,8 @@ const RecommendationsPanel: React.FC = () => {
                     key={risk}
                     onClick={() => setRiskFilter(risk as any)}
                     className={`flex-1 sm:flex-none px-3 py-1.5 text-[11px] sm:text-xs rounded-full border transition ${riskFilter === risk
-                      ? "bg-emerald-600 text-white border-emerald-600"
-                      : "bg-white text-slate-700 border-slate-200 hover:border-emerald-200"
+                      ? "bg-forest-600 text-white border-forest-600"
+                      : "bg-white text-slate-700 border-slate-200 hover:border-forest-600"
                       }`}
                   >
                     {risk === "all" ? "All risks" : risk[0].toUpperCase() + risk.slice(1) + " risk"}
@@ -797,7 +797,7 @@ const HealthMeter = ({ score }: { score: number }) => (
     <div className="flex-1 h-2.5 rounded-full bg-slate-100 overflow-hidden">
       <div
         className={`h-full rounded-full ${score >= 80
-          ? "bg-emerald-500"
+          ? "bg-forest-600"
           : score >= 60
             ? "bg-amber-400"
             : "bg-rose-400"
@@ -824,7 +824,7 @@ const ActionButton = ({
   return (
     <button
       onClick={onClick}
-      className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white border border-slate-200 text-xs font-semibold text-slate-700 hover:border-emerald-200 hover:text-emerald-700 transition-colors"
+      className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white border border-slate-200 text-xs font-semibold text-slate-700 hover:border-forest-600 hover:text-forest-600 transition-colors"
     >
       <Icon className={`h-4 w-4 ${t.text}`} />
       {label}
@@ -853,9 +853,9 @@ const CardSkeleton = () => (
 );
 
 const EmptyState = ({ onAction }: { onAction: () => void }) => (
-  <div className="border border-dashed border-emerald-200 rounded-2xl p-6 bg-emerald-50/60 text-center">
+  <div className="border border-dashed border-forest-600 rounded-2xl p-6 bg-forest-600/60 text-center">
     <div className="inline-flex items-center justify-center h-12 w-12 rounded-full bg-white shadow-sm mb-3">
-      <Sparkles className="h-5 w-5 text-emerald-600" />
+      <Sparkles className="h-5 w-5 text-forest-600" />
     </div>
     <h3 className="text-lg font-semibold text-slate-900">
       No active plant monitoring yet
@@ -865,7 +865,7 @@ const EmptyState = ({ onAction }: { onAction: () => void }) => (
     </p>
     <button
       onClick={onAction}
-      className="px-4 py-2 rounded-lg bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-700 transition-colors"
+      className="px-4 py-2 rounded-lg bg-forest-600 text-white text-sm font-semibold hover:bg-forest-600 transition-colors"
     >
       Go to chat
     </button>
@@ -888,8 +888,8 @@ const ConfirmModal = ({
   <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm px-4">
     <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl border border-slate-200 p-6 space-y-4">
       <div className="flex items-start gap-3">
-        <div className="p-2 rounded-lg bg-emerald-50 border border-emerald-100">
-          <CheckCircle2 className="h-5 w-5 text-emerald-600" />
+        <div className="p-2 rounded-lg bg-forest-600 border border-forest-600">
+          <CheckCircle2 className="h-5 w-5 text-forest-600" />
         </div>
         <div>
           <h3 className="text-lg font-bold text-slate-900">Mark as treated</h3>
@@ -914,7 +914,7 @@ const ConfirmModal = ({
         <button
           disabled={busy}
           onClick={onKeep}
-          className="px-4 py-2 rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 text-sm font-semibold disabled:opacity-50"
+          className="px-4 py-2 rounded-lg bg-forest-600 text-white hover:bg-forest-600 text-sm font-semibold disabled:opacity-50"
         >
           Keep profile
         </button>

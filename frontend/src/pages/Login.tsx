@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Eye, EyeOff, Leaf, LogIn } from "lucide-react";
+import { Eye, EyeOff, Wheat, LogIn, Sparkles } from "lucide-react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
@@ -47,96 +47,116 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 via-white to-blue-50 p-4 sm:p-6">
-      <div className="w-full max-w-md bg-white/80 backdrop-blur-md border border-gray-100 rounded-2xl sm:rounded-3xl shadow-xl p-6 sm:p-8">
-        {/* App Icon */}
-        <div className="text-center mb-6 sm:mb-8">
-          <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-green-600 rounded-full shadow-md mx-auto mb-3 sm:mb-4">
-            <Leaf className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
-          </div>
-          <h1 className="text-2xl sm:text-3xl font-semibold text-gray-900">
-            Welcome Back
-          </h1>
-          <p className="text-gray-500 text-xs sm:text-sm mt-1">
-            Login to continue 🌱
-          </p>
-        </div>
+    <div className="min-h-screen flex items-center justify-center bg-[hsl(40,33%,98%)] p-4 sm:p-6 relative overflow-hidden">
+      {/* Decorative background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-forest-100/30 rounded-full blur-3xl" />
+        <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-cream-200/40 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-sage-100/20 rounded-full blur-3xl" />
+      </div>
 
-        {/* Error Message */}
-        {error && (
-          <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
-            {error}
-          </div>
-        )}
-
-        {/* Login Form */}
-        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
-          <div>
-            <input
-              name="email"
-              type="email"
-              placeholder="Email Address"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-2.5 sm:py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition text-sm sm:text-base"
-            />
+      <div className="w-full max-w-[420px] relative z-10 animate-fadeInUp">
+        {/* Card */}
+        <div className="bg-white/90 backdrop-blur-xl border border-gray-100/80 rounded-3xl shadow-elevated p-7 sm:p-9">
+          {/* App Icon */}
+          <div className="text-center mb-7">
+            <div className="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-forest-600 to-forest-700 rounded-2xl shadow-glow-green mx-auto mb-4">
+              <Wheat className="w-7 h-7 text-white" />
+            </div>
+            <h1 className="text-2xl sm:text-[28px] font-bold text-gray-900 tracking-tight">
+              Welcome Back
+            </h1>
+            <p className="text-gray-500 text-sm mt-1.5 font-medium flex items-center justify-center gap-1.5">
+              Sign in to continue
+              <Sparkles className="h-3.5 w-3.5 text-cream-600" />
+            </p>
           </div>
 
-          <div className="relative">
-            <input
-              name="password"
-              type={showPassword ? "text" : "password"}
-              placeholder="Password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-2.5 sm:py-3 pr-10 rounded-xl border border-gray-200 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition text-sm sm:text-base"
-            />
+          {/* Error Message */}
+          {error && (
+            <div className="mb-5 p-3.5 bg-red-50 border border-red-100/60 rounded-xl text-red-600 text-sm font-medium animate-scaleIn">
+              {error}
+            </div>
+          )}
+
+          {/* Login Form */}
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Email</label>
+              <input
+                name="email"
+                type="email"
+                placeholder="your@email.com"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className="input-premium py-3"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Password</label>
+              <div className="relative">
+                <input
+                  name="password"
+                  type={showPassword ? "text" : "password"}
+                  placeholder="••••••••"
+                  value={formData.password}
+                  onChange={handleChange}
+                  required
+                  className="input-premium py-3 pr-10"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition p-1"
+                >
+                  {showPassword ? (
+                    <EyeOff className="w-4 h-4" />
+                  ) : (
+                    <Eye className="w-4 h-4" />
+                  )}
+                </button>
+              </div>
+            </div>
+
             <button
-              type="button"
-              onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition"
+              type="submit"
+              disabled={loading}
+              className="btn-primary w-full h-12 text-[15px] mt-2 disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              {showPassword ? (
-                <EyeOff className="w-4 h-4 sm:w-5 sm:h-5" />
+              {loading ? (
+                <>
+                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                  Signing in…
+                </>
               ) : (
-                <Eye className="w-4 h-4 sm:w-5 sm:h-5" />
+                <>
+                  <LogIn className="w-4 h-4" />
+                  Sign In
+                </>
               )}
             </button>
+          </form>
+
+          {/* Extra Links */}
+          <div className="text-center mt-6 text-sm text-gray-500">
+            <p>
+              Don't have an account?{" "}
+              <Link
+                to="/register"
+                className="text-forest-600 hover:text-forest-700 font-semibold transition"
+              >
+                Create one
+              </Link>
+            </p>
           </div>
-
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full h-11 sm:h-12 bg-green-600 hover:bg-green-700 disabled:bg-green-400 disabled:cursor-not-allowed text-white font-medium rounded-xl shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 text-sm sm:text-base"
-          >
-            {loading ? (
-              <>
-                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                Logging in...
-              </>
-            ) : (
-              <>
-                <LogIn className="w-4 h-4" />
-                Login
-              </>
-            )}
-          </button>
-        </form>
-
-        {/* Extra Links */}
-        <div className="text-center mt-5 sm:mt-6 text-xs sm:text-sm text-gray-500">
-          <p>
-            Don't have an account?{" "}
-            <Link
-              to="/register"
-              className="text-green-600 hover:text-green-700 hover:underline font-medium transition"
-            >
-              Sign up
-            </Link>
-          </p>
         </div>
+
+        {/* Branding */}
+        <p className="text-center mt-5 text-xs text-gray-400 font-medium">
+          Powered by <span className="text-forest-600 font-semibold">SmartAgro AI</span>
+        </p>
       </div>
     </div>
   );

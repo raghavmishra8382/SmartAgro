@@ -80,12 +80,12 @@ const severityConfig = {
     healthBar: "bg-amber-400",
   },
   low: {
-    badge: "bg-emerald-100 text-emerald-700 border-emerald-200",
+    badge: "bg-forest-600 text-forest-600 border-forest-600",
     border: "border-slate-100",
     glow: "",
     icon: TrendingUp,
-    iconColor: "text-emerald-500",
-    healthBar: "bg-emerald-500",
+    iconColor: "text-forest-600",
+    healthBar: "bg-forest-600",
   },
 };
 
@@ -152,8 +152,8 @@ const CropsList: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div className="flex items-center gap-2">
-          <div className="p-1.5 bg-emerald-50 rounded-xl">
-            <Leaf className="h-5 w-5 text-emerald-600" />
+          <div className="p-1.5 bg-forest-600 rounded-xl">
+            <Leaf className="h-5 w-5 text-forest-600" />
           </div>
           <div>
             <h2 className="text-lg font-bold text-slate-900">My Crops</h2>
@@ -172,8 +172,8 @@ const CropsList: React.FC = () => {
               onClick={() => setRiskFilter(f)}
               className={`px-3 py-1.5 text-xs font-semibold rounded-full border transition-all ${
                 riskFilter === f
-                  ? "bg-emerald-600 text-white border-emerald-600 shadow-sm"
-                  : "bg-white text-slate-600 border-slate-200 hover:border-emerald-300"
+                  ? "bg-forest-600 text-white border-forest-600 shadow-sm"
+                  : "bg-white text-slate-600 border-slate-200 hover:border-forest-600"
               }`}
             >
               {f === "all" ? "All" : f.charAt(0).toUpperCase() + f.slice(1)}
@@ -204,14 +204,14 @@ const CropsList: React.FC = () => {
       {/* Empty state */}
       {!loading && !error && plants.length === 0 && (
         <div className="py-16 flex flex-col items-center justify-center text-center rounded-2xl border border-dashed border-slate-200 bg-slate-50">
-          <Leaf className="h-12 w-12 text-emerald-200 mb-3" />
+          <Leaf className="h-12 w-12 text-forest-600 mb-3" />
           <p className="text-slate-600 font-semibold">No crops added yet</p>
           <p className="text-slate-400 text-sm mt-1">
             Start by adding your first crop to get AI-powered insights
           </p>
           <button
             onClick={() => navigate("/FarmForm")}
-            className="mt-4 px-4 py-2 bg-emerald-600 text-white text-sm font-semibold rounded-xl hover:bg-emerald-700 transition-colors"
+            className="mt-4 px-4 py-2 bg-forest-600 text-white text-sm font-semibold rounded-xl hover:bg-forest-600 transition-colors"
           >
             Add First Crop
           </button>
@@ -236,7 +236,7 @@ const CropsList: React.FC = () => {
           {filtered.length > 4 && (
             <button
               onClick={() => setShowAll((v) => !v)}
-              className="w-full py-3 rounded-2xl border border-slate-200 text-sm font-semibold text-slate-600 hover:bg-slate-50 hover:border-emerald-300 transition-all flex items-center justify-center gap-2"
+              className="w-full py-3 rounded-2xl border border-slate-200 text-sm font-semibold text-slate-600 hover:bg-slate-50 hover:border-forest-600 transition-all flex items-center justify-center gap-2"
             >
               {showAll ? "Show less" : `View all ${filtered.length} crops`}
               <ChevronRight
@@ -328,7 +328,7 @@ const CropCard: React.FC<{
           <span
             className={`inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 rounded-full w-fit ${
               trend === "improving"
-                ? "bg-emerald-50 text-emerald-700"
+                ? "bg-forest-600 text-forest-600"
                 : trend === "worsening"
                 ? "bg-rose-50 text-rose-700"
                 : "bg-sky-50 text-sky-700"
@@ -362,7 +362,7 @@ const CropCard: React.FC<{
         <div className="flex gap-2 pt-1 mt-auto">
           <button
             onClick={onScan}
-            className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl border border-emerald-200 bg-emerald-50 text-emerald-700 text-xs font-semibold hover:bg-emerald-100 transition-colors"
+            className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl border border-forest-600 bg-forest-600 text-forest-600 text-xs font-semibold hover:bg-forest-600 transition-colors"
           >
             <ScanLine className="h-3.5 w-3.5" />
             Scan

@@ -4,40 +4,44 @@ import {
   DollarSign,
   Wheat,
   CalendarDays,
+  TrendingUp,
 } from "lucide-react";
 import { apiUrl } from "@/lib/env";
 
-type Accent = "emerald" | "blue" | "purple" | "orange";
+type Accent = "forest" | "blue" | "violet" | "gold";
 
 const accentStyles: Record<
   Accent,
-  { iconBg: string; iconColor: string; border: string }
+  { iconBg: string; iconColor: string; border: string; badge: string; badgeText: string }
 > = {
-  emerald: {
-    iconBg: "bg-emerald-50",
-    iconColor: "text-emerald-600",
-    border: "border-emerald-200",
+  forest: {
+    iconBg: "bg-forest-50",
+    iconColor: "text-forest-600",
+    border: "border-forest-100/60",
+    badge: "bg-forest-50",
+    badgeText: "text-forest-600",
   },
   blue: {
-    iconBg: "bg-indigo-50",
-    iconColor: "text-indigo-600",
-    border: "border-indigo-200",
+    iconBg: "bg-blue-50",
+    iconColor: "text-blue-600",
+    border: "border-blue-100/60",
+    badge: "bg-blue-50",
+    badgeText: "text-blue-600",
   },
-  purple: {
-    iconBg: "bg-purple-50",
-    iconColor: "text-purple-500",
-    border: "border-purple-200",
+  violet: {
+    iconBg: "bg-violet-50",
+    iconColor: "text-violet-600",
+    border: "border-violet-100/60",
+    badge: "bg-violet-50",
+    badgeText: "text-violet-600",
   },
-  orange: {
-    iconBg: "bg-orange-50",
-    iconColor: "text-orange-500",
-    border: "border-orange-200",
+  gold: {
+    iconBg: "bg-cream-100",
+    iconColor: "text-cream-700",
+    border: "border-cream-200/60",
+    badge: "bg-cream-100",
+    badgeText: "text-cream-700",
   },
-};
-
-const valueColor = (val: string) => {
-  if (val.startsWith("+") || val.startsWith("-")) return "text-emerald-600";
-  return "text-slate-500";
 };
 
 const StatsCards: React.FC = () => {
@@ -69,7 +73,7 @@ const StatsCards: React.FC = () => {
             value: `${totalYield.toLocaleString()} kg`,
             change: "Live",
             icon: Wheat,
-            accent: "emerald" as Accent,
+            accent: "forest" as Accent,
           },
           {
             id: 2,
@@ -85,7 +89,7 @@ const StatsCards: React.FC = () => {
             value: `${farmSize.toFixed(1)} acres`,
             change: "Total",
             icon: BarChart3,
-            accent: "purple" as Accent,
+            accent: "violet" as Accent,
           },
           {
             id: 4,
@@ -93,7 +97,7 @@ const StatsCards: React.FC = () => {
             value: `${daysToHarvest === Infinity ? 0 : daysToHarvest} days`,
             change: "Next",
             icon: CalendarDays,
-            accent: "orange" as Accent,
+            accent: "gold" as Accent,
           },
         ];
 
@@ -113,7 +117,14 @@ const StatsCards: React.FC = () => {
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
         {[1, 2, 3, 4].map((i) => (
-          <div key={i} className="h-32 bg-slate-100 animate-pulse rounded-2xl" />
+          <div key={i} className="card-premium p-5">
+            <div className="flex items-center justify-between mb-4">
+              <div className="h-10 w-10 bg-gray-100 rounded-xl animate-pulse" />
+              <div className="h-5 w-12 bg-gray-100 rounded-full animate-pulse" />
+            </div>
+            <div className="h-3 w-20 bg-gray-100 rounded animate-pulse mb-2" />
+            <div className="h-7 w-28 bg-gray-100 rounded animate-pulse" />
+          </div>
         ))}
       </div>
     );
@@ -121,7 +132,7 @@ const StatsCards: React.FC = () => {
 
   if (error) {
     return (
-      <div className="p-4 bg-rose-50 text-rose-600 rounded-xl border border-rose-100 text-sm">
+      <div className="p-4 bg-red-50 text-red-600 rounded-xl border border-red-100/60 text-sm font-medium">
         Failed to load statistics: {error}
       </div>
     );
@@ -129,29 +140,36 @@ const StatsCards: React.FC = () => {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
-      {stats.map((stat) => {
+      {stats.map((stat, idx) => {
         const Icon = stat.icon;
         const accent = accentStyles[stat.accent as Accent];
         return (
           <div
             key={stat.id}
-            className={`rounded-2xl bg-white p-5 border ${accent.border} shadow-sm`}
+            className={`card-premium p-5 animate-fadeInUp`}
+            style={{ animationDelay: `${idx * 75}ms` }}
           >
-            <div className="flex items-start justify-between mb-5">
+            <div className="flex items-center justify-between mb-4">
               <div
-                className={`flex h-10 w-10 items-center justify-center rounded-xl ${accent.iconBg}`}
+                className={`flex h-10 w-10 items-center justify-center rounded-xl ${accent.iconBg} shadow-inner-soft`}
               >
                 <Icon className={`h-5 w-5 ${accent.iconColor}`} />
               </div>
-              <span className={`text-[10px] uppercase tracking-wider font-bold ${valueColor(stat.change)}`}>
+              <span className={`badge-premium ${accent.badge} ${accent.badgeText} border ${accent.border}`}>
+                {stat.change === "Live" && (
+                  <span className="relative flex h-1.5 w-1.5 mr-0.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-current opacity-40" />
+                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-current" />
+                  </span>
+                )}
                 {stat.change}
               </span>
             </div>
 
-            <p className="text-xs font-semibold text-slate-500 mb-1.5">
+            <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-wide mb-1.5">
               {stat.title}
             </p>
-            <p className="text-2xl font-bold text-slate-900">
+            <p className="text-2xl font-bold text-gray-900 tracking-tight">
               {stat.value}
             </p>
           </div>

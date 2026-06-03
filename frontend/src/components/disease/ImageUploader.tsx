@@ -51,9 +51,9 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageSelect, pre
                     className={`
             relative overflow-hidden rounded-3xl border-2 border-dashed transition-all duration-500 cursor-pointer
             ${previewUrl
-                            ? 'border-green-500/50 bg-green-50/30'
+                            ? 'border-forest-500/50 bg-forest-50/30'
                             : isDragging
-                                ? 'border-green-500 bg-green-50/50 scale-[1.01] shadow-xl ring-4 ring-green-500/10'
+                                ? 'border-forest-500 bg-forest-50/50 scale-[1.01] shadow-xl ring-4 ring-forest-500/10'
                                 : 'border-slate-200 hover:border-green-400 bg-white hover:bg-slate-50 shadow-lg hover:shadow-xl'
                         }
             min-h-[400px] flex flex-col items-center justify-center p-8
@@ -96,16 +96,16 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageSelect, pre
                                             y: isDragging ? -10 : 0,
                                             scale: isDragging ? 1.1 : 1
                                         }}
-                                        className="w-24 h-24 bg-green-50 rounded-full flex items-center justify-center mx-auto ring-8 ring-green-500/5 group-hover:ring-green-500/10 transition-all duration-500"
+                                        className="w-24 h-24 bg-forest-50 rounded-full flex items-center justify-center mx-auto ring-8 ring-forest-500/5 group-hover:ring-forest-500/10 transition-all duration-500"
                                     >
-                                        <Upload className="w-10 h-10 text-green-600" />
+                                        <Upload className="w-10 h-10 text-forest-600" />
                                     </motion.div>
                                     <motion.div
                                         animate={{
                                             scale: isDragging ? 1.2 : 1,
                                             opacity: isDragging ? 1 : 0
                                         }}
-                                        className="absolute inset-0 bg-green-500/20 blur-2xl rounded-full"
+                                        className="absolute inset-0 bg-forest-500/20 blur-2xl rounded-full"
                                     />
                                 </div>
 
@@ -117,7 +117,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageSelect, pre
                                 </p>
 
                                 <div className="flex flex-wrap items-center justify-center gap-4">
-                                    <button className="flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-2xl font-semibold shadow-lg shadow-green-600/20 hover:bg-green-700 transition-all hover:-translate-y-0.5 active:translate-y-0">
+                                    <button className="flex items-center gap-2 px-6 py-3 bg-forest-600 text-white rounded-2xl font-semibold shadow-lg shadow-green-600/20 hover:bg-forest-700 transition-all hover:-translate-y-0.5 active:translate-y-0">
                                         <ImageIcon size={20} />
                                         Select from Gallery
                                     </button>

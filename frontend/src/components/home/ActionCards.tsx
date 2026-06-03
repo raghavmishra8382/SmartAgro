@@ -11,7 +11,7 @@ import { loadTasks, saveTasks, addTask, deleteTask, toggleTask, Task } from "@/l
 // ─── Card wrapper (solid gradient, no glassmorphism) ──────────────────────────
 
 const CARD_GRADIENTS = {
-  emerald: "from-emerald-500 to-green-600",
+  emerald: "from-forest-600 to-forest-600",
   sky:     "from-sky-500 to-blue-600",
   violet:  "from-violet-500 to-indigo-600",
   amber:   "from-amber-500 to-orange-500",
@@ -106,7 +106,7 @@ const CropHealthCard: React.FC = () => {
         <p className="text-xs text-white/50 text-center py-3">No crops tracked yet</p>
       ) : (
         <div className="space-y-2.5">
-          <HealthBar label="Healthy"  pct={stats.healthy}  fill="bg-emerald-300" />
+          <HealthBar label="Healthy"  pct={stats.healthy}  fill="bg-forest-600" />
           <HealthBar label="At Risk"  pct={stats.atRisk}   fill="bg-yellow-300" />
           <HealthBar label="Critical" pct={stats.critical} fill="bg-red-300" />
         </div>
@@ -196,7 +196,7 @@ const MarketPricesCard: React.FC = () => {
               <div className="flex items-center gap-1.5 flex-shrink-0">
                 <span className="text-[11px] font-black text-white">₹{c.modalPrice.toFixed(0)}</span>
                 <span className={`text-[10px] font-bold flex items-center gap-0.5 px-1.5 py-0.5 rounded-full ${
-                  c.change >= 0 ? "bg-emerald-400/20 text-emerald-200" : "bg-red-400/20 text-red-200"
+                  c.change >= 0 ? "bg-forest-600/20 text-forest-600" : "bg-red-400/20 text-red-200"
                 }`}>
                   {c.change >= 0
                     ? <TrendingUp className="h-2.5 w-2.5" />

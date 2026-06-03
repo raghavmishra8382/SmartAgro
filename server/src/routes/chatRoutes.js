@@ -915,7 +915,7 @@ router.post(
     // Step 1: Send image to disease detection backend (same as DiseasePrediction.tsx)
     const imagePath = req.file.path;
     const diseaseApiBase =
-      process.env.DISEASE_API_URL || "https://render-begins-musharraf.onrender.com";
+      process.env.DISEASE_API_URL || "http://localhost:5001";
 
     let diseaseResult = null;
     try {

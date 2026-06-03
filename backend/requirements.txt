@@ -1,4 +1,6 @@
-flask==3.0.0
-flask-cors==4.0.1
+fastapi
+uvicorn
+python-multipart
 tensorflow
 numpy
+pillow

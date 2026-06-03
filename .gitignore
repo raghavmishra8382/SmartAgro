@@ -25,5 +25,5 @@ server/uploads/
 *.h5
 *.weights.h5
 
-# Allowlist: track this specific weights file
-!model/disease_model.weights.h5
+# Allowlist: track this specific model file
+!model/disease_model.h5

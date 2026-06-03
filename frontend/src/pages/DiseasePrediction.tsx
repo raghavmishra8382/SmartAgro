@@ -103,7 +103,8 @@ Ensure the response is ONLY the JSON object.`;
             const formData = new FormData();
             formData.append('image', selectedFile);
 
-            const predictionResponse = await fetch('https://render-begins-musharraf.onrender.com/predict', {
+            const diseaseApiUrl = import.meta.env.VITE_DISEASE_API_URL || 'http://localhost:5001';
+            const predictionResponse = await fetch(`${diseaseApiUrl}/predict`, {
                 method: 'POST',
                 body: formData,
             });

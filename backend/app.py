@@ -78,9 +78,25 @@ def load_prediction_model():
         print(f"[ERROR] Error loading model: {e}")
         model = None
 
+# Pre-cache ImageNet weights to avoid timeout on first prediction request
+def load_imagenet_weights():
+    """Pre-download ImageNet weights on startup to avoid timeout on first API request"""
+    try:
+        import tensorflow.keras.applications as keras_apps
+        weights_cache = os.path.expanduser('~/.keras/models')
+        expected_file = 'efficientnetb0_weights_tf_dim_ordering_tf_kernels_notop.h5'
+        
+        if not os.path.exists(os.path.join(weights_cache, expected_file)):
+            print("[INFO] Pre-downloading ImageNet weights (happens once at startup)...")
+            EfficientNetB0(weights='imagenet', include_top=False, input_shape=(160, 160, 3))
+            print("[SUCCESS] ImageNet weights cached")
+    except Exception as e:
+        print(f"[WARNING] Failed to pre-cache weights: {e}")
+
 # Load model on startup
 @app.on_event("startup")
 async def startup_event():
+    load_imagenet_weights()
     load_prediction_model()
 
 @app.get("/health")
@@ -136,5 +152,7 @@ async def predict(image: UploadFile = File(...)):
 
 if __name__ == '__main__':
     import uvicorn
-    # Run on port 5001 to match existing configuration
-    uvicorn.run(app, host="127.0.0.1", port=5001)
+    # Listen on all interfaces (0.0.0.0) for production; localhost-only would be unreachable on cloud platforms
+    host = os.getenv("HOST", "0.0.0.0")
+    port = int(os.getenv("PORT", 5001))
+    uvicorn.run(app, host=host, port=port)

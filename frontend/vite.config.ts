@@ -3,6 +3,10 @@ import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 import path from 'path';
 
+// Get API URL from environment or use localhost for dev
+const API_URL = process.env.VITE_API_URL || 'http://localhost:5000';
+const API_URL_ORIGIN = new URL(API_URL).origin;
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -54,13 +58,13 @@ export default defineConfig({
         runtimeCaching: [
           {
             urlPattern: ({ url }) =>
-              url.origin === 'http://localhost:5000' || url.pathname.startsWith('/api/'),
+              url.origin === API_URL_ORIGIN || url.pathname.startsWith('/api/'),
             handler: 'NetworkOnly',
             method: 'GET',
           },
           {
             urlPattern: ({ url }) =>
-              url.origin === 'http://localhost:5000' || url.pathname.startsWith('/api/'),
+              url.origin === API_URL_ORIGIN || url.pathname.startsWith('/api/'),
             handler: 'NetworkOnly',
             method: 'POST',
           },
@@ -70,7 +74,7 @@ export default defineConfig({
             method: 'POST',
           },
           {
-            urlPattern: ({ url }) => url.origin.includes('onrender.com'),
+            urlPattern: ({ url }) => url.origin.includes('onrender.com') || url.origin.includes('vercel.app'),
             handler: 'NetworkOnly',
             method: 'POST',
           },
@@ -84,10 +88,10 @@ export default defineConfig({
     },
   },
   server: {
-    host: 'localhost',
+    host: '0.0.0.0', // Allow external connections during dev
     port: 5173,
-    strictPort: true,
-    hmr: {
+    strictPort: false,
+    hmr: process.env.PROD ? undefined : {
       protocol: 'ws',
       host: 'localhost',
       port: 5173,

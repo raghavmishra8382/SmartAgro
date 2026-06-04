@@ -26,7 +26,7 @@ const testimonials = [
     name: "Anita Desai",
     location: "Karnataka",
     role: "Commercial Farm Director",
-    image: "https://images.unsplash.com/photo-1589828695026-6bb62e086111?q=80&w=1974&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop",
     rating: 5,
     text: "The profitability tracking dashboard is phenomenal. I can now track all my input costs against my expected harvest value in real-time. This is the absolute future of farming.",
   }

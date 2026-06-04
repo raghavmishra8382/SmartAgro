@@ -425,15 +425,13 @@ const WeatherDashboard = () => {
     <section id="weather" className="py-12 bg-gray-50/50 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-10 bg-gradient-to-br from-forest-600 to-green-700 rounded-3xl p-8 shadow-xl text-white relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-8 opacity-10">
-            <Cloud className="w-48 h-48" />
-          </div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 relative z-10">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2 flex items-center">
+            <Cloud className="w-8 h-8 mr-3 text-forest-600" />
             Weather Intelligence
-          </h2>
-          <p className="text-lg md:text-xl text-green-50 max-w-2xl mx-auto relative z-10">
-            Real-time hyper-local weather monitoring with AI-powered agricultural insights
+          </h1>
+          <p className="text-gray-600 max-w-3xl">
+            Real-time hyper-local weather monitoring with AI-powered agricultural insights.
           </p>
         </div>
 

@@ -14,7 +14,7 @@ export default function HeroSection() {
         {/* Right side image - Full height, fading into white */}
         <div 
           className="absolute right-0 top-0 w-full md:w-[70%] h-full bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/hero-bg.png')" }}
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=1200&auto=format&fit=crop')" }}
         />
         {/* Smooth gradient overlay masking from left (white) to right (transparent) - Full width to prevent borders */}
         <div 

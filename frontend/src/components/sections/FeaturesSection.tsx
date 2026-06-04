@@ -2,13 +2,15 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Leaf, CloudSun, MessageSquare, Timer, BarChart2, Users, ArrowRight } from "lucide-react";
 import { useRef } from "react";
 
+import { Link } from "react-router-dom";
+
 const features = [
   {
     icon: Leaf,
     title: "Soil Analysis & Crop Recommendations",
     description:
       "Analyze NPK levels from soil samples to receive tailored recommendations for crops and fertilizers to optimize your yield.",
-    link: "/features/soil-analysis",
+    link: "/crop-prediction",
     gradient: "from-forest-500 to-forest-600",
     bg: "bg-forest-50",
   },
@@ -17,7 +19,7 @@ const features = [
     title: "Weather Forecasting & Predictions",
     description:
       "Get accurate weather forecasts and real-time soil condition data to make informed decisions for your farming activities.",
-    link: "/features/weather",
+    link: "/weather",
     gradient: "from-sky-500 to-blue-600",
     bg: "bg-sky-50",
   },
@@ -26,7 +28,7 @@ const features = [
     title: "AI-Powered Agricultural Assistant",
     description:
       "Access our intelligent chatbot for instant guidance on farming techniques, crop diseases, and best practices.",
-    link: "/features/chatbot",
+    link: "/chat",
     gradient: "from-violet-500 to-purple-600",
     bg: "bg-violet-50",
   },
@@ -35,7 +37,7 @@ const features = [
     title: "Growth & Income Calculation",
     description:
       "Time series models analyze your soil, weather, and crop data to calculate expected growth and yearly income predictions.",
-    link: "/features/growth-calculator",
+    link: "/crop-production",
     gradient: "from-amber-500 to-orange-600",
     bg: "bg-amber-50",
   },
@@ -44,7 +46,7 @@ const features = [
     title: "Disease Prediction & Prevention",
     description:
       "Our GenAI technology identifies potential crop diseases before they appear and suggests prevention strategies.",
-    link: "/features/disease-prediction",
+    link: "/disease-prediction",
     gradient: "from-rose-500 to-pink-600",
     bg: "bg-rose-50",
   },
@@ -53,7 +55,7 @@ const features = [
     title: "Farmer Community",
     description:
       "Connect with other farmers to share knowledge, experiences, and insights for better agricultural practices.",
-    link: "/features/community",
+    link: "/community",
     gradient: "from-teal-500 to-cyan-600",
     bg: "bg-teal-50",
   },
@@ -148,38 +150,43 @@ export default function FeaturesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className={`group relative bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-[32px] hover:bg-white/[0.05] hover:border-green-500/30 transition-all duration-500 overflow-hidden ${spanClass} ${paddingClass}`}
+                className={`${spanClass}`}
               >
-                
-                {/* Subtle hover gradient inside the card */}
-                <div className="absolute inset-0 bg-gradient-to-br from-green-500/0 via-transparent to-green-500/0 group-hover:to-green-500/5 transition-colors duration-500" />
-                
-                <div className={`relative z-10 flex h-full ${flexDirClass}`}>
+                <Link
+                  to={feature.link}
+                  className={`group block relative bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-[32px] hover:bg-white/[0.05] hover:border-green-500/30 transition-all duration-500 overflow-hidden h-full ${paddingClass}`}
+                >
                   
-                  {/* Icon */}
-                  <div className={`${iconWrapClass} bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:bg-green-500/20 group-hover:border-green-500/30 transition-all duration-500`}>
-                    <Icon className={`${iconSizeClass} text-green-400 group-hover:text-green-300 transition-colors`} />
-                  </div>
+                  {/* Subtle hover gradient inside the card */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-500/0 via-transparent to-green-500/0 group-hover:to-green-500/5 transition-colors duration-500" />
                   
-                  {/* Content */}
-                  <div className="flex flex-col flex-1 justify-center h-full">
-                    <h3 className={`font-bold text-white mb-3 group-hover:text-green-400 transition-colors duration-300 ${titleClass}`}>
-                      {feature.title}
-                    </h3>
+                  <div className={`relative z-10 flex h-full ${flexDirClass}`}>
                     
-                    <p className={`text-gray-400 leading-relaxed mb-6 lg:mb-8 ${isSmall ? 'text-sm' : 'text-base lg:text-lg'}`}>
-                      {feature.description}
-                    </p>
-                    
-                    <div className="mt-auto">
-                      <span className="inline-flex items-center text-green-400 font-semibold text-sm group-hover:text-green-300 transition-colors">
-                        Explore Feature 
-                        <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
-                      </span>
+                    {/* Icon */}
+                    <div className={`${iconWrapClass} bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:bg-green-500/20 group-hover:border-green-500/30 transition-all duration-500`}>
+                      <Icon className={`${iconSizeClass} text-green-400 group-hover:text-green-300 transition-colors`} />
                     </div>
+                    
+                    {/* Content */}
+                    <div className="flex flex-col flex-1 justify-center h-full">
+                      <h3 className={`font-bold text-white mb-3 group-hover:text-green-400 transition-colors duration-300 ${titleClass}`}>
+                        {feature.title}
+                      </h3>
+                      
+                      <p className={`text-gray-400 leading-relaxed mb-6 lg:mb-8 ${isSmall ? 'text-sm' : 'text-base lg:text-lg'}`}>
+                        {feature.description}
+                      </p>
+                      
+                      <div className="mt-auto">
+                        <span className="inline-flex items-center text-green-400 font-semibold text-sm group-hover:text-green-300 transition-colors">
+                          Explore Feature 
+                          <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+                        </span>
+                      </div>
+                    </div>
+  
                   </div>
-
-                </div>
+                </Link>
               </motion.div>
             );
           })}

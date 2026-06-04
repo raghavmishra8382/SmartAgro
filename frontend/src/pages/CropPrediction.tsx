@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { GROQ_API_KEY } from '@/lib/env';
 import { FertilizerRecommendationCard, FertilizerAdvice } from '@/components/crop/FertilizerRecommendationCard';
+import { Sprout, TestTube, Droplets, Thermometer, FlaskConical, Wind, Activity, RefreshCw } from 'lucide-react';
 
 type SoilParameter = {
   nitrogen: string;
@@ -198,249 +199,294 @@ export default function CropPrediction() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-12 bg-gray-50 min-h-screen">
-      <div className="flex flex-col md:flex-row bg-white rounded-lg shadow-lg overflow-hidden max-w-6xl mx-auto">
-        {/* Left Section */}
-        <div className="w-full md:w-2/5 bg-green-800 p-8 text-white">
-          <h1 className="text-4xl font-bold mb-4">Crop Prediction</h1>
-          <p className="mb-6">Our advanced algorithms analyze multiple factors to recommend the best crops for your land.</p>
-          <p className="mb-8">Enter your soil parameters and get instant AI-powered recommendations tailored to your specific conditions.</p>
-
-          <div className="flex items-center space-x-4 mb-4">
-            <div className="flex items-center">
-              <div className="w-6 h-6 bg-forest-500 rounded flex items-center justify-center mr-2">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-white" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                </svg>
-              </div>
-              <span>98% Accuracy</span>
-            </div>
-
-            <div className="flex items-center">
-              <div className="w-6 h-6 bg-forest-500 rounded flex items-center justify-center mr-2">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-white" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V3zm1 4h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V8a1 1 0 011-1zm0 4h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2a1 1 0 011-1z" clipRule="evenodd" />
-                </svg>
-              </div>
-              <span>Historical Data</span>
-            </div>
-          </div>
-
-          {predictions.length > 0 && (
-            <div className="mt-8 p-4 bg-forest-700 rounded-lg">
-              <h3 className="text-xl font-semibold mb-3">Recommended Crops:</h3>
-              <ul className="space-y-2">
-                {predictions.map((pred, index) => (
-                  <li key={index} className="flex items-center">
-                    <div className="w-6 h-6 rounded-full bg-forest-500 flex items-center justify-center mr-3">
-                      {index + 1}
-                    </div>
-                    <span className="text-lg">{pred.crop} ({(pred.confidence).toFixed(2)}%)</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-4 pt-4 border-t border-green-600">
-                <p className="text-sm opacity-80">Based on your soil parameters, these crops are most likely to thrive in your conditions.</p>
-              </div>
-            </div>
-          )}
-
-          <div className="mt-8">
-            <button
-              onClick={resetForm}
-              className="px-4 py-2 bg-forest-600 hover:bg-forest-700 rounded text-sm font-medium transition duration-200"
-            >
-              Reset All Fields
-            </button>
-          </div>
+    <div className="py-12 bg-gray-50/50 min-h-screen">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2 flex items-center">
+            <Sprout className="w-8 h-8 mr-3 text-forest-600" />
+            Crop Prediction
+          </h1>
+          <p className="text-gray-600 max-w-3xl">
+            Our advanced algorithms analyze multiple factors to recommend the best crops for your land.
+            Enter your soil parameters and get instant AI-powered recommendations tailored to your specific conditions.
+          </p>
         </div>
 
-        {/* Right Section */}
-        <div className="w-full md:w-3/5 p-8">
-          <div className="border-b border-gray-200 pb-4 mb-6">
-            <h2 className="text-2xl font-bold text-forest-800">Soil Parameter Analysis</h2>
-            <p className="text-gray-600 mt-1">Enter your soil test results for accurate predictions</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label className="block text-forest-800 font-medium mb-2" htmlFor="nitrogen">
-                Nitrogen (N): <span className="text-red-500">*</span>
-              </label>
-              <div className="relative">
-                <input
-                  type="text"
-                  id="nitrogen"
-                  name="nitrogen"
-                  value={soilParams.nitrogen}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-forest-500"
-                  placeholder="Range, 0-140"
-                />
-                <span className="absolute right-3 top-2 text-gray-500">kg/ha</span>
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-forest-800 font-medium mb-2" htmlFor="phosphorus">
-                Phosphorous (P): <span className="text-red-500">*</span>
-              </label>
-              <div className="relative">
-                <input
-                  type="text"
-                  id="phosphorus"
-                  name="phosphorus"
-                  value={soilParams.phosphorus}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-forest-500"
-                  placeholder="Range, 0-140"
-                />
-                <span className="absolute right-3 top-2 text-gray-500">kg/ha</span>
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-forest-800 font-medium mb-2" htmlFor="potassium">
-                Potassium (K): <span className="text-red-500">*</span>
-              </label>
-              <div className="relative">
-                <input
-                  type="text"
-                  id="potassium"
-                  name="potassium"
-                  value={soilParams.potassium}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-forest-500"
-                  placeholder="Range, 0-200"
-                />
-                <span className="absolute right-3 top-2 text-gray-500">kg/ha</span>
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-forest-800 font-medium mb-2" htmlFor="ph">
-                pH Value: <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                id="ph"
-                name="ph"
-                value={soilParams.ph}
-                onChange={handleInputChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-forest-500"
-                placeholder="Range, 3.5-9"
-              />
-            </div>
-
-            <div>
-              <label className="block text-forest-800 font-medium mb-2" htmlFor="rainfall">
-                Rainfall:
-              </label>
-              <div className="relative">
-                <input
-                  type="text"
-                  id="rainfall"
-                  name="rainfall"
-                  value={soilParams.rainfall}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-forest-500"
-                  placeholder="Range , 0-500"
-                />
-                <span className="absolute right-3 top-2 text-gray-500">mm</span>
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-forest-800 font-medium mb-2" htmlFor="temperature">
-                Temperature:
-              </label>
-              <div className="relative">
-                <input
-                  type="text"
-                  id="temperature"
-                  name="temperature"
-                  value={soilParams.temperature}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-forest-500"
-                  placeholder="Range, 0-60"
-                />
-                <span className="absolute right-3 top-2 text-gray-500">°C</span>
-              </div>
-            </div>
-
-            <div className="md:col-span-2">
-              <label className="block text-forest-800 font-medium mb-2" htmlFor="humidity">
-                Humidity:
-              </label>
-              <div className="relative">
-                <input
-                  type="text"
-                  id="humidity"
-                  name="humidity"
-                  value={soilParams.humidity}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-forest-500"
-                  placeholder="Range, 10-100"
-                />
-                <span className="absolute right-3 top-2 text-gray-500">%</span>
-              </div>
-            </div>
-          </div>
-
-          <button
-            onClick={predictCrops}
-            disabled={isPredicting}
-            className="w-full mt-6 bg-forest-600 hover:bg-forest-700 text-white py-3 px-6 rounded-lg font-medium transition duration-200 focus:outline-none focus:ring-2 focus:ring-forest-500 focus:ring-offset-2 disabled:opacity-70"
-          >
-            {isPredicting ? (
-              <div className="flex items-center justify-center">
-                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                Processing...
-              </div>
-            ) : "Predict Suitable Crops"}
-          </button>
-
-          <div className="mt-8 border-t border-gray-200 pt-6">
-            <h2 className="text-2xl font-bold text-forest-800 mb-2">Select a Crop</h2>
-            <p className="text-gray-600 mb-4">Choose a crop to get specific fertilizer recommendations</p>
-
-            <select
-              value={selectedCrop}
-              onChange={handleCropChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-forest-500"
-              disabled={predictions.length === 0}
-            >
-              <option value="">-- Select Crop --</option>
-              {predictions.map(pred => (
-                <option key={pred.crop} value={pred.crop}>
-                  {pred.crop} ({(pred.confidence).toFixed(2)}%)
-                </option>
-              ))}
-            </select>
-
-            <button
-              onClick={getFertilizerAdvice}
-              disabled={isFetchingFertilizer || !selectedCrop}
-              className="w-full mt-4 bg-forest-600 hover:bg-forest-700 text-white py-3 px-6 rounded-lg font-medium transition duration-200 focus:outline-none focus:ring-2 focus:ring-forest-500 focus:ring-offset-2 disabled:opacity-70"
-            >
-              {isFetchingFertilizer ? (
-                <div className="flex items-center justify-center">
-                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
-                  Generating Advice...
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Form Section */}
+          <div className="lg:col-span-2">
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+              <div className="p-6 border-b border-gray-100 bg-gray-50/30 flex justify-between items-center">
+                <div>
+                  <h2 className="text-lg font-bold text-gray-900">Soil Parameter Analysis</h2>
+                  <p className="text-sm text-gray-500 mt-1">Enter your soil test results for accurate predictions</p>
                 </div>
-              ) : "Get Fertilizer Advice"}
-            </button>
+                <button
+                  onClick={resetForm}
+                  className="flex items-center text-sm font-medium text-gray-500 hover:text-forest-600 transition-colors bg-white border border-gray-200 px-3 py-1.5 rounded-lg shadow-sm hover:bg-gray-50"
+                >
+                  <RefreshCw className="w-4 h-4 mr-2" />
+                  Reset
+                </button>
+              </div>
+              <div className="p-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* NPK Inputs */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="nitrogen">
+                      Nitrogen (N) <span className="text-red-500">*</span>
+                    </label>
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <FlaskConical className="h-4 w-4 text-gray-400" />
+                      </div>
+                      <input
+                        type="text"
+                        id="nitrogen"
+                        name="nitrogen"
+                        value={soilParams.nitrogen}
+                        onChange={handleInputChange}
+                        className="block w-full pl-10 pr-12 py-2.5 sm:text-sm border-gray-300 border rounded-xl focus:ring-forest-500 focus:border-forest-500"
+                        placeholder="0-140"
+                      />
+                      <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                        <span className="text-gray-500 sm:text-sm">kg/ha</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="phosphorus">
+                      Phosphorus (P) <span className="text-red-500">*</span>
+                    </label>
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <FlaskConical className="h-4 w-4 text-gray-400" />
+                      </div>
+                      <input
+                        type="text"
+                        id="phosphorus"
+                        name="phosphorus"
+                        value={soilParams.phosphorus}
+                        onChange={handleInputChange}
+                        className="block w-full pl-10 pr-12 py-2.5 sm:text-sm border-gray-300 border rounded-xl focus:ring-forest-500 focus:border-forest-500"
+                        placeholder="0-140"
+                      />
+                      <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                        <span className="text-gray-500 sm:text-sm">kg/ha</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="potassium">
+                      Potassium (K) <span className="text-red-500">*</span>
+                    </label>
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <FlaskConical className="h-4 w-4 text-gray-400" />
+                      </div>
+                      <input
+                        type="text"
+                        id="potassium"
+                        name="potassium"
+                        value={soilParams.potassium}
+                        onChange={handleInputChange}
+                        className="block w-full pl-10 pr-12 py-2.5 sm:text-sm border-gray-300 border rounded-xl focus:ring-forest-500 focus:border-forest-500"
+                        placeholder="0-200"
+                      />
+                      <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                        <span className="text-gray-500 sm:text-sm">kg/ha</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="ph">
+                      pH Value <span className="text-red-500">*</span>
+                    </label>
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <TestTube className="h-4 w-4 text-gray-400" />
+                      </div>
+                      <input
+                        type="text"
+                        id="ph"
+                        name="ph"
+                        value={soilParams.ph}
+                        onChange={handleInputChange}
+                        className="block w-full pl-10 py-2.5 sm:text-sm border-gray-300 border rounded-xl focus:ring-forest-500 focus:border-forest-500"
+                        placeholder="3.5-9.0"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Environment Inputs */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="rainfall">
+                      Rainfall
+                    </label>
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <Droplets className="h-4 w-4 text-gray-400" />
+                      </div>
+                      <input
+                        type="text"
+                        id="rainfall"
+                        name="rainfall"
+                        value={soilParams.rainfall}
+                        onChange={handleInputChange}
+                        className="block w-full pl-10 pr-12 py-2.5 sm:text-sm border-gray-300 border rounded-xl focus:ring-forest-500 focus:border-forest-500"
+                        placeholder="0-500"
+                      />
+                      <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                        <span className="text-gray-500 sm:text-sm">mm</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="temperature">
+                      Temperature
+                    </label>
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <Thermometer className="h-4 w-4 text-gray-400" />
+                      </div>
+                      <input
+                        type="text"
+                        id="temperature"
+                        name="temperature"
+                        value={soilParams.temperature}
+                        onChange={handleInputChange}
+                        className="block w-full pl-10 pr-12 py-2.5 sm:text-sm border-gray-300 border rounded-xl focus:ring-forest-500 focus:border-forest-500"
+                        placeholder="0-60"
+                      />
+                      <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                        <span className="text-gray-500 sm:text-sm">°C</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="md:col-span-2">
+                    <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="humidity">
+                      Humidity
+                    </label>
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <Wind className="h-4 w-4 text-gray-400" />
+                      </div>
+                      <input
+                        type="text"
+                        id="humidity"
+                        name="humidity"
+                        value={soilParams.humidity}
+                        onChange={handleInputChange}
+                        className="block w-full pl-10 pr-12 py-2.5 sm:text-sm border-gray-300 border rounded-xl focus:ring-forest-500 focus:border-forest-500"
+                        placeholder="10-100"
+                      />
+                      <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                        <span className="text-gray-500 sm:text-sm">%</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  onClick={predictCrops}
+                  disabled={isPredicting}
+                  className="w-full mt-8 bg-forest-600 hover:bg-forest-700 text-white py-3.5 px-6 rounded-xl font-medium shadow-sm transition duration-200 focus:outline-none focus:ring-2 focus:ring-forest-500 focus:ring-offset-2 disabled:opacity-70 flex items-center justify-center"
+                >
+                  {isPredicting ? (
+                    <>
+                      <RefreshCw className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" />
+                      Processing Analysis...
+                    </>
+                  ) : (
+                    <>
+                      <Activity className="mr-2 h-5 w-5" />
+                      Predict Suitable Crops
+                    </>
+                  )}
+                </button>
+              </div>
+            </div>
           </div>
 
+          {/* Results Section */}
+          <div className="lg:col-span-1 space-y-6">
+            {predictions.length > 0 && (
+              <div className="bg-white rounded-2xl shadow-sm border border-forest-200 overflow-hidden relative">
+                <div className="absolute top-0 left-0 w-1 h-full bg-forest-500"></div>
+                <div className="p-6">
+                  <h3 className="text-lg font-bold text-gray-900 mb-1 flex items-center">
+                    <Sprout className="w-5 h-5 mr-2 text-forest-600" />
+                    Recommended Crops
+                  </h3>
+                  <p className="text-sm text-gray-500 mb-4">Based on 98% accuracy model</p>
+                  <ul className="space-y-3">
+                    {predictions.map((pred, index) => (
+                      <li key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-xl border border-gray-100">
+                        <div className="flex items-center">
+                          <span className="flex items-center justify-center w-6 h-6 rounded-full bg-white shadow-sm border border-gray-200 text-xs font-bold text-gray-700 mr-3">
+                            {index + 1}
+                          </span>
+                          <span className="font-semibold text-gray-800 capitalize">{pred.crop}</span>
+                        </div>
+                        <span className="text-sm font-medium text-forest-600 bg-forest-50 px-2 py-1 rounded-md">
+                          {(pred.confidence).toFixed(1)}% Match
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            )}
+
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+              <div className="p-6 border-b border-gray-100 bg-gray-50/30">
+                <h2 className="text-lg font-bold text-gray-900">Fertilizer Advice</h2>
+                <p className="text-sm text-gray-500 mt-1">Select a crop for specific recommendations</p>
+              </div>
+              <div className="p-6">
+                <select
+                  value={selectedCrop}
+                  onChange={handleCropChange}
+                  className="block w-full py-2.5 pl-3 pr-10 text-base border-gray-300 border rounded-xl focus:outline-none focus:ring-forest-500 focus:border-forest-500 sm:text-sm"
+                  disabled={predictions.length === 0}
+                >
+                  <option value="">-- Select Crop --</option>
+                  {predictions.map(pred => (
+                    <option key={pred.crop} value={pred.crop}>
+                      {pred.crop}
+                    </option>
+                  ))}
+                </select>
+
+                <button
+                  onClick={getFertilizerAdvice}
+                  disabled={isFetchingFertilizer || !selectedCrop}
+                  className="w-full mt-4 bg-white border border-forest-600 text-forest-700 hover:bg-forest-50 py-3 px-6 rounded-xl font-medium transition duration-200 focus:outline-none focus:ring-2 focus:ring-forest-500 focus:ring-offset-2 disabled:opacity-50 disabled:border-gray-300 disabled:text-gray-400 flex items-center justify-center"
+                >
+                  {isFetchingFertilizer ? (
+                    <>
+                      <RefreshCw className="animate-spin -ml-1 mr-3 h-5 w-5" />
+                      Generating...
+                    </>
+                  ) : "Get Fertilizer Advice"}
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
+
+        {fertilizerAdvice && (
+          <div className="mt-8">
+            <FertilizerRecommendationCard advice={fertilizerAdvice} />
+          </div>
+        )}
       </div>
-      <FertilizerRecommendationCard advice={fertilizerAdvice} />
     </div>
   );
 }

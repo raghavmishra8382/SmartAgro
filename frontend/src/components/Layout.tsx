@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Header from './Header';
-import Footer from './Footer';
 import VoiceAssistant from './VoiceAssistant';
 
 interface LayoutProps {
@@ -67,7 +66,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <main className="flex-1 p-4 md:p-6 lg:p-8">
           {children}
         </main>
-        <Footer />
       </div>
       <VoiceAssistant onNavigate={handleVoiceNavigation} onAction={handleVoiceAction} />
     </div>

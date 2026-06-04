@@ -61,123 +61,130 @@ const features = [
 
 export default function FeaturesSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-
-  // Parallax for decorative blobs
-  const blobY1 = useTransform(scrollYProgress, [0, 1], [80, -80]);
-  const blobY2 = useTransform(scrollYProgress, [0, 1], [-60, 60]);
 
   return (
-    <section id="features" className="py-24 md:py-32 bg-white relative overflow-hidden" ref={sectionRef}>
-      {/* Decorative parallax blobs */}
-      <motion.div
-        style={{ y: blobY1 }}
-        className="absolute top-0 right-0 w-[600px] h-[600px] bg-forest-50 rounded-full mix-blend-multiply filter blur-3xl opacity-40 -translate-y-1/2 translate-x-1/3 pointer-events-none"
-      />
-      <motion.div
-        style={{ y: blobY2 }}
-        className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cream-100 rounded-full mix-blend-multiply filter blur-3xl opacity-40 translate-y-1/3 -translate-x-1/3 pointer-events-none"
-      />
+    <section id="features" className="py-24 md:py-32 bg-[#08140D] relative overflow-hidden" ref={sectionRef}>
+      
+      {/* Dark mode glow effects */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-[#1c6c3f] rounded-full blur-[150px] opacity-10 pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-[#2b6a43] rounded-full blur-[150px] opacity-10 pointer-events-none" />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="container mx-auto px-6 lg:px-8 relative z-10">
+        
         {/* Section header */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center mb-16 md:mb-20"
-        >
-          <motion.span
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="inline-block text-forest-600 font-bold tracking-wider uppercase text-xs mb-4 bg-forest-50 px-4 py-1.5 rounded-full border border-forest-100/60"
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-green-400 font-semibold text-xs tracking-wide uppercase mb-6"
           >
-            Why Choose SmartAgro?
-          </motion.span>
-
-          <h2 className="text-3xl md:text-5xl lg:text-[3.5rem] font-bold text-gray-900 leading-tight tracking-tight">
-            Innovative Technology for <br />
-            <span className="text-forest-600 relative inline-block">
-              Modern Farming
-              <motion.svg
-                initial={{ scaleX: 0 }}
-                whileInView={{ scaleX: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute w-full h-3 -bottom-1 left-0 text-leaf-300/60 -z-10 origin-left"
-                viewBox="0 0 100 10"
-                preserveAspectRatio="none"
-              >
-                <path d="M0 5 Q 50 10 100 5 L 100 10 L 0 10 Z" fill="currentColor" />
-              </motion.svg>
-            </span>
-          </h2>
-
+            Powerful Capabilities
+          </motion.div>
+          
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-4xl md:text-5xl lg:text-[56px] font-[800] text-white leading-tight tracking-tight mb-6"
+          >
+            Everything you need for <br className="hidden md:block"/>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">modern farming.</span>
+          </motion.h2>
+          
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="text-lg text-gray-500 max-w-2xl mx-auto mt-5 leading-relaxed"
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-lg text-gray-400 leading-relaxed max-w-2xl mx-auto"
           >
             Leverage AI, machine learning, and comprehensive data analytics to optimize every aspect of your agricultural operations.
           </motion.p>
-        </motion.div>
+        </div>
 
-        {/* Feature cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {features.map((feature, index) => {
+        {/* Hierarchical Bento Box Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+          {[
+            { index: 0, size: 'large' },  // Soil Analysis (Large, 58%)
+            { index: 1, size: 'medium' }, // Weather Forecasting (Medium, 42%)
+            { index: 2, size: 'medium' }, // AI Assistant (Medium, 42%)
+            { index: 4, size: 'large' },  // Disease Prediction (Large, 58%) - Alternates layout
+            { index: 5, size: 'small' },  // Farmer Community (Small, 50%)
+            { index: 3, size: 'small' },  // Growth Calculator (Small, 50%)
+          ].map((layoutConfig, idx) => {
+            const feature = features[layoutConfig.index];
             const Icon = feature.icon;
+            
+            const isLarge = layoutConfig.size === 'large';
+            const isMedium = layoutConfig.size === 'medium';
+            const isSmall = layoutConfig.size === 'small';
+            
+            // Grid sizing (7-col / 5-col split = 58% / 42% ratio)
+            let spanClass = "";
+            if (isLarge) spanClass = "col-span-1 md:col-span-12 lg:col-span-7";
+            if (isMedium) spanClass = "col-span-1 md:col-span-12 lg:col-span-5";
+            if (isSmall) spanClass = "col-span-1 md:col-span-6 lg:col-span-6";
+
+            // Visual sizing hierarchy
+            const paddingClass = isLarge ? "p-8 lg:p-12" : isMedium ? "p-8 lg:p-10" : "p-6 lg:p-8";
+            const titleClass = isLarge ? "text-2xl lg:text-3xl" : isMedium ? "text-xl lg:text-2xl" : "text-lg lg:text-xl";
+            const iconWrapClass = isLarge ? "w-20 h-20 rounded-3xl" : isMedium ? "w-16 h-16 rounded-2xl" : "w-14 h-14 rounded-2xl";
+            const iconSizeClass = isLarge ? "w-10 h-10" : isMedium ? "w-8 h-8" : "w-6 h-6";
+            
+            // Layout direction based on size
+            const flexDirClass = isLarge 
+              ? "flex-col lg:flex-row lg:items-center gap-8 lg:gap-12" 
+              : isSmall 
+                ? "flex-col xl:flex-row xl:items-center gap-6" 
+                : "flex-col gap-6 lg:gap-8";
+
             return (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50, scale: 0.95 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{
-                  duration: 0.6,
-                  delay: index * 0.1,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                whileHover={{ y: -6, transition: { duration: 0.3 } }}
-                className="group bg-white rounded-2xl p-7 md:p-8 shadow-soft hover:shadow-elevated transition-shadow duration-500 border border-gray-100/80 hover:border-forest-200/60 relative overflow-hidden cursor-pointer"
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className={`group relative bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-[32px] hover:bg-white/[0.05] hover:border-green-500/30 transition-all duration-500 overflow-hidden ${spanClass} ${paddingClass}`}
               >
-                {/* Animated corner blob */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-forest-50/80 to-transparent rounded-bl-[3rem] -mr-8 -mt-8 transition-all duration-700 ease-out group-hover:scale-[2] group-hover:opacity-60" />
+                
+                {/* Subtle hover gradient inside the card */}
+                <div className="absolute inset-0 bg-gradient-to-br from-green-500/0 via-transparent to-green-500/0 group-hover:to-green-500/5 transition-colors duration-500" />
+                
+                <div className={`relative z-10 flex h-full ${flexDirClass}`}>
+                  
+                  {/* Icon */}
+                  <div className={`${iconWrapClass} bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:bg-green-500/20 group-hover:border-green-500/30 transition-all duration-500`}>
+                    <Icon className={`${iconSizeClass} text-green-400 group-hover:text-green-300 transition-colors`} />
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="flex flex-col flex-1 justify-center h-full">
+                    <h3 className={`font-bold text-white mb-3 group-hover:text-green-400 transition-colors duration-300 ${titleClass}`}>
+                      {feature.title}
+                    </h3>
+                    
+                    <p className={`text-gray-400 leading-relaxed mb-6 lg:mb-8 ${isSmall ? 'text-sm' : 'text-base lg:text-lg'}`}>
+                      {feature.description}
+                    </p>
+                    
+                    <div className="mt-auto">
+                      <span className="inline-flex items-center text-green-400 font-semibold text-sm group-hover:text-green-300 transition-colors">
+                        Explore Feature 
+                        <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+                      </span>
+                    </div>
+                  </div>
 
-                <div className="relative z-10">
-                  {/* Icon with gradient background on hover */}
-                  <motion.div
-                    whileHover={{ rotate: [0, -8, 8, 0] }}
-                    transition={{ duration: 0.5 }}
-                    className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 shadow-sm transition-all duration-500 ${feature.bg} group-hover:bg-gradient-to-br group-hover:${feature.gradient} group-hover:shadow-md`}
-                  >
-                    <Icon className="h-6 w-6 text-gray-700 group-hover:text-white transition-colors duration-500" />
-                  </motion.div>
-
-                  <h3 className="text-lg font-bold text-gray-900 mb-3 group-hover:text-forest-700 transition-colors duration-300">
-                    {feature.title}
-                  </h3>
-
-                  <p className="text-gray-500 text-sm mb-6 leading-relaxed">
-                    {feature.description}
-                  </p>
-
-                  <span className="inline-flex items-center text-forest-600 font-semibold text-sm group-hover:text-forest-700 transition-all duration-300">
-                    Explore Feature
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" />
-                  </span>
                 </div>
               </motion.div>
             );
           })}
         </div>
+        
       </div>
     </section>
   );

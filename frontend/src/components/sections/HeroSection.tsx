@@ -1,199 +1,265 @@
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ChevronDown, Sparkles } from "lucide-react";
-
-const images = [
-  "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1932&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=2070&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?q=80&w=2070&auto=format&fit=crop",
-];
-
-// Premium easing curve
-const ease = [0.22, 1, 0.36, 1] as const;
+import { motion } from "framer-motion";
+import { 
+  ArrowRight, PlayCircle, Leaf, Scan, ShieldCheck, 
+  Droplets, Thermometer, Users, TrendingUp, Globe, Sprout 
+} from "lucide-react";
 
 export default function HeroSection() {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 6000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <div id="hero" className="relative min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center overflow-hidden">
-      {/* Background Images with Ken Burns effect */}
-      <div className="absolute inset-0 w-full h-full">
-        <AnimatePresence mode="sync">
-          <motion.div
-            key={currentImageIndex}
-            initial={{ opacity: 0, scale: 1.1 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ opacity: { duration: 1.5 }, scale: { duration: 8, ease: "linear" } }}
-            className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: `url(${images[currentImageIndex]})` }}
-          />
-        </AnimatePresence>
-        <div className="absolute inset-0 bg-gradient-to-br from-forest-900/95 via-forest-800/85 to-agri-900/80" />
+    <div id="hero" className="relative min-h-[calc(100vh-5rem)] bg-white overflow-hidden flex flex-col justify-between">
+      
+      {/* Full Bleed Background Section */}
+      <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
+        {/* Right side image - Full height, fading into white */}
+        <div 
+          className="absolute right-0 top-0 w-full md:w-[70%] h-full bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/hero-bg.png')" }}
+        />
+        {/* Smooth gradient overlay masking from left (white) to right (transparent) - Full width to prevent borders */}
+        <div 
+          className="absolute inset-0 w-full h-full hidden md:block" 
+          style={{ background: 'linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 35%, rgba(255,255,255,0) 65%)' }}
+        />
+        
+        {/* Extra gradient block for mobile readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/70 to-transparent md:hidden" />
       </div>
 
-      {/* Floating particles */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-white/20 rounded-full"
-            style={{
-              left: `${15 + i * 15}%`,
-              top: `${20 + (i % 3) * 25}%`,
-            }}
-            animate={{
-              y: [-20, 20, -20],
-              opacity: [0.2, 0.5, 0.2],
-            }}
-            transition={{
-              duration: 4 + i * 0.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: i * 0.8,
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 py-16 flex flex-col items-center text-center">
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 30, scale: 0.9 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.8, ease, delay: 0.2 }}
-          className="mb-8"
-        >
-          <span className="inline-flex items-center gap-2 bg-white/10 text-white px-5 py-2 rounded-full text-sm font-semibold backdrop-blur-xl border border-white/15 shadow-lg">
-            <Sparkles className="h-3.5 w-3.5 text-cream-400" />
-            Smart Agriculture Platform
-          </span>
-        </motion.div>
-
-        {/* Title */}
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease, delay: 0.4 }}
-          className="text-5xl md:text-6xl lg:text-8xl font-bold text-white mb-6 text-shadow leading-[1.1] tracking-tight"
-        >
-          Smart
-          <motion.span
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.9 }}
-            className="text-sage-300"
-          >
-            Agro
-          </motion.span>
-        </motion.h1>
-
-        {/* Subtitle */}
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease, delay: 0.7 }}
-          className="text-lg md:text-xl text-white/80 max-w-2xl mb-12 leading-relaxed"
-        >
-          Harnessing the power of AI, IoT, and drones to make farming more sustainable, productive, and profitable for every farmer
-        </motion.p>
-
-        {/* CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease, delay: 0.9 }}
-          className="flex flex-wrap justify-center gap-4"
-        >
-          <Link to="/register">
-            <motion.div
-              whileHover={{ scale: 1.04, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              className="btn-primary text-base py-3.5 px-8 shadow-glow-green group"
+      <div className="relative z-10 container mx-auto px-6 lg:px-8 pt-12 lg:pt-20 pb-16 flex-1">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 h-full items-center">
+          
+          {/* Left Column - Content (Spans 5 of 12 columns) */}
+          <div className="lg:col-span-5 flex flex-col items-start justify-center mt-4">
+            
+            {/* Badge */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#f0f9f4] text-[#1c6c3f] font-semibold text-sm mb-6"
             >
-              Get Started
-              <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+              <Leaf className="w-4 h-4" /> Smart Agriculture Platform
             </motion.div>
-          </Link>
-          <a href="#features">
-            <motion.div
-              whileHover={{ scale: 1.04, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              className="btn-secondary bg-white/10 border-white/20 text-white hover:bg-white/20 hover:border-white/30 text-base py-3.5 px-8 backdrop-blur-sm"
+            
+            {/* Title */}
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-5xl md:text-6xl lg:text-[72px] font-[800] text-slate-800 leading-[1.05] mb-6 tracking-tight"
             >
-              Explore Features
+              Smarter <span className="text-[#2b6a43]">Farming.</span><br/>
+              Sustainable <span className="text-[#2b6a43]">Future.</span>
+            </motion.h1>
+            
+            {/* Subtitle */}
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-lg md:text-xl text-slate-500 mb-10 leading-relaxed max-w-lg"
+            >
+              Harnessing the power of AI, IoT, and drones to help farmers increase productivity, reduce costs, and build a better tomorrow.
+            </motion.p>
+            
+            {/* CTA Buttons */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="flex flex-wrap items-center gap-4 mb-14"
+            >
+              <Link to="/register" className="inline-flex items-center gap-2 bg-[#2b6a43] text-white px-8 py-3.5 rounded-full font-semibold hover:bg-[#1f4f31] transition-colors shadow-lg shadow-green-900/20 text-base">
+                Get Started <ArrowRight className="w-5 h-5" />
+              </Link>
+              <a href="#features" className="inline-flex items-center justify-center bg-white text-[#2b6a43] border border-gray-200 px-8 py-3.5 rounded-full font-semibold hover:bg-gray-50 transition-colors shadow-sm text-base">
+                Explore Features
+              </a>
             </motion.div>
-          </a>
-        </motion.div>
-
-        {/* Stats Bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 40, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.8, ease, delay: 1.2 }}
-          className="mt-16 md:mt-20"
-        >
-          <div className="flex justify-center gap-10 md:gap-16 lg:gap-20 p-6 bg-white/[0.06] backdrop-blur-xl rounded-2xl border border-white/[0.08] shadow-lg">
-            {[
-              { value: "10,000+", label: "Farmers" },
-              { value: "28%", label: "Yield Increase" },
-              { value: "35+", label: "Countries" },
-            ].map(({ value, label }, i) => (
-              <motion.div
-                key={label}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 1.5 + i * 0.15, ease }}
-                className="text-center"
-              >
-                <p className="text-3xl md:text-4xl font-bold text-cream-300 tracking-tight">{value}</p>
-                <p className="text-white/50 text-sm font-medium mt-1">{label}</p>
-              </motion.div>
-            ))}
+            
+            {/* Features Row */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="flex items-center divide-x divide-gray-200/60"
+            >
+              {/* Feature 1 */}
+              <div className="flex items-center gap-3 pr-6">
+                <div className="w-10 h-10 rounded-lg bg-[#eef8f1] flex items-center justify-center text-[#2b6a43] shrink-0">
+                  <Leaf className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-slate-800 leading-tight">AI-Powered</h4>
+                  <p className="text-[12px] text-slate-500">Smart Insights</p>
+                </div>
+              </div>
+              {/* Feature 2 */}
+              <div className="flex items-center gap-3 px-6">
+                <div className="w-10 h-10 rounded-lg bg-[#eef8f1] flex items-center justify-center text-[#2b6a43] shrink-0">
+                  <Scan className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-slate-800 leading-tight">Drone Monitoring</h4>
+                  <p className="text-[12px] text-slate-500">Real-time Data</p>
+                </div>
+              </div>
+              {/* Feature 3 */}
+              <div className="flex items-center gap-3 pl-6">
+                <div className="w-10 h-10 rounded-lg bg-[#eef8f1] flex items-center justify-center text-[#2b6a43] shrink-0">
+                  <ShieldCheck className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-slate-800 leading-tight">Sustainable</h4>
+                  <p className="text-[12px] text-slate-500">Better Tomorrow</p>
+                </div>
+              </div>
+            </motion.div>
+            
           </div>
-        </motion.div>
+          
+          {/* Right Column - Glassmorphism Widgets (Spans 7 of 12 columns) */}
+          <div className="lg:col-span-7 relative h-full hidden lg:block pointer-events-none">
+            
+            {/* Crop Health Widget */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.6, duration: 0.5 }}
+              className="absolute top-[30%] left-[25%] bg-[#0f291e]/70 backdrop-blur-md border border-white/20 p-2.5 rounded-xl shadow-2xl flex items-center gap-3 w-40"
+            >
+              <div className="w-8 h-8 rounded-lg bg-green-500/20 border border-green-400/30 flex items-center justify-center shrink-0">
+                <Leaf className="w-4 h-4 text-green-300" />
+              </div>
+              <div>
+                <p className="text-[10px] text-white/90 font-medium leading-none mb-1">Crop Health</p>
+                <p className="text-lg font-bold text-white leading-none mb-0.5">98%</p>
+                <p className="text-[9px] text-white/70 leading-none">Excellent</p>
+              </div>
+              {/* SVG pointer line */}
+              <svg className="absolute -bottom-16 left-1/2 w-[1px] h-16 overflow-visible">
+                 <line x1="0" y1="0" x2="0" y2="64" stroke="rgba(255,255,255,0.8)" strokeWidth="1" strokeDasharray="3 3"/>
+                 <circle cx="0" cy="64" r="3" fill="white" />
+              </svg>
+            </motion.div>
+            
+            {/* Soil Moisture Widget */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.8, duration: 0.5 }}
+              className="absolute top-[45%] right-[10%] bg-[#0f291e]/70 backdrop-blur-md border border-white/20 p-2.5 rounded-xl shadow-2xl flex items-center gap-3 w-40"
+            >
+              <div className="w-8 h-8 rounded-lg bg-cyan-500/20 border border-cyan-400/30 flex items-center justify-center shrink-0">
+                <Droplets className="w-4 h-4 text-cyan-300" />
+              </div>
+              <div>
+                <p className="text-[10px] text-white/90 font-medium leading-none mb-1">Soil Moisture</p>
+                <p className="text-lg font-bold text-white leading-none mb-0.5">72%</p>
+                <p className="text-[9px] text-white/70 leading-none">Optimal</p>
+              </div>
+              {/* SVG pointer line */}
+              <svg className="absolute top-1/2 -left-16 w-16 h-[1px] overflow-visible">
+                 <line x1="0" y1="0" x2="64" y2="0" stroke="rgba(255,255,255,0.8)" strokeWidth="1" strokeDasharray="3 3"/>
+                 <circle cx="0" cy="0" r="3" fill="white" />
+              </svg>
+            </motion.div>
+
+            {/* Temperature Widget */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 1.0, duration: 0.5 }}
+              className="absolute bottom-[20%] left-[40%] bg-[#0f291e]/70 backdrop-blur-md border border-white/20 p-2.5 rounded-xl shadow-2xl flex items-center gap-3 w-40"
+            >
+              <div className="w-8 h-8 rounded-lg bg-orange-500/20 border border-orange-400/30 flex items-center justify-center shrink-0">
+                <Thermometer className="w-4 h-4 text-orange-200" />
+              </div>
+              <div>
+                <p className="text-[10px] text-white/90 font-medium leading-none mb-1">Temperature</p>
+                <p className="text-lg font-bold text-white leading-none mb-0.5">24°C</p>
+                <p className="text-[9px] text-white/70 leading-none">Ideal</p>
+              </div>
+              {/* SVG pointer line */}
+              <svg className="absolute top-1/2 -right-24 w-24 h-[1px] overflow-visible">
+                 <line x1="0" y1="0" x2="96" y2="0" stroke="rgba(255,255,255,0.8)" strokeWidth="1" strokeDasharray="3 3"/>
+                 <circle cx="96" cy="0" r="3" fill="white" />
+              </svg>
+            </motion.div>
+
+          </div>
+        </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 0.8 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20"
-      >
-        <motion.a
-          href="#features"
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-col items-center text-white/50 hover:text-white bg-white/[0.06] rounded-full p-2.5 backdrop-blur-sm border border-white/10 transition-all duration-300 hover:bg-white/10"
-          aria-label="Scroll to features section"
-        >
-          <ChevronDown className="h-5 w-5" />
-        </motion.a>
-      </motion.div>
-
-      {/* Image indicators */}
-      <div className="absolute bottom-8 right-8 flex gap-2 z-20">
-        {images.map((_, i) => (
-          <motion.button
-            key={i}
-            onClick={() => setCurrentImageIndex(i)}
-            className={`h-1.5 rounded-full transition-all duration-500 ${
-              i === currentImageIndex ? "w-8 bg-white/80" : "w-3 bg-white/30 hover:bg-white/50"
-            }`}
-            whileHover={{ scale: 1.2 }}
-          />
-        ))}
+      {/* Decorative White Curve to overlay behind the dark green bar on the left */}
+      <div className="relative w-full z-10 -mb-6 md:-mb-10 lg:-mb-14 xl:-mb-20">
+        <svg viewBox="0 0 1440 120" className="w-full h-auto fill-white drop-shadow-sm transform translate-y-1">
+          <path d="M0,0 C240,120 480,120 1440,0 L1440,120 L0,120 Z"></path>
+        </svg>
       </div>
+
+      {/* Bottom Dark Green Stats Bar */}
+      <div className="relative w-full z-20 pb-6 px-4 md:px-8 bg-white">
+        <div className="container mx-auto">
+          <div className="bg-[#183625] rounded-3xl lg:rounded-[2rem] px-6 py-6 md:px-12 md:py-8 shadow-2xl relative overflow-hidden">
+            
+            {/* Subtle glow effect inside the green bar */}
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-20">
+               <div className="absolute -top-[150px] -left-[50px] w-[300px] h-[300px] bg-white rounded-full blur-3xl mix-blend-overlay"></div>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4 relative z-10 divide-x divide-white/10">
+              
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                  <Users className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-2xl lg:text-3xl font-bold text-white leading-none">10,000+</h3>
+                  <p className="text-[13px] font-semibold text-white/90 mt-1">Farmers</p>
+                  <p className="text-[11px] text-white/60 leading-tight">Trust our platform</p>
+                </div>
+              </div>
+
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-4 pl-4 lg:pl-8">
+                <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                  <TrendingUp className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-2xl lg:text-3xl font-bold text-white leading-none">28%</h3>
+                  <p className="text-[13px] font-semibold text-white/90 mt-1">Average Yield Increase</p>
+                  <p className="text-[11px] text-white/60 leading-tight">Through smart insights</p>
+                </div>
+              </div>
+
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-4 pl-4 lg:pl-8 border-l border-white/10">
+                <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                  <Globe className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-2xl lg:text-3xl font-bold text-white leading-none">35+</h3>
+                  <p className="text-[13px] font-semibold text-white/90 mt-1">Countries</p>
+                  <p className="text-[11px] text-white/60 leading-tight">Growing worldwide</p>
+                </div>
+              </div>
+
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-4 pl-4 lg:pl-8">
+                <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                  <Sprout className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-2xl lg:text-3xl font-bold text-white leading-none">1M+</h3>
+                  <p className="text-[13px] font-semibold text-white/90 mt-1">Acres Monitored</p>
+                  <p className="text-[11px] text-white/60 leading-tight">And counting</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   );
 }

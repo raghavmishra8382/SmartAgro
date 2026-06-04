@@ -1,4 +1,3 @@
-
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/sections/Navbar";
@@ -8,7 +7,7 @@ import FeaturesSection from "@/components/sections/FeaturesSection";
 import AboutSection from "@/components/sections/AboutSection";
 import StatsSection from "@/components/sections/StatsSection";
 import MapSection from "@/components/sections/MapSection";
-import ProgramsSection from "@/components/sections/ProgramsSection";
+import HowItWorksSection from "@/components/sections/HowItWorksSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import ContactSection from "@/components/sections/ContactSection";
 import { Button as UIButton } from "@/components/ui/button";
@@ -55,26 +54,42 @@ export default function Index() {
                 <AboutSection />
                 <StatsSection />
                 <MapSection />
-                <ProgramsSection />
+                <HowItWorksSection />
                 <TestimonialsSection />
                 <ContactSection />
 
-                {/* CTA Banner */}
-                <section className="py-16 px-4 bg-gradient-to-r from-forest-700 to-forest-800 text-white">
-                    <div className="container mx-auto max-w-5xl flex flex-col lg:flex-row items-center justify-between gap-8">
-                        <div className="text-center lg:text-left">
-                            <h2 className="text-3xl font-bold mb-4 tracking-tight">Ready to Transform Your Farming?</h2>
-                            <p className="text-lg text-forest-100/80 mb-0 lg:mb-0">
-                                Join thousands of farmers who've already improved their yields and profitability with SmartAgro.
-                            </p>
-                        </div>
-                        <div className="flex flex-col sm:flex-row gap-4">
-                            <UIButton asChild size="lg" className="bg-white text-forest-700 hover:bg-gray-100 shadow-lg font-bold">
-                                <Link to="/register">Sign Up Now</Link>
-                            </UIButton>
-                            <UIButton asChild variant="outline" size="lg" className="border-white/30 text-white hover:bg-white/10">
-                                <Link to="/contact">Contact Sales</Link>
-                            </UIButton>
+                {/* Premium CTA Banner */}
+                <section className="py-24 relative overflow-hidden bg-white">
+                    <div className="container mx-auto px-6 relative z-10">
+                        <div className="relative flex flex-col items-center text-center max-w-5xl mx-auto bg-[#08140D] rounded-[2.5rem] p-12 md:p-20 shadow-[0_20px_60px_rgba(8,20,13,0.15)] overflow-hidden border border-gray-100">
+                            
+                            {/* Card Background Pattern */}
+                            <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
+                            
+                            {/* Card Glowing Accents */}
+                            <div className="absolute top-0 right-0 w-64 h-64 bg-green-500/10 rounded-full blur-[80px] pointer-events-none" />
+                            <div className="absolute bottom-0 left-0 w-64 h-64 bg-emerald-500/10 rounded-full blur-[80px] pointer-events-none" />
+
+                            <div className="relative z-10">
+                                <h2 className="text-4xl md:text-5xl lg:text-6xl font-[900] text-white tracking-tight leading-[1.1] mb-6">
+                                    Ready to transform your farming?
+                                </h2>
+                                
+                                <p className="text-xl text-gray-400 font-medium mb-10 max-w-2xl mx-auto">
+                                    Join thousands of modern farmers who have already improved their yields and maximized their profitability.
+                                </p>
+                                
+                                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+                                    <UIButton asChild className="w-full sm:w-auto h-14 px-8 bg-green-500 hover:bg-green-400 text-gray-900 text-lg font-bold rounded-xl shadow-[0_0_20px_rgba(34,197,94,0.2)] hover:-translate-y-1 transition-all duration-300">
+                                        <Link to="/register">Get Started For Free</Link>
+                                    </UIButton>
+                                    
+                                    <UIButton asChild className="w-full sm:w-auto h-14 px-8 bg-white/5 hover:bg-white/10 text-white border border-white/10 text-lg font-bold rounded-xl transition-all duration-300">
+                                        <Link to="/contact">Talk to Sales</Link>
+                                    </UIButton>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </section>

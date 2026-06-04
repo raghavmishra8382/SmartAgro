@@ -3,7 +3,9 @@ import {
   Sun, CloudRain, Cloud, AlertTriangle, CheckCircle2,
   TrendingUp, TrendingDown, MapPin, Sparkles,
   Wind, Droplets, Loader2, Clock, Flame, Activity,
+  Users, BarChart3, MapPin as MapPinIcon, Wheat,
 } from "lucide-react";
+import HeroImg from "../../Images/image_750x500_657ad9e35f2bc.jpg";
 import { useWeather } from "@/lib/useWeather";
 import { getTopPriorityTask } from "@/lib/taskStore";
 import { useMandiPrices } from "@/lib/useMandiPrices";
@@ -69,204 +71,63 @@ const SmartBanner: React.FC<SmartBannerProps> = ({ userName }) => {
   return (
     <>
       <style>{bannerCSS}</style>
-
-      <div className="relative overflow-hidden rounded-[1.75rem] shadow-2xl shadow-forest-600/30 ring-1 ring-white/10">
-
-        {/* ▸ Deep base gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-forest-700 via-forest-800 to-agri-900" />
-
-        {/* ▸ Aurora mesh — slowly swaying colour blobs */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="aurora-glow absolute -left-20 top-0 h-[28rem] w-[28rem] rounded-full bg-forest-600/20 blur-[80px]" />
-          <div className="aurora-glow absolute -right-20 -bottom-10 h-[26rem] w-[26rem] rounded-full bg-teal-400/15 blur-[90px] [animation-delay:3s]" />
-          <div className="aurora-glow absolute left-1/3 -top-10 h-64 w-64 rounded-full bg-lime-400/10 blur-[60px] [animation-delay:5s]" />
-          <div className="aurora-glow absolute right-1/4 bottom-0 h-48 w-48 rounded-full bg-yellow-300/8 blur-[50px] [animation-delay:2s]" />
+      <div className="w-full bg-gradient-to-br from-forest-50 to-sage-50 border border-forest-100/60 rounded-3xl p-6 md:p-8 flex flex-col lg:flex-row lg:items-center justify-between gap-6 shadow-sm relative overflow-hidden mt-2">
+        
+        {/* Background shimmer for premium feel */}
+        <div className="absolute inset-0 banner-shimmer opacity-30 pointer-events-none mix-blend-overlay" />
+        <div className="absolute -right-20 -top-20 w-64 h-64 bg-forest-200/40 rounded-full blur-[80px] pointer-events-none aurora-glow" />
+        
+        {/* Left side: Greeting */}
+        <div className="relative z-10 flex flex-col gap-1.5">
+          <p className="text-forest-600 font-bold text-sm tracking-wide uppercase">{today}</p>
+          <h1 className="text-3xl md:text-4xl font-extrabold text-forest-900 tracking-tight">
+            {greeting}, <span className="text-transparent bg-clip-text bg-gradient-to-r from-forest-600 to-forest-800">{userName.split(' ')[0]}</span> {emoji}
+          </h1>
+          <p className="text-forest-700/80 text-sm md:text-base max-w-lg mt-1 leading-relaxed">
+            Here's what is happening across your fields today. Let's make it a productive and sustainable day.
+          </p>
         </div>
 
-        {/* ▸ Shimmer sweep layer */}
-        <div className="banner-shimmer absolute inset-0 pointer-events-none" />
-
-        {/* ▸ Grain / noise texture */}
-        <div className="absolute inset-0 opacity-[0.025] pointer-events-none mix-blend-overlay"
-          style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")" }}
-        />
-
-        {/* ▸ Floating orbs — animated */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="float-slow absolute top-6 right-12 h-2 w-2 rounded-full bg-forest-600/50" />
-          <div className="float-med  absolute top-14 right-40 h-1.5 w-1.5 rounded-full bg-white/30 [animation-delay:1.5s]" />
-          <div className="float-slow absolute bottom-10 left-20 h-1 w-1 rounded-full bg-yellow-300/40 [animation-delay:3s]" />
-          <div className="float-med  absolute bottom-16 right-24 h-1 w-1 rounded-full bg-sky-300/30 [animation-delay:0.8s]" />
-        </div>
-
-        {/* ═══ Content ═══ */}
-        <div className="relative z-10 p-5 md:p-7">
-
-          {/* ── Hero row ── */}
-          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-5">
-            <div>
-              {/* AI badge */}
-              <div className="inline-flex items-center gap-2 bg-white/[0.07] backdrop-blur-xl border border-white/[0.12] rounded-full px-3.5 py-1.5 mb-3 shadow-lg shadow-black/10">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-forest-600 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-forest-600" />
-                </span>
-                <Sparkles className="h-3 w-3 text-yellow-300" />
-                <span className="text-[10px] font-bold text-forest-600/90 uppercase tracking-[0.12em]">AI Farm Assistant</span>
-              </div>
-
-              <h1 className="text-2xl md:text-[1.75rem] font-black text-white leading-tight tracking-tight">
-                {greeting}, {userName.split(" ")[0]}!{" "}
-                <span className="text-2xl inline-block ml-0.5">{emoji}</span>
-              </h1>
-              <p className="text-forest-600/70 text-xs font-medium mt-1.5 tracking-wide">{today}</p>
+        {/* Right side: Quick stats/weather pills */}
+        <div className="relative z-10 flex flex-wrap gap-3 lg:justify-end">
+          
+          {/* Weather Pill */}
+          <div className="flex items-center gap-3 bg-white/80 backdrop-blur-xl border border-white rounded-2xl px-4 py-2.5 hover:bg-white transition-colors shadow-sm">
+            <div className="p-2 bg-sky-100 rounded-xl">
+              <WIcon className="h-5 w-5 text-sky-600" />
             </div>
-
-            {/* Right — Location + weather summary pills */}
-            {weather && (
-              <div className="flex flex-wrap gap-2 sm:flex-col sm:items-end">
-                <GlassPill>
-                  <MapPin className="h-3.5 w-3.5 text-forest-600" />
-                  <span className="text-white text-xs font-semibold truncate max-w-[120px]">{weather.location}</span>
-                </GlassPill>
-                <GlassPill>
-                  <WIcon className="h-4 w-4 text-sky-300" />
-                  <span className="text-xl font-black text-white leading-none">{weather.temp}°</span>
-                  <span className="text-[10px] text-white/50 capitalize leading-none">{weather.description}</span>
-                </GlassPill>
-              </div>
-            )}
+            <div className="flex flex-col">
+              <span className="text-[10px] uppercase text-sky-700/70 font-bold tracking-wider leading-none mb-1">Weather</span>
+              <span className="text-sm text-sky-950 font-semibold leading-none">
+                {wLoading ? (
+                  <span className="flex items-center gap-1"><Loader2 className="h-3 w-3 animate-spin text-sky-600"/> Loading</span>
+                ) : (
+                  `${weather?.temperature || '--'}°C ${weather?.main || 'Clear'}`
+                )}
+              </span>
+            </div>
           </div>
-
-          {/* ── 4 Glass Cards ── */}
-          <div className="grid grid-cols-2 xl:grid-cols-4 gap-3">
-
-            {/* 1 — Weather */}
-            <GlassInfoCard
-              accent="sky"
-              loading={wLoading}
-              label="Live Weather"
-              icon={
-                wLoading
-                  ? <Loader2 className="h-5 w-5 text-sky-300 animate-spin" />
-                  : weather
-                    ? <img src={`https://openweathermap.org/img/wn/${weather.icon}@2x.png`} alt="" className="h-10 w-10 drop-shadow-[0_4px_12px_rgba(56,189,248,0.4)]" />
-                    : <Sun className="h-5 w-5 text-yellow-300" />
-              }
-            >
-              <p className="text-[1.65rem] font-black text-white leading-none tracking-tight">
-                {weather ? `${weather.temp}°C` : "—"}
-              </p>
-              <p className="text-[11px] text-white/50 capitalize mt-0.5 font-medium">
-                {weather?.description ?? "Add VITE_WEATHER_API_KEY"}
-              </p>
-              {weather && (
-                <div className="mt-3 flex flex-col gap-1.5">
-                  <MiniStat icon={<Droplets className="h-3 w-3" />} text={`${weather.humidity}% humidity`} tint="text-sky-300/80" />
-                  <MiniStat icon={<Wind className="h-3 w-3" />} text={`${weather.windSpeedKmh} km/h wind`} tint="text-sky-300/80" />
-                </div>
-              )}
-            </GlassInfoCard>
-
-            {/* 2 — AI Alert */}
-            <GlassInfoCard
-              accent={advice?.tag === "good" ? "emerald" : advice?.tag === "warning" ? "rose" : "violet"}
-              loading={wLoading}
-              label="AI Alert"
-              icon={
-                <div className="relative">
-                  <AlertTriangle className="h-5 w-5 text-rose-300" />
-                  {advice?.tag === "warning" && (
-                    <span className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-rose-400 animate-ping" />
-                  )}
-                </div>
-              }
-            >
-              <p className="text-[13px] font-bold text-white leading-snug">
-                {advice?.primary ?? (isRainy ? "🌧 Fungus Risk" : "🔍 Inspect Today")}
-              </p>
-              <p className="text-[11px] text-white/45 mt-1 leading-snug">
-                {advice?.secondary ?? "Check your crops"}
-              </p>
-              {advice?.suggestions[0] && (
-                <div className="mt-3 flex items-start gap-2 bg-white/[0.06] border border-white/[0.08] rounded-xl px-2.5 py-2">
-                  <Activity className="h-3 w-3 text-white/40 mt-0.5 flex-shrink-0" />
-                  <p className="text-[10px] font-semibold text-white/70">{advice.suggestions[0]}</p>
-                </div>
-              )}
-            </GlassInfoCard>
-
-            {/* 3 — Today's Focus */}
-            <GlassInfoCard
-              accent="emerald"
-              label="Today's Focus"
-              icon={<CheckCircle2 className="h-5 w-5 text-forest-600" />}
-            >
-              {topTask ? (
-                <>
-                  <p className="text-[13px] font-bold text-white leading-snug">{topTask.label}</p>
-                  {topTask.time && (
-                    <div className="mt-1.5 flex items-center gap-1">
-                      <Clock className="h-2.5 w-2.5 text-white/40" />
-                      <span className="text-[10px] text-white/45 font-medium">{topTask.time}</span>
-                    </div>
-                  )}
-                  <div className="mt-2.5 inline-flex items-center gap-1.5 bg-white/[0.06] border border-white/[0.08] rounded-lg px-2 py-1">
-                    <Flame className={`h-3 w-3 ${topTask.priority === "high" ? "text-rose-400" :
-                      topTask.priority === "medium" ? "text-amber-400" : "text-forest-600"
-                      }`} />
-                    <span className={`text-[9px] font-black uppercase tracking-widest ${topTask.priority === "high" ? "text-rose-300" :
-                      topTask.priority === "medium" ? "text-amber-300" : "text-forest-600"
-                      }`}>
-                      {topTask.priority}
-                    </span>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <p className="text-lg font-black text-white">All Done! ✅</p>
-                  <p className="text-[11px] text-white/45 mt-1">Great work, farmer!</p>
-                </>
-              )}
-            </GlassInfoCard>
-
-            {/* 4 — Market Alert */}
-            <GlassInfoCard
-              accent="amber"
-              loading={mLoading}
-              label="Market Alert"
-              icon={<TrendingUp className="h-5 w-5 text-yellow-300" />}
-            >
-              {topCrop ? (
-                <>
-                  <div className="flex items-center gap-1.5 flex-wrap">
-                    <span className="text-[13px] font-bold text-white">{topCrop.name}</span>
-                    <span className={`inline-flex items-center gap-0.5 text-[13px] font-black ${topCrop.change >= 0 ? "text-forest-600" : "text-rose-300"
-                      }`}>
-                      {topCrop.change >= 0
-                        ? <TrendingUp className="h-3.5 w-3.5" />
-                        : <TrendingDown className="h-3.5 w-3.5" />}
-                      {topCrop.change >= 0 ? "+" : ""}{topCrop.change.toFixed(1)}%
-                    </span>
-                  </div>
-                  <p className="text-[11px] text-white/45 mt-0.5 font-medium">
-                    ₹{topCrop.modalPrice.toFixed(0)}/qtl · {topCrop.market}
-                  </p>
-                  <div className="mt-3 flex items-start gap-2 bg-white/[0.06] border border-white/[0.08] rounded-xl px-2.5 py-2">
-                    <span className="text-[10px] leading-none mt-0.5">💡</span>
-                    <p className="text-[10px] font-semibold text-yellow-200/80">{topCrop.suggestion}</p>
-                  </div>
-                </>
-              ) : (
-                <p className="text-sm text-white/40 font-medium">{mLoading ? "Loading…" : "No data"}</p>
-              )}
-            </GlassInfoCard>
-
+          
+          {/* Market Pill */}
+          <div className="flex items-center gap-3 bg-white/80 backdrop-blur-xl border border-white rounded-2xl px-4 py-2.5 hover:bg-white transition-colors shadow-sm">
+            <div className="p-2 bg-emerald-100 rounded-xl">
+              <TrendingUp className="h-5 w-5 text-emerald-600" />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-[10px] uppercase text-emerald-700/70 font-bold tracking-wider leading-none mb-1">Top Market</span>
+              <span className="text-sm text-emerald-950 font-semibold leading-none">
+                {mLoading ? (
+                  <span className="flex items-center gap-1"><Loader2 className="h-3 w-3 animate-spin text-emerald-600"/> Loading</span>
+                ) : topCrop ? (
+                  `${topCrop.commodity} +${topCrop.priceChange}%`
+                ) : (
+                  "Wheat +2.4%"
+                )}
+              </span>
+            </div>
           </div>
+          
         </div>
-
-        {/* ▸ Bottom edge refraction line */}
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-forest-600/20 to-transparent" />
       </div>
     </>
   );

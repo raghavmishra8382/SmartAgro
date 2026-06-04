@@ -1,3 +1,10 @@
+#  password 
+# MAGKdrLLyKcFSoaD
+
+# PORT=5000
+# MONGO_URI=mongodb+srv://rammisra343_db_user:MAGKdrLLyKcFSoaD@smart-agro.6wwu5iy.mongodb.net/?appName=Smart-Agro
+# JWT_SECRET=myscretkey
+
 # Virtual environments
 .venv/
 venv/

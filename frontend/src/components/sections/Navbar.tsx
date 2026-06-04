@@ -19,7 +19,7 @@ const navItems = [
     { name: "Home", sectionId: "hero" },
     { name: "Features", sectionId: "features" },
     { name: "About", sectionId: "about" },
-    { name: "Programs", sectionId: "programs" },
+    { name: "How It Works", sectionId: "how-it-works" },
     { name: "Contact", sectionId: "contact" },
 ];
 
@@ -196,18 +196,20 @@ export default function Navbar() {
                         </div>
 
                         {/* Auth Buttons */}
-                        <Link 
-                            to="/login"
-                            className="btn-ghost text-sm px-4 py-2"
-                        >
-                            Login
-                        </Link>
-                        <Link 
-                            to="/register"
-                            className="btn-primary text-sm px-4 py-2"
-                        >
-                            Sign Up
-                        </Link>
+                        <div className="flex items-center gap-3 ml-2">
+                            <Link 
+                                to="/login"
+                                className="inline-flex items-center justify-center px-6 py-2 rounded-full text-sm font-semibold border border-gray-200 text-gray-700 hover:bg-gray-50 transition-colors"
+                            >
+                                Log in
+                            </Link>
+                            <Link 
+                                to="/register"
+                                className="inline-flex items-center justify-center px-6 py-2 rounded-full text-sm font-semibold bg-[#2b6a43] text-white hover:bg-[#1f4f31] transition-colors"
+                            >
+                                Sign Up
+                            </Link>
+                        </div>
                     </div>
 
                     {/* Mobile Controls */}

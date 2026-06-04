@@ -22,16 +22,16 @@ const app = express();
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:3000",
-  "https://green-grow-zeta.vercel.app",
-  "https://greengrow-n9g5.onrender.com",
-  "https://greengrow.vercel.app",
-];
+  process.env.FRONTEND_URL, // Set in Render/Vercel env - e.g., https://smartagro.vercel.app
+].filter(Boolean); // Remove undefined values
 
 const isAllowedOrigin = (origin = "") => {
   if (!origin) return true;
   if (allowedOrigins.includes(origin)) return true;
   // Allow any Vercel preview/production domain
   if (origin.endsWith(".vercel.app")) return true;
+  // Allow Render domains
+  if (origin.includes(".onrender.com")) return true;
   return false;
 };
 

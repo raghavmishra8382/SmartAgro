@@ -34,17 +34,26 @@ const upload = multer({ dest: uploadsDir });
 
 const uploadImageToCloudinary = async (localFilePath, originalFilename) => {
   const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
+
+  // If Cloudinary not configured, use local file path instead of crashing
+  if (!cloudName) {
+    console.warn("[WARN] Cloudinary not configured - using local file path for uploads");
+    return {
+      secureUrl: `/uploads/${path.basename(localFilePath)}`,
+      publicId: path.basename(localFilePath),
+    };
+  }
+
   const apiKey = process.env.CLOUDINARY_API_KEY;
   const apiSecret = process.env.CLOUDINARY_API_SECRET;
   const folder = process.env.CLOUDINARY_UPLOAD_FOLDER || "greengrow/plants";
 
-  if (!cloudName || !apiKey || !apiSecret) {
+  if (!apiKey || !apiSecret) {
     const missing = [
-      !cloudName ? "CLOUDINARY_CLOUD_NAME" : null,
       !apiKey ? "CLOUDINARY_API_KEY" : null,
       !apiSecret ? "CLOUDINARY_API_SECRET" : null,
     ].filter(Boolean);
-    throw new Error(`Cloudinary configuration is missing: ${missing.join(", ")}`);
+    throw new Error(`Cloudinary credentials missing: ${missing.join(", ")}`);
   }
 
   const timestamp = Math.floor(Date.now() / 1000);
@@ -914,8 +923,14 @@ router.post(
 
     // Step 1: Send image to disease detection backend (same as DiseasePrediction.tsx)
     const imagePath = req.file.path;
-    const diseaseApiBase =
-      process.env.DISEASE_API_URL || "http://localhost:5001";
+    const diseaseApiBase = process.env.DISEASE_API_URL;
+    
+    if (!diseaseApiBase) {
+      return res.status(503).json({
+        error: "Disease API not configured",
+        detail: "DISEASE_API_URL environment variable is required but not set"
+      });
+    }
 
     let diseaseResult = null;
     try {
@@ -926,6 +941,7 @@ router.post(
         headers: formData.getHeaders(),
         maxContentLength: Infinity,
         maxBodyLength: Infinity,
+        timeout: 30000, // 30 second timeout to prevent hanging
       });
 
       // Normalize response shape to what downstream logic expects

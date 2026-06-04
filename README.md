@@ -67,6 +67,8 @@ PORT=5000
 MONGO_URI=mongodb://localhost:27017/smartagro
 JWT_SECRET=your_jwt_secret
 GROQ_API_KEY=your_groq_api_key
+DISEASE_API_URL=http://localhost:5001
+NODE_ENV=development
 ```
 Start the backend server:
 ```bash
@@ -103,6 +105,12 @@ Start the frontend development server:
 ```bash
 npm run dev
 ```
+
+---
+
+### 🌐 Production Deployment
+
+For production deployment to Vercel + Render + MongoDB Atlas, see `DEPLOYMENT_SETUP.md` in the root directory.
 
 ---
 

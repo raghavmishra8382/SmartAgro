@@ -50,11 +50,11 @@ graph TD
 ### Prerequisites
 * [Node.js](https://nodejs.org/) (v18+)
 * [Python](https://www.python.org/) (v3.9+)
-* [MongoDB](https://www.mongodb.com/) (for development: local instance OR MongoDB Atlas for production)
+* [MongoDB](https://www.mongodb.com/) (running instance)
 
 ---
 
-### 🛠️ Development Setup (Local)
+### Step-by-Step Installation
 
 #### 1. Setup the Server Backend
 ```bash
@@ -65,7 +65,7 @@ Create a `.env` file in the `server` directory:
 ```env
 PORT=5000
 MONGO_URI=mongodb://localhost:27017/smartagro
-JWT_SECRET=your_dev_jwt_secret_min_32_chars
+JWT_SECRET=your_jwt_secret
 GROQ_API_KEY=your_groq_api_key
 DISEASE_API_URL=http://localhost:5001
 NODE_ENV=development
@@ -108,97 +108,9 @@ npm run dev
 
 ---
 
-### 🌐 Production Deployment (Vercel + Render + MongoDB Atlas)
+### 🌐 Production Deployment
 
-#### Prerequisites for Production
-- GitHub account (for connecting to Vercel/Render)
-- [Vercel account](https://vercel.com) (free tier)
-- [Render account](https://render.com) (free tier)
-- [MongoDB Atlas account](https://www.mongodb.com/cloud/atlas) (free tier - 512MB storage)
-- API Keys:
-  - [Groq API Key](https://console.groq.com) (free tier available)
-  - [OpenWeather API Key](https://openweathermap.org/api) (free tier available)
-
-#### Step 1: Setup MongoDB Atlas (Free Database)
-
-1. Go to [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
-2. Create a free M0 Sandbox cluster
-3. Create a database user with username/password
-4. Get your connection string:
-   - Format: `mongodb+srv://<username>:<password>@<cluster>.mongodb.net/smartagro?retryWrites=true&w=majority`
-   - **IMPORTANT:** URL-encode special characters in password:
-     - `@` → `%40`, `:` → `%3A`, `?` → `%3F`, `/` → `%2F`
-
-#### Step 2: Deploy Backend to Render
-
-1. Go to [Render](https://render.com)
-2. Connect your GitHub repository
-3. Create a new Web Service:
-   - **Name:** `smartagro-backend`
-   - **Runtime:** Node
-   - **Build Command:** `npm install --prefix server && npm run build --prefix server 2>/dev/null || true`
-   - **Start Command:** `cd server && npm start`
-   - **Plan:** Free
-4. Add Environment Variables:
-   ```
-   PORT=5000
-   MONGO_URI=mongodb+srv://<username>:<password>@<cluster>.mongodb.net/smartagro?retryWrites=true&w=majority
-   JWT_SECRET=<generate: node -e "console.log(require('crypto').randomBytes(32).toString('hex'))">
-   GROQ_API_KEY=<from groq console>
-   DISEASE_API_URL=https://smartagro-ml.onrender.com
-   NODE_ENV=production
-   FRONTEND_URL=https://<your-vercel-app>.vercel.app
-   ```
-5. Deploy and note the URL (e.g., `https://smartagro-backend.onrender.com`)
-
-#### Step 3: Deploy ML Service to Render
-
-Repeat Step 2 but for ML service:
-   - **Name:** `smartagro-ml`
-   - **Runtime:** Python
-   - **Build Command:** `pip install -r backend/requirements.txt`
-   - **Start Command:** `cd backend && python app.py`
-   - **Environment:**
-     ```
-     PORT=5001
-     HOST=0.0.0.0
-     ```
-   - **Note the URL:** (e.g., `https://smartagro-ml.onrender.com`)
-
-#### Step 4: Deploy Frontend to Vercel
-
-1. Go to [Vercel](https://vercel.com)
-2. Click "Add New" → "Project"
-3. Import your GitHub repository
-4. **Framework Preset:** React
-5. **Root Directory:** `frontend`
-6. **Environment Variables** (Settings → Environment Variables):
-   ```
-   VITE_API_URL=https://smartagro-backend.onrender.com
-   VITE_DISEASE_API_URL=https://smartagro-ml.onrender.com
-   VITE_GROQ_API_KEY=<from groq console>
-   VITE_WEATHER_API_KEY=<from openweather>
-   ```
-7. Deploy and get your Vercel URL (e.g., `https://smartagro.vercel.app`)
-
-#### Step 5: Update Backend CORS (Final Step)
-
-Update the `FRONTEND_URL` environment variable in Render backend with your actual Vercel URL.
-
----
-
-### 🧪 Testing Your Production Deployment
-
-```bash
-# Test backend health
-curl https://smartagro-backend.onrender.com/api/health
-
-# Test ML service
-curl https://smartagro-ml.onrender.com/health
-
-# Visit frontend
-https://smartagro.vercel.app
-```
+For production deployment to Vercel + Render + MongoDB Atlas, see `DEPLOYMENT_SETUP.md` in the root directory.
 
 ---
 

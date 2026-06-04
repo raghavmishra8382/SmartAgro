@@ -4,7 +4,7 @@ import {
   Home, CloudRain, Wheat, DollarSign, Building2, Settings,
   MessageCircle, Voicemail, PhoneCall, X, Leaf, Plane, Sprout,
   Brain, ChevronDown, ChevronRight, Cpu, BarChart2, HeartPulse,
-  HelpCircle, ListChecks,
+  HelpCircle, ListChecks, Menu
 } from "lucide-react";
 
 interface SidebarProps {
@@ -60,6 +60,12 @@ const NAV: SidebarEntry[] = [
 const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
   const location = useLocation();
 
+  const handleLinkClick = () => {
+    if (window.innerWidth < 768 && onClose) {
+      onClose();
+    }
+  };
+
   const defaultOpen = () => {
     const open = new Set<string>();
     NAV.forEach(entry => {
@@ -92,8 +98,8 @@ const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
           </div>
         </div>
         {onClose && (
-          <button onClick={onClose} className="md:hidden p-1.5 text-gray-400 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
-            <X className="h-4 w-4" />
+          <button onClick={onClose} className="p-1.5 text-gray-500 hover:text-forest-600 hover:bg-forest-50 rounded-xl transition-all duration-200">
+            <Menu className="h-5 w-5" />
           </button>
         )}
       </div>
@@ -108,7 +114,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
               <Link
                 key={entry.id}
                 to={entry.path}
-                onClick={onClose}
+                onClick={handleLinkClick}
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 text-[13px] font-semibold group ${
                   isActive
                     ? "bg-forest-50/80 text-forest-700 shadow-sm shadow-forest-100/50"
@@ -159,7 +165,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
                       <Link
                         key={child.id}
                         to={child.path}
-                        onClick={onClose}
+                        onClick={handleLinkClick}
                         className={`flex items-center gap-2.5 px-3 py-2 rounded-xl transition-all duration-200 text-[13px] ${
                           childActive
                             ? `${group.activeBg} font-semibold ${group.activeText}`
@@ -190,7 +196,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
           <p className="text-xs text-forest-600/80 mb-3 leading-relaxed">Get expert farming advice from our team.</p>
           <Link
             to="/support"
-            onClick={onClose}
+            onClick={handleLinkClick}
             className="w-full btn-primary text-xs py-2 block text-center"
           >
             Contact Support

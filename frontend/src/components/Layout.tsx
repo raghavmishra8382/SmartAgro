@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Header from './Header';
@@ -11,21 +11,30 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const navigate = useNavigate();
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  // Initialize open on desktop, closed on mobile
+  const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth >= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      // Auto close on mobile resize, optional auto open on desktop
+      if (window.innerWidth < 768 && sidebarOpen) {
+        setSidebarOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [sidebarOpen]);
 
   const handleVoiceNavigation = (path: string) => {
     navigate(path);
   };
 
   const handleVoiceAction = (action: string, data?: any) => {
-    // Handle various voice actions
     switch (action) {
       case 'search':
-        // Could trigger search functionality
         console.log('Voice search:', data);
         break;
       case 'help':
-        // Show help modal or navigate to help page
         navigate('/help');
         break;
       default:
@@ -43,17 +52,18 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         />
       )}
       
-      {/* Sidebar */}
+      {/* Sidebar Container */}
       <div className={`
-        fixed md:static inset-y-0 left-0 z-50 transform transition-transform duration-300 ease-out
-        ${sidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
+        fixed md:relative inset-y-0 left-0 z-50 
+        transform transition-all duration-300 ease-in-out
+        ${sidebarOpen ? 'translate-x-0 md:ml-0' : '-translate-x-full md:ml-[-272px]'}
       `}>
         <Sidebar onClose={() => setSidebarOpen(false)} />
       </div>
       
       {/* Main Content */}
-      <div className="flex-1 flex flex-col w-full md:w-auto min-h-screen">
-        <Header onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
+      <div className="flex-1 flex flex-col w-full min-w-0 min-h-screen transition-all duration-300">
+        <Header isSidebarOpen={sidebarOpen} onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
         <main className="flex-1 p-4 md:p-6 lg:p-8">
           {children}
         </main>

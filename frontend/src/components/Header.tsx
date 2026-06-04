@@ -165,7 +165,12 @@ const SyncBadge: React.FC = () => {
 
 // ─── Header ───────────────────────────────────────────────────────────────────
 
-const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
+interface HeaderProps {
+  onMenuClick?: () => void;
+  isSidebarOpen?: boolean;
+}
+
+const Header: React.FC<HeaderProps> = ({ onMenuClick, isSidebarOpen }) => {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
 
@@ -174,18 +179,20 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
       <div className="flex items-center justify-between gap-3">
         {/* Left: hamburger + search */}
         <div className="flex items-center gap-3 flex-1 min-w-0">
-          <button
-            onClick={onMenuClick}
-            className="md:hidden p-2 text-gray-500 hover:text-forest-600 hover:bg-forest-50 rounded-xl transition-all duration-200 flex-shrink-0"
-          >
-            <Menu className="h-5 w-5" />
-          </button>
+          {!isSidebarOpen && (
+            <button
+              onClick={onMenuClick}
+              className="p-2 text-gray-500 hover:text-forest-600 hover:bg-forest-50 rounded-xl transition-all duration-200 flex-shrink-0"
+            >
+              <Menu className="h-5 w-5" />
+            </button>
+          )}
           <div className="relative flex-1 max-w-md">
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
             <input
               type="text"
               placeholder="Search crops, weather, advice…"
-              className="input-premium pl-10 pr-4 py-2.5 bg-gray-50/80"
+              className="input-premium pl-10 pr-4 py-2.5 bg-gray-50/80 w-full"
             />
           </div>
         </div>

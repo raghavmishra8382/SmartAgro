@@ -7,6 +7,7 @@ from tensorflow.keras.applications import EfficientNetB0
 from tensorflow.keras import layers, models
 import numpy as np
 import io
+import traceback
 from PIL import Image
 import os
 
@@ -152,9 +153,15 @@ async def predict(image: UploadFile = File(...)):
                 for i in range(len(CLASS_NAMES))
             }
         }
-        
+
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Prediction failed: {str(e)}")
+        print("PREDICTION ERROR:")
+        traceback.print_exc()
+
+        raise HTTPException(
+            status_code=500,
+            detail=f"Prediction failed: {str(e)}"
+        )
 
 if __name__ == '__main__':
     import uvicorn

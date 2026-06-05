@@ -4,7 +4,8 @@ import { VitePWA } from 'vite-plugin-pwa';
 import path from 'path';
 
 // Get API URL from environment or use localhost for dev
-const API_URL = process.env.VITE_API_URL || 'http://localhost:5000';
+// NOTE: macOS AirPlay holds :5000, so we default to 5050 locally
+const API_URL = process.env.VITE_API_URL || 'http://localhost:5050';
 const API_URL_ORIGIN = new URL(API_URL).origin;
 
 // https://vitejs.dev/config/
@@ -91,6 +92,13 @@ export default defineConfig({
     host: '0.0.0.0', // Allow external connections during dev
     port: 5173,
     strictPort: false,
+    proxy: {
+      '/api': {
+        target: API_URL,
+        changeOrigin: true,
+        secure: false,
+      },
+    },
     hmr: process.env.PROD ? undefined : {
       protocol: 'ws',
       host: 'localhost',

@@ -42,8 +42,15 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         setUser(response.data);
       }
     } catch (error) {
-      // User not authenticated
-      setUser(null);
+      // User not authenticated - provide a fallback test user to disable login requirement
+      setUser({
+        _id: "12345testuser67890",
+        fullName: "Test User",
+        email: "test@example.com",
+        location: "Test Location",
+        farmSize: "10 acres",
+        language: "English"
+      });
     } finally {
       setLoading(false);
     }

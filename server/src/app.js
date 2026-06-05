@@ -21,7 +21,8 @@ const app = express();
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:3000",
-  process.env.FRONTEND_URL, // Set in Render/Vercel env - e.g., https://smartagro.vercel.app
+  "https://smart-agro-nine.vercel.app",           // deployed Vercel frontend
+  process.env.FRONTEND_URL,                        // override via Render env var if needed
 ].filter(Boolean); // Remove undefined values
 
 const isAllowedOrigin = (origin = "") => {

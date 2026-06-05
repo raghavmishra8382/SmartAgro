@@ -12,10 +12,16 @@ import os
 
 app = FastAPI(title="SmartAgro Plant Disease Prediction API")
 
-# Configure CORS to allow the frontend to make requests directly if needed
+# Configure CORS – allow only the deployed Vercel frontend (and localhost for dev)
+ALLOWED_ORIGINS = [
+    os.getenv("FRONTEND_URL", "https://smart-agro-nine.vercel.app"),
+    "http://localhost:5173",
+    "http://localhost:3000",
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=ALLOWED_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

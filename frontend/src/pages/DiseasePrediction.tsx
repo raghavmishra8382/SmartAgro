@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { RefreshCw, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { GROQ_API_KEY } from "@/lib/env";
+import { GROQ_API_KEY, DISEASE_API_URL } from "@/lib/env";
 import { ImageUploader } from '@/components/disease/ImageUploader';
 import { PredictionResult } from '@/components/disease/PredictionResult';
 import { ConfidenceIndicator } from '@/components/disease/ConfidenceIndicator';
@@ -103,8 +103,7 @@ Ensure the response is ONLY the JSON object.`;
             const formData = new FormData();
             formData.append('image', selectedFile);
 
-            const diseaseApiUrl = import.meta.env.VITE_DISEASE_API_URL || 'http://localhost:5001';
-            const predictionResponse = await fetch(`${diseaseApiUrl}/predict`, {
+            const predictionResponse = await fetch(`${DISEASE_API_URL}/predict`, {
                 method: 'POST',
                 body: formData,
             });

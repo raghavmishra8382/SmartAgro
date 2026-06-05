@@ -105,6 +105,42 @@ Start the frontend development server:
 ```bash
 npm run dev
 ```
+ 
+## Environment & running notes
+
+To avoid common misconfiguration issues, here are concise runtime details and required environment variables grouped by service.
+
+- **Server (server/)**: defaults and required variables
+    - **Required:** `MONGO_URI`, `JWT_SECRET` (strong; >=32 chars recommended), `GROQ_API_KEY`, `DISEASE_API_URL`, `NODE_ENV`.
+    - **Optional / defaults:** `PORT` (default `5000`).
+    - See validation logic in `server/src/config/validateEnv.js` for exact requirements and a helper to generate a secure JWT secret.
+
+- **Machine Learning backend (backend/)**
+    - **Defaults / notes:** the FastAPI app uses `PORT` (default `5001`) when run via `python app.py`.
+    - **CORS / FRONTEND_URL:** `FRONTEND_URL` may be used to allow production frontend origins; local dev allows `http://localhost:5173` and `http://localhost:3000`.
+    - **Model files:** place your model under the repo `model/` directory. Supported options (in order of preference by the code):
+        1. `disease_model.h5` (full Keras model)
+        2. TensorFlow SavedModel directory at `model/disease_model`
+        3. `disease_model.weights.h5` (weights only — code will rebuild the architecture before loading)
+
+- **Frontend (frontend/)**
+    - **Required:** `VITE_API_URL`, `VITE_DISEASE_API_URL`, `VITE_GROQ_API_KEY`, `VITE_WEATHER_API_KEY` (for any weather features used).
+    - Start the dev server with `npm run dev` (Vite defaults to port `5173`).
+
+Notes:
+- The backend server's default HTTP port is `5000` (see `server/src/server.js`). The ML FastAPI server defaults to `5001` (see `backend/app.py`). Keep these values consistent in `.env` files and `VITE_API_URL` / `VITE_DISEASE_API_URL` to avoid CORS issues.
+- If the ML model is not present at startup, the `backend` will warn and return 503 for prediction requests until a model is added.
+
+## Missing files & recommended small additions
+
+- The README references `DEPLOYMENT_SETUP.md` for production deployment instructions, but that file is not present in this repository. Add `DEPLOYMENT_SETUP.md` with your preferred deployment steps (Vercel for frontend, Render/Heroku/Server for backend, MongoDB Atlas connection notes), or remove the reference if not needed.
+- The README states the project is licensed under the MIT License, but there is no `LICENSE` file in the repo. Add a `LICENSE` file (MIT) to match the README and consider adding a license badge near the top.
+
+## Troubleshooting tips
+
+- `Model not loaded` / prediction returns 503: ensure one of the supported model files is placed in `model/` and restart the ML server.
+- `MongoDB connection failed`: verify `MONGO_URI` and network access to Atlas or your Mongo instance.
+- Weak `JWT_SECRET`: use the helper in `server/src/config/validateEnv.js` or generate one with Node: `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`.
 
 ---
 

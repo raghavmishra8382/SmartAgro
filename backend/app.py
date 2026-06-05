@@ -35,7 +35,7 @@ MODEL_H5_PATH = os.path.join(MODEL_DIR, 'disease_model.h5')
 MODEL_SAVED_MODEL_PATH = os.path.join(MODEL_DIR, 'disease_model')
 
 # Model input size (must match training)
-IMG_SIZE = (160, 160)
+IMG_SIZE = (128, 128)
 
 CLASS_NAMES = [
     'Potato___Early_blight',

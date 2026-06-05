@@ -10,7 +10,6 @@ import mandiRoutes from "./routes/mandiRoutes.js";
 import newsRoutes from "./routes/newsRoutes.js";
 import chatRoutes from "./routes/chatRoutes.js";
 import farmarInfoSave from "./routes/farmarInfoSave.js";
-import ivrRoutes from "./routes/ivrRoutes.js";
 import plantRoutes from "./routes/plantRoutes.js";
 import { notFound, errorHandler } from "./middleware/errorHandler.js";
 
@@ -76,7 +75,6 @@ app.use("/api/mandi", mandiRoutes);
 app.use("/api/news", newsRoutes);
 app.use("/api/chat", chatRoutes);
 app.use("/api/farm", farmarInfoSave);
-app.use("/api/ivr", ivrRoutes);
 app.use("/api/plants", plantRoutes);
 
 app.use(notFound);

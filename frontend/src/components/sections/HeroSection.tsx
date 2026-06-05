@@ -60,7 +60,7 @@ export default function HeroSection() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-lg md:text-xl text-slate-500 mb-10 leading-relaxed max-w-lg"
             >
-              Harnessing the power of AI, IoT, and drones to help farmers increase productivity, reduce costs, and build a better tomorrow.
+              Harnessing the power of AI and IoT to help farmers increase productivity, reduce costs, and build a better tomorrow.
             </motion.p>
             
             {/* CTA Buttons */}
@@ -95,16 +95,7 @@ export default function HeroSection() {
                   <p className="text-[12px] text-slate-500">Smart Insights</p>
                 </div>
               </div>
-              {/* Feature 2 */}
-              <div className="flex items-center gap-3 px-6">
-                <div className="w-10 h-10 rounded-lg bg-[#eef8f1] flex items-center justify-center text-[#2b6a43] shrink-0">
-                  <Scan className="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 className="text-sm font-bold text-slate-800 leading-tight">Drone Monitoring</h4>
-                  <p className="text-[12px] text-slate-500">Real-time Data</p>
-                </div>
-              </div>
+
               {/* Feature 3 */}
               <div className="flex items-center gap-3 pl-6">
                 <div className="w-10 h-10 rounded-lg bg-[#eef8f1] flex items-center justify-center text-[#2b6a43] shrink-0">

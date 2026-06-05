@@ -25,7 +25,7 @@ graph TD
 * **Runtime:** Node.js (Express)
 * **Database:** MongoDB (Mongoose ODM)
 * **Authentication:** Cookie-based JWT sessions
-* **APIs:** Crop/field profiles, historical chat log caching, farm statistics, and IVR dialer configuration.
+* **APIs:** Crop/field profiles, historical chat log caching, and farm statistics.
 
 ### 3. Machine Learning Backend (`/backend`)
 * **Framework:** Python, FastAPI, Uvicorn

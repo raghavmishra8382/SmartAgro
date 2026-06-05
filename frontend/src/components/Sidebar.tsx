@@ -30,7 +30,6 @@ const NAV: SidebarEntry[] = [
     items: [
       { id: "chat",  label: "AI Chat",          icon: MessageCircle, path: "/chat" },
       { id: "voice", label: "Voice Assistant",   icon: Voicemail,     path: "/voice" },
-      { id: "ivr",   label: "IVR Dialer",        icon: PhoneCall,     path: "/ivr-dialer" },
     ],
   },
   {
@@ -40,7 +39,6 @@ const NAV: SidebarEntry[] = [
       { id: "disease",         label: "Disease Detection",   icon: Leaf,     path: "/disease-prediction" },
       { id: "crop-prediction", label: "Crop Prediction",     icon: Sprout,   path: "/crop-prediction" },
       { id: "crop-production", label: "Production Forecast", icon: BarChart2,path: "/crop-production" },
-      { id: "drone",           label: "Drone Module",        icon: Plane,    path: "/drone-module" },
     ],
   },
   {

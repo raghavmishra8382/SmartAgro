@@ -38,12 +38,11 @@ MODEL_SAVED_MODEL_PATH = os.path.join(MODEL_DIR, 'disease_model')
 IMG_SIZE = (160, 160)
 
 CLASS_NAMES = [
-    'Pepper__bell___Bacterial_spot', 'Pepper__bell___healthy', 
-    'Potato___Early_blight', 'Potato___Late_blight', 'Potato___healthy',
-    'Tomato_Bacterial_spot', 'Tomato_Early_blight', 'Tomato_Late_blight',
-    'Tomato_Leaf_Mold', 'Tomato_Septoria_leaf_spot', 
-    'Tomato_Spider_mites_Two_spotted_spider_mite', 'Tomato_Target_Spot',
-    'Tomato_Tomato_Yellow_Leaf_Curl_Virus', 'Tomato_Tomato_mosaic_virus',
+    'Potato___Early_blight',
+    'Potato___Late_blight',
+    'Potato___healthy',
+    'Tomato_Early_blight',
+    'Tomato_Late_blight',
     'Tomato_healthy'
 ]
 
@@ -56,6 +55,8 @@ def load_prediction_model():
         if os.path.exists(MODEL_H5_PATH):
             model = load_model(MODEL_H5_PATH)
             print(f"[SUCCESS] Loaded full model from {MODEL_H5_PATH}")
+            print(f"[INFO] Model input shape: {model.input_shape}")
+            print(f"[INFO] Model output shape: {model.output_shape}")
         # 2. Try loading TensorFlow SavedModel folder
         elif os.path.exists(MODEL_SAVED_MODEL_PATH) and os.path.isdir(MODEL_SAVED_MODEL_PATH):
             model = load_model(MODEL_SAVED_MODEL_PATH)
@@ -143,13 +144,14 @@ async def predict(image: UploadFile = File(...)):
         is_healthy = 'healthy' in predicted_class.lower()
 
         return {
+            'prediction': disease_name,
             'disease': disease_name,
             'predicted_class': predicted_class,
             'confidence': round(confidence, 2),
             'status': 'healthy' if is_healthy else 'disease_detected',
             'is_healthy': is_healthy,
             'all_predictions': {
-                CLASS_NAMES[i]: float(prediction[0][i] * 100) 
+                CLASS_NAMES[i]: float(prediction[0][i] * 100)
                 for i in range(len(CLASS_NAMES))
             }
         }
